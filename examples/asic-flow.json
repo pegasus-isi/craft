@@ -183,10 +183,7 @@
         {
           "files": [
             {
-              "id": "synopsis-infile1",
-              "content": "Verified Synthesizable RTL design",
-              "format": "Verilog/VHDL",
-              "provided-by": "cadence-outfile-1",
+              "output-id": "cadence-outfile-1",
               "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc."
             },
             {
@@ -263,17 +260,11 @@
         {
           "files": [
             {
-              "id": "lec-infile1",
-              "content": "Verified Synthesizable RTL design",
-              "format": "Verilog/VHDL",
-              "provided-by": "cadence-outfile-1",
+              "output-id": "cadence-outfile-1",
               "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc."
             },
             {
-              "id": "lec-infile2",
-              "content": "Gate-level netlist",
-              "format": "Verilog/VHDL",
-              "provided-by": "synopsis-outfile1",
+              "output-id": "synopsis-outfile1",
               "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.)"
             },
             {
@@ -343,10 +334,7 @@
         {
           "files": [
             {
-              "id": "ce-infile1",
-              "content": "Gate-level netlist",
-              "format": "Verilog/VHDL",
-              "provided-by": "synopsis-outfile1",
+              "output-id": "synopsis-outfile1",
               "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.)"
             },
             {
@@ -458,10 +446,7 @@
         {
           "files": [
             {
-              "id": "final-infile1",
-              "content": "Post-route netlist",
-              "format": "Verilog/VHDL",
-              "provided-by": "ce-outfile1",
+              "output-id": "ce-outfile1",
               "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file."
             },
             {
@@ -474,10 +459,7 @@
               "link": "file:///tb_sync_mult_pnr.v"
             },
             {
-              "id": "final-infile3",
-              "content": "Delay information",
-              "format": "Standard Delay Format (SDF)",
-              "provided-by": "ce-outfile2",
+              "output-id": "ce-outfile2",
               "description": "SDF is a text file that contains the instance names and delay parameters for each technology library primitive and routing element specific to the design. The SDF is used to back-annotate delays into the Verilog post-route netlist file."
             },
             {

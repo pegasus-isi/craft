@@ -180,6 +180,7 @@
                       },
                       "optional": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/input/file/optional",
+                        "description": "Whether this input is optional.",
                         "type": "boolean",
                         "default": false
                       },
@@ -206,14 +207,28 @@
                       "link": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/input/file/link",
                         "type": "string"
+                      },
+                      "output-id": {
+                        "id": "https://github.com/pegasus-isi/craft-schema/stage/input/file/output-id",
+                        "description": "ID of an output file",
+                        "type": "string"
                       }
                     },
-                    "required": [
-                      "id",
-                      "content",
-                      "format",
-                      "provided-by",
-                      "description"
+                    "oneOf": [
+                      {
+                        "required": [
+                          "id",
+                          "content",
+                          "format",
+                          "provided-by",
+                          "description"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "output-id"
+                        ]
+                      }
                     ]
                   }
                 },
@@ -336,7 +351,13 @@
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/output/report/link",
                         "type": "string"
                       }
-                    }
+                    },
+                    "required": [
+                      "id",
+                      "content",
+                      "format",
+                      "description"
+                    ]
                   }
                 }
               },

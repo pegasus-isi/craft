@@ -211,7 +211,8 @@
                       "output-id": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/input/file/output-id",
                         "description": "ID of an output file",
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "^[0-9,_,a-z,A-Z]*$"
                       }
                     },
                     "oneOf": [

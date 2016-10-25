@@ -23,7 +23,7 @@
             "minLength": 1,
             "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
             "type": "string",
-            "pattern": "^[0-9,_,a-z,A-Z]*$"
+            "pattern": "^[0-9,_,-,a-z,A-Z]*$"
           },
           "name": {
             "id": "https://github.com/pegasus-isi/craft-schema/tool/name",
@@ -68,7 +68,7 @@
                   "minLength": 1,
                   "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                   "type": "string",
-                  "pattern": "^[0-9,_,a-z,A-Z]*$"
+                  "pattern": "^[0-9,_,-,a-z,A-Z]*$"
                 },
                 "description": {
                   "id": "https://github.com/pegasus-isi/craft-schema/tool/option/description",
@@ -102,7 +102,7 @@
                   "minLength": 1,
                   "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                   "type": "string",
-                  "pattern": "^[0-9,_,a-z,A-Z]*$"
+                  "pattern": "^[0-9,_,-,a-z,A-Z]*$"
                 },
                 "description": {
                   "id": "https://github.com/pegasus-isi/craft-schema/tool/option-control-module/description",
@@ -145,7 +145,7 @@
             "minLength": 1,
             "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
             "type": "string",
-            "pattern": "^[0-9,_,a-z,A-Z]*$"
+            "pattern": "^[0-9,_,-,a-z,A-Z]*$"
           },
           "name": {
             "id": "https://github.com/pegasus-isi/craft-schema/stage/name",
@@ -176,7 +176,7 @@
                         "minLength": 1,
                         "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                         "type": "string",
-                        "pattern": "^[0-9,_,a-z,A-Z]*$"
+                        "pattern": "^[0-9,_,-,a-z,A-Z]*$"
                       },
                       "optional": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/input/file/optional",
@@ -212,7 +212,7 @@
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/input/file/output-id",
                         "description": "ID of an output file",
                         "type": "string",
-                        "pattern": "^[0-9,_,a-z,A-Z]*$"
+                        "pattern": "^[0-9,_,-,a-z,A-Z]*$"
                       }
                     },
                     "oneOf": [
@@ -245,7 +245,7 @@
                         "minLength": 1,
                         "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                         "type": "string",
-                        "pattern": "^[0-9,_,a-z,A-Z]*$"
+                        "pattern": "^[0-9,_,-,a-z,A-Z]*$"
                       },
                       "name": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/input/interaction/name",
@@ -287,7 +287,7 @@
                         "minLength": 1,
                         "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                         "type": "string",
-                        "pattern": "^[0-9,_,a-z,A-Z]*$"
+                        "pattern": "^[0-9,_,-,a-z,A-Z]*$"
                       },
                       "content": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/output/file/content",
@@ -330,7 +330,7 @@
                         "minLength": 1,
                         "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                         "type": "string",
-                        "pattern": "^[0-9,_,a-z,A-Z]*$"
+                        "pattern": "^[0-9,_,-,a-z,A-Z]*$"
                       },
                       "content": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/output/report/content",
@@ -379,7 +379,7 @@
                   "minLength": 1,
                   "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                   "type": "string",
-                  "pattern": "^[0-9,_,a-z,A-Z]*$"
+                  "pattern": "^[0-9,_,-,a-z,A-Z]*$"
                 },
                 "condition": {
                   "id": "https://github.com/pegasus-isi/craft-schema/stage/control/condition",

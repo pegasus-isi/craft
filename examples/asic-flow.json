@@ -16,14 +16,6 @@
           "purpose": "Use to increase simulation speed. (May reduce debugging visibility)",
           "notes": "The tool applies a variety of optimizations: merging processes, pulling constants out of loops, clock suppression, and signal collapsing."
         }
-      ],
-      "option-control-module": [
-        {
-          "id": "cadence-rule-1",
-          "description": "Compiler Optimizations",
-          "purpose": "Use to increase simulation speed.",
-          "notes": "Use op1 for compiler optimization, with a level between -O0 (least) to -O5(full)."
-        }
       ]
     },
     {
@@ -44,14 +36,6 @@
           "id": "synopsis-op2",
           "description": "Optimization effort",
           "purpose": "Use to adjust the level of effort towards optimization goal."
-        }
-      ],
-      "option-control-module": [
-        {
-          "id": "synopsis-rule1",
-          "description": "Optimizations",
-          "purpose": "To optimize power and area",
-          "notes": "Use op1 for involving power and area optimization; Use op2 to adjust the effort level."
         }
       ]
     },
@@ -76,14 +60,6 @@
           "description": "Optimization effort",
           "purpose": "Use to adjust the level of effort towards place and route optimization"
         }
-      ],
-      "option-control-module": [
-        {
-          "id": "ce-rule1",
-          "description": "Optimizations",
-          "purpose": "To optimize place and route",
-          "notes": "Use ce-op1 to adjust the effort level"
-        }
       ]
     }
   ],
@@ -91,7 +67,47 @@
     {
       "id": "stage-verilog-simulation",
       "name": "Verilog/VHDL simulation",
-      "tool-id": "cadence-nc-sim",
+      "tool": {
+        "tool-id": "cadence-nc-sim",
+        "option-control-module": [
+          {
+            "id": "versim-rule1",
+            "description": "Compiler Optimization (-O0)",
+            "purpose": "To increase debugging visibility (maximum)",
+            "notes": "Command line option for maximum debugging visibility and minimum simulation speed."
+          },
+          {
+            "id": "versim-rule2",
+            "description": "Compiler Optimization (-O1)",
+            "purpose": "To increase debugging visibility (high)",
+            "notes": "High debugging visibility and low simulation speed."
+          },
+          {
+            "id": "versim-rule3",
+            "description": "Compiler Optimization (-O2)",
+            "purpose": "To increase debugging visibility (medium)",
+            "notes": "Medium high debugging visibility and medium low simulation speed."
+          },
+          {
+            "id": "versim-rule4",
+            "description": "Compiler Optimization (-O3)",
+            "purpose": "To increase simulation speed (medium)",
+            "notes": "Medium low debugging visibility and medium high simulation speed."
+          },
+          {
+            "id": "versim-rule5",
+            "description": "Compiler Optimization (-O4)",
+            "purpose": "To increase simulation speed (high)",
+            "notes": "Low debugging visibility and high simulation speed."
+          },
+          {
+            "id": "versim-rule6",
+            "description": "Compiler Optimization (-O5)",
+            "purpose": "To increase simulation speed (maximum)",
+            "notes": "Minimum debugging visibility and maximum simulation speed."
+          }
+        ]
+      },
       "inputs": [
         {
           "files": [
@@ -178,7 +194,17 @@
     {
       "id": "stage-logic-synthesizer",
       "name": "Logic synthesizer",
-      "tool-id": "synopsis-design-compiler",
+      "tool": {
+        "tool-id": "synopsis-design-compiler",
+        "option-control-module": [
+          {
+            "id": "synopsis-rule1",
+            "description": "Optimizations",
+            "purpose": "To optimize power and area",
+            "notes": "Use op1 for involving power and area optimization; Use op2 to adjust the effort level."
+          }
+        ]
+      },
       "inputs": [
         {
           "files": [
@@ -255,7 +281,9 @@
     {
       "id": "stage-lec",
       "name": "Logic Equivalence Check (LEC)",
-      "tool-id": "cadence-encounter-conformal",
+      "tool": {
+        "tool-id": "cadence-encounter-conformal"
+      },
       "inputs": [
         {
           "files": [
@@ -329,7 +357,41 @@
     {
       "id": "stage-place-and-route",
       "name": "Place and Route",
-      "tool-id": "cadence-encounter",
+      "tool": {
+        "tool-id": "cadence-encounter",
+        "option-control-module": [
+          {
+            "id": "ce-rule1",
+            "description": "Timing driven placement (-timedriven)",
+            "purpose": "To target wires on timing critical paths",
+            "notes": "Command line option for making targeted wires shorter during placement. While the delay on critical paths decreases, other paths may become critical."
+          },
+          {
+            "id": "ce-rule2",
+            "description": "Congestion optimization (-doCongOpt)",
+            "purpose": "To ease congestion",
+            "notes": "Command line option for easing congestion."
+          },
+          {
+            "id": "ce-rule3",
+            "description": "Timing optimization (-lowEffort)",
+            "purpose": "To increase timing (low)",
+            "notes": "Command line option for timing optimization with low effort"
+          },
+          {
+            "id": "ce-rule4",
+            "description": "Timing optimization (-mediumEffort)",
+            "purpose": "To increase timing (medium)",
+            "notes": "Command line option for timing optimization with medium effort"
+          },
+          {
+            "id": "ce-rule5",
+            "description": "Timing optimization (-highEffort)",
+            "purpose": "To increase timing (high)",
+            "notes": "Command line option for timing optimization with high effort"
+          }
+        ]
+      },
       "inputs": [
         {
           "files": [
@@ -441,7 +503,47 @@
     {
       "id": "stage-final-verilog-simulation",
       "name": "Verilog/VHDL simulation",
-      "tool-id": "cadence-nc-sim",
+      "tool": {
+        "tool-id": "cadence-nc-sim",
+        "option-control-module": [
+          {
+            "id": "final-rule-1",
+            "description": "Compiler Optimization (-O0)",
+            "purpose": "To increase debugging visibility (maximum)",
+            "notes": "Command line option for maximum debugging visibility and minimum simulation speed."
+          },
+          {
+            "id": "final-rule-2",
+            "description": "Compiler Optimization (-O1)",
+            "purpose": "To increase debugging visibility (high)",
+            "notes": "High debugging visibility and low simulation speed."
+          },
+          {
+            "id": "final-rule-3",
+            "description": "Compiler Optimization (-O2)",
+            "purpose": "To increase debugging visibility (medium)",
+            "notes": "Medium high debugging visibility and medium low simulation speed."
+          },
+          {
+            "id": "final-rule-4",
+            "description": "Compiler Optimization (-O3)",
+            "purpose": "To increase simulation speed (medium)",
+            "notes": "Medium low debugging visibility and medium high simulation speed."
+          },
+          {
+            "id": "final-rule-5",
+            "description": "Compiler Optimization (-O4)",
+            "purpose": "To increase simulation speed (high)",
+            "notes": "Low debugging visibility and high simulation speed."
+          },
+          {
+            "id": "final-rule-6",
+            "description": "Compiler Optimization (-O5)",
+            "purpose": "To increase simulation speed (maximum)",
+            "notes": "Minimum debugging visibility and maximum simulation speed."
+          }
+        ]
+      },
       "inputs": [
         {
           "files": [

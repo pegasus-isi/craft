@@ -23,7 +23,7 @@
             "minLength": 1,
             "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
             "type": "string",
-            "pattern": "^[0-9,_,-,a-z,A-Z]*$"
+            "pattern": "^[0-9a-zA-Z -_]*$"
           },
           "name": {
             "id": "https://github.com/pegasus-isi/craft-schema/tool/name",
@@ -68,7 +68,7 @@
                   "minLength": 1,
                   "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                   "type": "string",
-                  "pattern": "^[0-9,_,-,a-z,A-Z]*$"
+                  "pattern": "^[0-9a-zA-Z -_]*$"
                 },
                 "description": {
                   "id": "https://github.com/pegasus-isi/craft-schema/tool/option/description",
@@ -80,40 +80,6 @@
                 },
                 "notes": {
                   "id": "https://github.com/pegasus-isi/craft-schema/tool/option/notes",
-                  "type": "string"
-                }
-              },
-              "required": [
-                "id",
-                "description",
-                "purpose"
-              ]
-            }
-          },
-          "option-control-module": {
-            "id": "https://github.com/pegasus-isi/craft-schema/tool/option-control-modules",
-            "type": "array",
-            "items": {
-              "id": "https://github.com/pegasus-isi/craft-schema/tool/option-control-module",
-              "type": "object",
-              "properties": {
-                "id": {
-                  "id": "https://github.com/pegasus-isi/craft-schema/tool/option-control-module/id",
-                  "minLength": 1,
-                  "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
-                  "type": "string",
-                  "pattern": "^[0-9,_,-,a-z,A-Z]*$"
-                },
-                "description": {
-                  "id": "https://github.com/pegasus-isi/craft-schema/tool/option-control-module/description",
-                  "type": "string"
-                },
-                "purpose": {
-                  "id": "https://github.com/pegasus-isi/craft-schema/tool/option-control-module/purpose",
-                  "type": "string"
-                },
-                "notes": {
-                  "id": "https://github.com/pegasus-isi/craft-schema/tool/option-control-module/notes",
                   "type": "string"
                 }
               },
@@ -145,7 +111,7 @@
             "minLength": 1,
             "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
             "type": "string",
-            "pattern": "^[0-9,_,-,a-z,A-Z]*$"
+            "pattern": "^[0-9a-zA-Z -_]*$"
           },
           "name": {
             "id": "https://github.com/pegasus-isi/craft-schema/stage/name",
@@ -153,9 +119,57 @@
             "description": "A human-readable name for the stage.",
             "type": "string"
           },
-          "tool-id": {
-            "id": "https://github.com/pegasus-isi/craft-schema/stage/tool-id",
-            "type": "string"
+          "tool": {
+            "id": "https://github.com/pegasus-isi/craft-schema/stage/tool",
+            "type": "object",
+            "properties": {
+              "tool-id": {
+                "id": "https://github.com/pegasus-isi/craft-schema/stage/tool/tool-id",
+                "description": "ID of a listed tool",
+                "type": "string"
+              },
+              "option-control-module": {
+                "id": "https://github.com/pegasus-isi/craft-schema/stage/tool/option-control-modules",
+                "type": "array",
+                "items": {
+                  "id": "https://github.com/pegasus-isi/craft-schema/stage/tool/option-control-module",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "id": "https://github.com/pegasus-isi/craft-schema/stage/tool/option-control-module/id",
+                      "minLength": 1,
+                      "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z -_]*$"
+                    },
+                    "description": {
+                      "id": "https://github.com/pegasus-isi/craft-schema/stage/tool/option-control-module/description",
+                      "type": "string"
+                    },
+                    "purpose": {
+                      "id": "https://github.com/pegasus-isi/craft-schema/stage/tool/option-control-module/purpose",
+                      "type": "string"
+                    },
+                    "notes": {
+                      "id": "https://github.com/pegasus-isi/craft-schema/stage/tool/option-control-module/notes",
+                      "type": "string"
+                    },
+                    "designer-guide": {
+                      "id": "https://github.com/pegasus-isi/craft-schema/stage/tool/option-control-module/designer-guide",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "description",
+                    "purpose"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "tool-id"
+            ]
           },
           "inputs": {
             "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs",
@@ -176,7 +190,7 @@
                         "minLength": 1,
                         "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                         "type": "string",
-                        "pattern": "^[0-9,_,-,a-z,A-Z]*$"
+                        "pattern": "^[0-9a-zA-Z -_]*$"
                       },
                       "optional": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/input/file/optional",
@@ -194,7 +208,7 @@
                       },
                       "provided-by": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/input/file/provided-by",
-                        "type": "string"
+                        "enum": [ "User", "Vendor" ]
                       },
                       "description": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/input/file/description",
@@ -212,7 +226,7 @@
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/input/file/output-id",
                         "description": "ID of an output file",
                         "type": "string",
-                        "pattern": "^[0-9,_,-,a-z,A-Z]*$"
+                        "pattern": "^[0-9a-zA-Z -_]*$"
                       }
                     },
                     "oneOf": [
@@ -245,7 +259,7 @@
                         "minLength": 1,
                         "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                         "type": "string",
-                        "pattern": "^[0-9,_,-,a-z,A-Z]*$"
+                        "pattern": "^[0-9a-zA-Z -_]*$"
                       },
                       "name": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/input/interaction/name",
@@ -287,7 +301,7 @@
                         "minLength": 1,
                         "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                         "type": "string",
-                        "pattern": "^[0-9,_,-,a-z,A-Z]*$"
+                        "pattern": "^[0-9a-zA-Z -_]*$"
                       },
                       "content": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/output/file/content",
@@ -330,7 +344,7 @@
                         "minLength": 1,
                         "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                         "type": "string",
-                        "pattern": "^[0-9,_,-,a-z,A-Z]*$"
+                        "pattern": "^[0-9a-zA-Z -_]*$"
                       },
                       "content": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/output/report/content",
@@ -379,7 +393,7 @@
                   "minLength": 1,
                   "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
                   "type": "string",
-                  "pattern": "^[0-9,_,-,a-z,A-Z]*$"
+                  "pattern": "^[0-9a-zA-Z -_]*$"
                 },
                 "condition": {
                   "id": "https://github.com/pegasus-isi/craft-schema/stage/control/condition",
@@ -396,6 +410,10 @@
                 "notes": {
                   "id": "https://github.com/pegasus-isi/craft-schema/stage/control/notes",
                   "type": "string"
+                },
+                "designer-guide": {
+                  "id": "https://github.com/pegasus-isi/craft-schema/stage/control/designer-guide",
+                  "type": "string"
                 }
               },
               "required": [
@@ -410,7 +428,7 @@
         "required": [
           "id",
           "name",
-          "tool-id",
+          "tool",
           "inputs",
           "outputs",
           "flow-control"

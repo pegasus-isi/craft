@@ -1,0 +1,23 @@
+body {
+    font: 14px helvetica neue, helvetica, arial, sans-serif;
+}
+
+#cy {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.qtip {
+    max-width: 600px !important;
+}
+
+.qtip-title {
+    font-size: 14px;
+}
+
+.qtip-content {
+    font-size: 13px;
+}

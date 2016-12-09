@@ -113,7 +113,6 @@ window.graphData = {
                     "files": [
                         {
                             "id": "cadence-file-1",
-                            "file-number": "infile1",
                             "content": "RTL design",
                             "format": "Verilog/VHDL",
                             "provided-by": "User",
@@ -159,7 +158,7 @@ window.graphData = {
                             "id": "cadence-report-1",
                             "content": "Compile errors",
                             "format": "Text",
-                            "description": "Reports compile errors on infile1 or infile2."
+                            "description": "Reports compile errors on [[cadence-file-1]] or [[cadence-file-2]]."
                         },
                         {
                             "id": "cadence-report-2",
@@ -175,19 +174,19 @@ window.graphData = {
                     "id": "cadence-flow-1",
                     "condition": "Compile error",
                     "route-to": "User",
-                    "description": "User debugs the RTL design by analyzing out1 until there are no compile errors. Otherwise, we can proceed to simulation step."
+                    "description": "User debugs the RTL design by analyzing cadence-report-1 until there are no compile errors. Otherwise, we can proceed to simulation step."
                 },
                 {
                     "id": "cadence-flow-2",
                     "condition": "Mismatch between RTL response and golden response",
                     "route-to": "User",
-                    "description": "User debugs the RTL design with out2 information. Otherwise we will have a verified RTL design."
+                    "description": "User debugs the RTL design with cadence-report-2 information. Otherwise we will have a verified RTL design."
                 },
                 {
                     "id": "cadence-flow-3",
                     "condition": "Success",
                     "route-to": "stage-logic-synthesizer",
-                    "description": "Proceed to the next stage when out1 and out2 are resolved."
+                    "description": "Proceed to the next stage when [[cadence-report-1]] and [[cadence-report-2]] are resolved."
                 }
             ]
         },
@@ -243,7 +242,7 @@ window.graphData = {
                             "id": "synopsis-outfile2",
                             "content": "Design constraints",
                             "format": "Synopsis Design Constraints (SDC)",
-                            "description": "Timing information of the elements from libraries presented in the netlist file. It's used by Stage 4 -Place and Route.",
+                            "description": "Timing information of the elements from libraries presented in the netlist file. It's used by {{stage-place-and-route}}.",
                             "notes": "As long as constraint syntax and arguments conform to the Tcl syntax rules that SDC follows, user will accept the SDC file.",
                             "link": "file:///sync_mult.sdc"
                         },
@@ -262,7 +261,7 @@ window.graphData = {
                     "id": "synopsis-flow1",
                     "condition": "Error message not synthesizable RTL design",
                     "route-to": "User",
-                    "description": "the user needs to modify the RTL design and redo Stage 1."
+                    "description": "the user needs to modify the RTL design and redo {{stage-verilog-simulation}}."
                 },
                 {
                     "id": "synopsis-flow2",
@@ -344,7 +343,7 @@ window.graphData = {
                     "id": "lec-flow2",
                     "condition": "Error message dues to aggressive synthesis constraints",
                     "route-to": "User",
-                    "description": "User needs to relax the constraints and restart stage 2 - Logic synthesizer."
+                    "description": "User needs to relax the constraints and restart {{stage-logic-synthesizer}}."
                 },
                 {
                     "id": "lec-flow3",
@@ -484,7 +483,7 @@ window.graphData = {
                     "id": "ce-flow1",
                     "condition": "Error message dues to library fails",
                     "route-to": "User",
-                    "description": "User needs to replace the failing library with the alternative library and restart the flow at Stage 2 – Logic Synthesizer with the new library."
+                    "description": "User needs to replace the failing library with the alternative library and restart the flow at {{stage-logic-synthesizer}} with the new library."
                 },
                 {
                     "id": "ce-flow2",
@@ -557,7 +556,7 @@ window.graphData = {
                             "format": "Verilog/VHDL",
                             "provided-by": "User",
                             "description": "Includes clock generation, instantiated modules, input stimuli for the instantiated modules, order of execution of input stimuli using delay statements, test cases (with corner cases), etc.",
-                            "notes": "Testbench file is basically same as infile2 of Stage 1. Only difference is that back annotation (in Verilog, $sdf_annotate) is added to support the infile1.",
+                            "notes": "Testbench file is basically same as [[cadence-file-2]] of {{stage-verilog-simulation}}. Only difference is that back annotation (in Verilog, $sdf_annotate) is added to support the infile1.",
                             "link": "file:///tb_sync_mult_pnr.v"
                         },
                         {
@@ -609,7 +608,7 @@ window.graphData = {
                     "id": "final-flow1",
                     "condition": "Mismatch between post-route netlist response and golden response",
                     "route-to": "stage-place-and-route",
-                    "description": "The tool performs place & route with the less aggressive option until the mismatch of out1 in Stage 5 is resolved."
+                    "description": "The tool performs place & route with the less aggressive option until the mismatch of [[final-rep1]] in Stage 5 is resolved."
                 }
             ]
         }

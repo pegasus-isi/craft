@@ -238,6 +238,29 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    function replaceReferences(description, is_file) {
+        if (is_file) {
+            var match_regex = /\[\[.*?\]\]/g;
+            var rep_regex = /[\[\]]/g;
+        } else {
+            var match_regex = /\{\{.*?\}\}/g;
+            var rep_regex = /[\{\}]/g;
+        }
+        var refs = description.match(match_regex);
+        if (refs) {
+            for (var i = 0, len = refs.length; i < len; i++) {
+                var ref = refs[i].replace(rep_regex, '');
+                if (is_file) {
+                    ref = '<span class="label label-default">' + filesMap[ref]['name'] + '</span>';
+                } else {
+                    ref = '<span class="label label-default">' + stagesMap[ref] + '</span>';
+                }
+                description = description.replace(refs[i], ref);
+            }
+        }
+        return description;
+    }
+
     function addFileQTip(cy, files_list) {
         if (typeof files_list !== 'undefined') {
             for (var i = 0, len = files_list.length; i < len; i++) {
@@ -256,12 +279,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                     file_content += '</h4>';
 
+                    file['description'] = replaceReferences(file['description'], true);
+                    file['description'] = replaceReferences(file['description'], false);
                     file_content += '<div style="margin-top: 15px; margin-bottom: 15px">' + file['description'] + '</div>';
 
                     var notes = file['notes'];
-                    if (typeof notes !== 'undefined')
+                    if (typeof notes !== 'undefined') {
+                        notes = replaceReferences(notes, true);
+                        notes = replaceReferences(notes, false);
                         file_content += '<div class="alert alert-warning">' +
                             '<strong>Notes:</strong> ' + notes + '</div>';
+                    }
 
                     file_content += '</div>';
 
@@ -387,6 +415,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     '<span class="glyphicon glyphicon-arrow-right"></span> ' +
                     '<span class="label label-default">User</span></h4>';
             }
+
+            // replace files and stage references by name
+            flow['description'] = replaceReferences(flow['description'], true);
+            flow['description'] = replaceReferences(flow['description'], false);
 
             content += '<div class="panel panel-default" style="margin-top: 20px">' +
                 '<div class="panel-heading"><strong>Condition: </strong>' + flow['condition'] + '</div>' +

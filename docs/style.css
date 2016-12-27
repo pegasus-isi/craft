@@ -1,13 +1,116 @@
 body {
     font: 14px helvetica neue, helvetica, arial, sans-serif;
     line-height: 1.1em;
+    overflow: auto;
+}
+
+#panel {
+    height: 100%;
+    width: 300px;
+    float: left;
+    /*position: absolute;*/
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    left: 0;
+    top: 0;
+    overflow: auto;
+}
+
+#logo {
+    padding-top: 5px;
+    text-align: center;
+}
+
+#param {
+    padding: 20px 10px 0 10px;
+}
+
+#general {
+    color: #000;
+}
+
+#control-buttons {
+    /*display: none;*/
+    margin: 15px 0 5px 0;
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 10px 0 10px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#control-buttons button {
+    width: 85px;
+    height: 60px;
+}
+
+#control-buttons i.glyphicon {
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+.forms {
+    margin: 15px 0 5px 0;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: none;
+    border-radius: 5px;
+}
+
+.forms h4 {
+    font-variant: small-caps;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px 0 5px 0;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.forms form, .subform form, .subsubform form {
+    padding: 5px;
+}
+
+.subform {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: none;
+    color: #666;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.subform h4 {
+    font-variant: small-caps;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000;
+    padding: 5px 0 5px 0;
+    text-align: center;
+}
+
+.subsubform {
+    margin: 0;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 1);
+    display: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.subsubform h5 {
+    color: #666;
+    padding: 5px 0 5px 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 5px;
 }
 
 #cy {
     height: 100%;
     width: 100%;
     position: absolute;
-    left: 0;
+    left: 300px;
     top: 0;
 }
 
@@ -23,6 +126,15 @@ body {
     font-size: 12px;
 }
 
-.alert{
+.alert {
     line-height: 1.5em;
+}
+
+.msg {
+    position: relative;
+    top: 10px;
+    left: 0px;
+    width: 280px;
+    text-align: left;
+    margin: 0;
 }

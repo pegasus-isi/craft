@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <title>CRAFT - ISI ASIC Design Flow</title>
+    <title>CRAFT - Design Flows</title>
     <link href="style.css" rel="stylesheet"/>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -17,12 +17,363 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.rawgit.com/mistic100/Bootstrap-Confirmation/master/bootstrap-confirmation.min.js"></script>
 
     <script src="./data.js"></script>
-    <script src="./craft.js"></script>
 </head>
 
 <body>
+<div id="panel">
+    <div id="logo">
+        <img src="images/craft.png" width="200"/>
+        <h4>Design Flows</h4>
+    </div>
+    <div id="param">
+        <div id="general">
+            <button id="clear-button" class="btn btn-sm btn-success" data-toggle="confirmation"
+                    data-content="All previous elements will be removed"><i class="glyphicon glyphicon-pencil"></i>
+                Create New Flow
+            </button>
+            <button id="reload-button" class="btn btn-sm btn-default" data-toggle="confirmation"
+                    data-content="All previous elements will be removed"><i class="glyphicon glyphicon-th"></i> Load
+                Example Flow
+            </button>
+        </div>
+
+        <div id="control-buttons">
+            <div>
+                <button id="show-tool-button" class="btn btn-sm btn-default"><i
+                        class="glyphicon glyphicon-console"></i><br/>Tools
+                </button>
+                <button id="show-stage-button" class="btn btn-sm btn-default"><i
+                        class="glyphicon glyphicon-tasks"></i><br/>Stages
+                </button>
+                <button id="show-control-flow-button" class="btn btn-sm btn-default"><i
+                        class="glyphicon glyphicon-random"></i><br/>Ctrl Flows
+                </button>
+            </div>
+        </div>
+
+        <!-- Tools -->
+        <div id="tool" class="forms">
+            <h4>Tools</h4>
+            <div class="btn-group" style="margin-bottom: 10px">
+                <form>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            <i class="glyphicon glyphicon-console"></i> Tools <span class="caret"></span>
+                        </button>
+                        <ul id="tool-list" class="dropdown-menu">
+                            <li><a href="#" class="small" id="tool-add-tool"><i class="glyphicon glyphicon-plus"></i>
+                                Add Tool</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+            <!-- Add a Tool -->
+            <div id="tool-form" class="subform">
+                <h4>Add/Edit Tool</h4>
+                <form id="tool-add-form">
+                    <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                        <input type="text" id="tool-name" class="form-control" placeholder="Tool Name" required/>
+                    </div>
+                    <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                        <input type="text" id="tool-version" class="form-control" placeholder="Tool Version" required/>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <textarea class="form-control" rows="3" id="tool-description"
+                                  placeholder="Tool Description"></textarea>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <textarea class="form-control" rows="3" id="tool-notes"
+                                  placeholder="Additional Notes"></textarea>
+                    </div>
+                    <div class="btn-group" style="margin-bottom: 10px">
+                        <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            <i class="glyphicon glyphicon-check"></i> Options <span class="caret"></span>
+                        </button>
+                        <ul id="tool-options" class="dropdown-menu">
+                            <li><a href="#" class="small" id="tool-add-option"><i class="glyphicon glyphicon-plus"></i>
+                                Add Option</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </div>
+                    <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                        <button id="add-tool-button" class="btn btn-sm btn-primary"><i
+                                class="glyphicon glyphicon-plus" type="submit"></i> Save Tool
+                        </button>
+                        &nbsp;
+                        <button id="cancel-tool-button" class="btn btn-sm btn-danger" data-toggle="confirmation"
+                                data-content="The tool information won't be saved"><i
+                                class="glyphicon glyphicon-remove"></i> Cancel
+                        </button>
+                    </div>
+                </form>
+                <!-- Tool Option -->
+                <div id="tool-option" class="subsubform">
+                    <h5>Add/Edit Option</h5>
+                    <form id="tool-option-form">
+                        <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                            <input type="text" id="tool-option-id" class="form-control"
+                                   placeholder="Option ID" required/>
+                        </div>
+                        <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                            <input type="text" id="tool-option-description" class="form-control"
+                                   placeholder="Option Description" required/>
+                        </div>
+                        <div class="form-group form-group-sm">
+                                <textarea class="form-control" rows="3" id="tool-option-purpose"
+                                          placeholder="Option Purpose"></textarea>
+                        </div>
+                        <div class="form-group form-group-sm">
+                                <textarea class="form-control" rows="3" id="tool-option-notes"
+                                          placeholder="Additional Notes"></textarea>
+                        </div>
+                        <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                            <button id="add-tool-option-button" class="btn btn-sm btn-primary" type="submit"><i
+                                    class="glyphicon glyphicon-plus"></i>
+                                Save Option
+                            </button>
+                            &nbsp;
+                            <button id="cancel-tool-option-button" class="btn btn-sm btn-danger"
+                                    data-toggle="confirmation"
+                                    data-content="The tool option information won't be saved"><i
+                                    class="glyphicon glyphicon-remove"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stages -->
+        <div id="stage" class="forms">
+            <h4>Stages</h4>
+            <div class="btn-group" style="margin-bottom: 10px">
+                <form>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            <i class="glyphicon glyphicon-tasks"></i> Stages <span class="caret"></span>
+                        </button>
+                        <ul id="stage-list" class="dropdown-menu">
+                            <li><a href="#" class="small" id="stage-add-stage"><i class="glyphicon glyphicon-plus"></i>
+                                Add Stage</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+            <!-- Add a Stage -->
+            <div id="stage-form" class="subform">
+                <h4>Add/Edit Stage</h4>
+                <form id="stage-add-form">
+                    <div class="input-group input-group-sm">
+                        <input type="text" id="stage-name" class="form-control" placeholder="Stage Name" required/>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <select class="form-control" id="stage-tool" required>
+                            <option value="" hidden>Select a Tool</option>
+                        </select>
+                    </div>
+                    <div class="btn-group" style="margin-bottom: 10px">
+                        <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            <i class="glyphicon glyphicon-equalizer"></i> Option-Control Module <span class="caret"></span>
+                        </button>
+                        <ul id="stage-oc-list" class="dropdown-menu">
+                            <li><a href="#" class="small" id="stage-add-option-control"><i class="glyphicon glyphicon-plus"></i>
+                                Add Option-Control Module</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group" style="margin-bottom: 10px">
+                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-file"></span> Input Data <span class="caret"></span>
+                        </button>
+                        <ul id="input-list" class="dropdown-menu">
+                            <li><a href="#" class="small" id="input-add"><i class="glyphicon glyphicon-plus"></i> Add
+                                Input Data</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </div>
+                    <br/>
+                    <div class="btn-group" style="margin-bottom: 10px">
+                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-file"></span> Output Data <span class="caret"></span>
+                        </button>
+                        <ul id="output-list" class="dropdown-menu">
+                            <li><a href="#" class="small" id="output-add"><i class="glyphicon glyphicon-plus"></i> Add
+                                Output Data</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </div>
+                    <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                        <button id="add-stage-button" class="btn btn-sm btn-primary" type="submit"><i
+                                class="glyphicon glyphicon-plus"></i> Save Stage
+                        </button>
+                        &nbsp;
+                        <button id="cancel-stage-button" class="btn btn-sm btn-danger" data-toggle="confirmation"
+                                data-content="The stage information won't be saved"><i
+                                class="glyphicon glyphicon-remove"></i> Cancel
+                        </button>
+                    </div>
+                </form>
+                <!-- Input/Output Data -->
+                <div id="stage-data" class="subsubform">
+                    <h5 id="stage-data-title"></h5>
+                    <form id="stage-data-form">
+                        <input type="hidden" id="stage-data-type"/>
+                        <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                            <input type="text" id="stage-data-id" class="form-control"
+                                   placeholder="File ID" required/>
+                        </div>
+                        <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                            <input type="text" id="stage-data-content" class="form-control"
+                                   placeholder="File Content" size="100" required/>
+                        </div>
+                        <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                            <input type="text" id="stage-data-format" class="form-control"
+                                   placeholder="Language/Format" size="100" required/>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <select class="form-control" id="stage-data-providedby">
+                                <option value="" hidden>Select a File Provider</option>
+                                <option value="User">User</option>
+                                <option value="Vendor">Vendor</option>
+                            </select>
+                        </div>
+                        <div id="output-report-div" class="input-group input-group-sm" style="margin-bottom: 10px">
+                            <span class="input-group-addon" style="text-align: left">
+                                <input type="checkbox" id="stage-data-output-type"/> The output data is a report file
+                            </span>
+                        </div>
+                        <div class="form-group form-group-sm">
+                                <textarea class="form-control" rows="3" id="stage-data-description"
+                                          placeholder="File Description"></textarea>
+                        </div>
+                        <div class="form-group form-group-sm">
+                                <textarea class="form-control" rows="3" id="stage-data-notes"
+                                          placeholder="Additional Notes"></textarea>
+                        </div>
+                        <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                            <button id="add-stage-data-button" class="btn btn-sm btn-primary" type="submit"><i
+                                    class="glyphicon glyphicon-plus"></i>
+                                Save Data
+                            </button>
+                            &nbsp;
+                            <button id="cancel-stage-data-button" class="btn btn-sm btn-danger"
+                                    data-toggle="confirmation"
+                                    data-content="The data information won't be saved"><i
+                                    class="glyphicon glyphicon-remove"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Option-Control Module -->
+                <div id="option-control" class="subsubform">
+                    <h5>Add/Edit Option-Control Module</h5>
+                    <form id="stage-oc-form">
+                        <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                            <input type="text" id="stage-oc-id" class="form-control"
+                                   placeholder="Rule ID" required/>
+                        </div>
+                        <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                            <input type="text" id="stage-oc-description" class="form-control"
+                                   placeholder="Description" size="100" required/>
+                        </div>
+                        <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                            <input type="text" id="stage-oc-purpose" class="form-control"
+                                   placeholder="Purpose" size="100" required/>
+                        </div>
+                        <div class="form-group form-group-sm">
+                                <textarea class="form-control" rows="3" id="stage-oc-notes"
+                                          placeholder="Additional Notes"></textarea>
+                        </div>
+                        <div class="input-group input-group-sm" style="margin-bottom: 10px">
+                            <button id="add-stage-oc-button" class="btn btn-sm btn-primary" type="submit"><i
+                                    class="glyphicon glyphicon-plus"></i>
+                                Save Option-Control
+                            </button>
+                            &nbsp;
+                            <button id="cancel-stage-oc-button" class="btn btn-sm btn-danger"
+                                    data-toggle="confirmation"
+                                    data-content="The data information won't be saved"><i
+                                    class="glyphicon glyphicon-remove"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control-Flows -->
+        <div id="control-flow" class="forms">
+            <h4>Control Flows</h4>
+            <div class="btn-group" style="margin-bottom: 10px">
+                <form>
+                    <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <i class="glyphicon glyphicon-random"></i> Control Flows <span class="caret"></span>
+                    </button>
+                    <ul id="control-flow-list" class="dropdown-menu">
+                        <li><a href="#" class="small" id="control-flow-add"><i class="glyphicon glyphicon-plus"></i> Add
+                            Control Flow</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                    </ul>
+                </form>
+            </div>
+            <!-- Add Control Flow -->
+            <div id="control-flow-form" class="subform">
+                <h4>Add/Edit Control Flow</h4>
+                <form id="control-flow-add-form">
+                    <div class="form-group form-group-sm">
+                        <select class="form-control" id="control-flow-from" required>
+                            <option value="" hidden>Stage (From)</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <select class="form-control" id="control-flow-to" required>
+                            <option value="" hidden>Stage (To)</option>
+                            <option value="user">User</option>
+                        </select>
+                    </div>
+                    <div class="input-group input-group-sm">
+                        <input type="text" id="control-flow-condition" class="form-control" placeholder="Condition"
+                               required/>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <textarea class="form-control" rows="3" id="control-flow-description"
+                                  placeholder="Description"></textarea>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <textarea class="form-control" rows="3" id="control-flow-notes"
+                                  placeholder="Additional Notes"></textarea>
+                    </div>
+                    <button id="add-control-flow-button" class="btn btn-sm btn-primary" type="submit"><i
+                            class="glyphicon glyphicon-plus"></i> Save Control Flow
+                    </button>
+                    &nbsp;
+                    <button id="cancel-control-flow-button" class="btn btn-sm btn-danger" data-toggle="confirmation"
+                            data-content="The control flow information won't be saved"><i
+                            class="glyphicon glyphicon-remove"></i> Cancel
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="cy"></div>
+<script src="./craft.js"></script>
 </body>
 </html>

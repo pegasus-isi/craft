@@ -1,4 +1,4 @@
-window.graphData = {
+window.exampleGraphData = {
     "name": "ASIC Design Flow",
     "tools": [
         {
@@ -150,21 +150,22 @@ window.graphData = {
                             "format": "Verilog/VHDL",
                             "description": "The same as input file1 if simulation passed.",
                             "notes": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc. It must be written as synthesizable Verilog.",
-                            "link": "file:///sync_mult.v"
-                        }
-                    ],
-                    "reports": [
+                            "link": "file:///sync_mult.v",
+                            "report": false
+                        },
                         {
                             "id": "cadence-report-1",
                             "content": "Compile errors",
                             "format": "Text",
-                            "description": "Reports compile errors on [[cadence-file-1]] or [[cadence-file-2]]."
+                            "description": "Reports compile errors on [[cadence-file-1]] or [[cadence-file-2]].",
+                            "report": true
                         },
                         {
                             "id": "cadence-report-2",
                             "content": "Test reports",
                             "format": "Text",
-                            "description": "Reports mismatches between RTL response produced by simulation and the golden response."
+                            "description": "Reports mismatches between RTL response produced by simulation and the golden response.",
+                            "report": true
                         }
                     ]
                 }
@@ -236,7 +237,8 @@ window.graphData = {
                             "content": "Gate-level netlist",
                             "format": "Verilog/VHDL",
                             "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.).",
-                            "link": "file:///sync_mult.syn.v"
+                            "link": "file:///sync_mult.syn.v",
+                            "report": false
                         },
                         {
                             "id": "synopsis-outfile2",
@@ -244,14 +246,16 @@ window.graphData = {
                             "format": "Synopsis Design Constraints (SDC)",
                             "description": "Timing information of the elements from libraries presented in the netlist file. It's used by {{stage-place-and-route}}.",
                             "notes": "As long as constraint syntax and arguments conform to the Tcl syntax rules that SDC follows, user will accept the SDC file.",
-                            "link": "file:///sync_mult.sdc"
+                            "link": "file:///sync_mult.sdc",
+                            "report": false
                         },
                         {
                             "id": "synopsis-outfile3",
                             "content": "Synthesis Reports",
                             "format": "Text file",
                             "description": "It includes design hierarchy, area, timing, critical path highlighting, etc.",
-                            "link": "file:///sync_mult.area"
+                            "link": "file:///sync_mult.area",
+                            "report": false
                         }
                     ]
                 }
@@ -311,7 +315,8 @@ window.graphData = {
                             "id": "lec-outfile1",
                             "content": "Mapped points",
                             "format": "Text file",
-                            "description": "It includes the statistical information of matched, mapped, and compared points."
+                            "description": "It includes the statistical information of matched, mapped, and compared points.",
+                            "report": false
                         },
                         {
                             "id": "lec-outfile2",
@@ -319,15 +324,15 @@ window.graphData = {
                             "format": "Verilog/VHDL",
                             "description": "The same as lec-infile2 if LEC passed.",
                             "notes": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.)",
-                            "link": "file:///sync_mult.syn.v"
-                        }
-                    ],
-                    "reports": [
+                            "link": "file:///sync_mult.syn.v",
+                            "report": false
+                        },
                         {
                             "id": "lec-rep1",
                             "content": "Visual outputs",
                             "format": "Visual outputs",
-                            "description": "Visual outputs if LEC fails: logic cones, signal patterns, etc."
+                            "description": "Visual outputs if LEC fails: logic cones, signal patterns, etc.",
+                            "report": true
                         }
                     ]
                 }
@@ -446,34 +451,39 @@ window.graphData = {
                             "content": "Post-route netlist",
                             "format": "Verilog/VHDL",
                             "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file.",
-                            "link": "file:///sync_mult.vo.v"
+                            "link": "file:///sync_mult.vo.v",
+                            "report": false
                         },
                         {
                             "id": "ce-outfile2",
                             "content": "Delay information",
                             "format": "Standard Delay Format (SDF)",
                             "description": "SDF is a text file that contains the instance names and delay parameters for each technology library primitive and routing element specific to the design. The SDF is used to back-annotate delays into the Verilog post-route netlist file.",
-                            "link": "file:///sync_mult.sdf"
+                            "link": "file:///sync_mult.sdf",
+                            "report": false
                         },
                         {
                             "id": "ce-outfile3",
                             "content": "Parasitic information",
                             "format": "Standard Parasitic Format (SPF)",
                             "description": "SPF is a text file that contains parasitic data (resistance and capacitance) of wires in the design.",
-                            "link": "file:///sync_mult.spf"
+                            "link": "file:///sync_mult.spf",
+                            "report": false
                         },
                         {
                             "id": "ce-outfile4",
                             "content": "Layout",
                             "format": "Graphical Database System (GDS)",
                             "description": "GDS is the industry standard for data exchange of IC layout artwork. It represents planar geometric shapes, text labels, and other information about the layout in hierarchical form.",
-                            "notes": "Once successfully placed and routed, we can see all the instantiated standard cells and routed metals of the physical implementation."
+                            "notes": "Once successfully placed and routed, we can see all the instantiated standard cells and routed metals of the physical implementation.",
+                            "report": false
                         },
                         {
                             "id": "ce-outfile5",
                             "content": "Place and Route Reports",
                             "format": "Text file",
-                            "description": "It Includes information of geometry, metal density, connectivity, violation, etc."
+                            "description": "It Includes information of geometry, metal density, connectivity, violation, etc.",
+                            "report": false
                         }
                     ]
                 }
@@ -590,15 +600,15 @@ window.graphData = {
                             "content": "Verified post-route netlist",
                             "format": "Verilog/VHDL",
                             "description": "The same as input file1 if simulation passed.",
-                            "link": "file:///sync_mult.vo.v"
-                        }
-                    ],
-                    "reports": [
+                            "link": "file:///sync_mult.vo.v",
+                            "report": false
+                        },
                         {
                             "id": "final-rep1",
                             "content": "Test reports",
                             "format": "Text",
-                            "description": "Reports mismatches between RTL response produced by simulation and the golden response"
+                            "description": "Reports mismatches between RTL response produced by simulation and the golden response",
+                            "report": true
                         }
                     ]
                 }

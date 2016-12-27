@@ -110,6 +110,7 @@ function addToolOption() {
     });
     document.getElementById('tool-option').style.display = 'none';
     showMessage('Added <strong>' + op_id + '</strong> option.', 'success');
+    return false;
 }
 
 // Add a tool to the flow
@@ -150,6 +151,7 @@ function addTool() {
     $('#stage-tool').append('<option>' + tool_id + '</a></option>');
     document.getElementById('tool-form').style.display = 'none';
     showMessage('Added <strong>' + tool_name + '</strong> tool.', 'success');
+    return false;
 }
 
 /*
@@ -241,6 +243,7 @@ function addStage() {
 
     document.getElementById('stage-form').style.display = 'none';
     showMessage('Added <strong>' + stage_name + '</strong> stage.', 'success');
+    return false;
 }
 
 // Input/Output Data
@@ -288,6 +291,7 @@ function addFile() {
     filesMap[file_id] = file;
     document.getElementById('stage-data').style.display = 'none';
     showMessage('Added <strong>' + file['content'] + '</strong> file.', 'success');
+    return false;
 }
 
 // Add Option-Control Module
@@ -304,6 +308,7 @@ function addOptionControl() {
     $('#stage-oc-list').append('<li><a href="#" class="small">' + oc_id + '</a></li>');
     document.getElementById('option-control').style.display = 'none';
     showMessage('Added <strong>' + oc_id + '</strong> option.', 'success');
+    return false;
 }
 
 /*
@@ -336,6 +341,7 @@ function addControlFlow() {
     $('#control-flow-list').append('<li><a href="#">' + flow_id + '</a></li>');
     document.getElementById('control-flow-form').style.display = 'none';
     showMessage('Added <strong>' + flow_id + '</strong> control-flow.', 'success');
+    return false;
 }
 
 

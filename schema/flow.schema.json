@@ -322,56 +322,19 @@
                       "link": {
                         "id": "https://github.com/pegasus-isi/craft-schema/stage/output/file/link",
                         "type": "string"
+                      },
+                      "report": {
+                        "id": "https://github.com/pegasus-isi/craft-schema/stage/output/file/report",
+                        "type": "boolean",
+                        "default": false
                       }
                     },
                     "required": [
                       "id",
                       "content",
                       "format",
-                      "description"
-                    ]
-                  }
-                },
-                "reports": {
-                  "id": "https://github.com/pegasus-isi/craft-schema/stage/output/reports",
-                  "type": "array",
-                  "items": {
-                    "id": "https://github.com/pegasus-isi/craft-schema/stage/output/report",
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "id": "https://github.com/pegasus-isi/craft-schema/stage/output/report/id",
-                        "minLength": 1,
-                        "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
-                        "type": "string",
-                        "pattern": "^[0-9a-zA-Z -_]*$"
-                      },
-                      "content": {
-                        "id": "https://github.com/pegasus-isi/craft-schema/stage/output/report/content",
-                        "type": "string"
-                      },
-                      "format": {
-                        "id": "https://github.com/pegasus-isi/craft-schema/stage/output/report/format",
-                        "type": "string"
-                      },
-                      "description": {
-                        "id": "https://github.com/pegasus-isi/craft-schema/stage/output/report/description",
-                        "type": "string"
-                      },
-                      "notes": {
-                        "id": "https://github.com/pegasus-isi/craft-schema/stage/output/report/notes",
-                        "type": "string"
-                      },
-                      "link": {
-                        "id": "https://github.com/pegasus-isi/craft-schema/stage/output/report/link",
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "id",
-                      "content",
-                      "format",
-                      "description"
+                      "description",
+                      "report"
                     ]
                   }
                 }
@@ -438,6 +401,7 @@
   },
   "required": [
     "name",
+    "tools",
     "stages"
   ]
 }

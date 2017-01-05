@@ -113,7 +113,6 @@
           "files": [
             {
               "id": "cadence-file-1",
-              "file-number": "infile1",
               "content": "RTL design",
               "format": "Verilog/VHDL",
               "provided-by": "User",
@@ -151,21 +150,22 @@
               "format": "Verilog/VHDL",
               "description": "The same as input file1 if simulation passed.",
               "notes": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc. It must be written as synthesizable Verilog.",
-              "link": "file:///sync_mult.v"
-            }
-          ],
-          "reports": [
+              "link": "file:///sync_mult.v",
+              "report": false
+            },
             {
               "id": "cadence-report-1",
               "content": "Compile errors",
               "format": "Text",
-              "description": "Reports compile errors on infile1 or infile2."
+              "description": "Reports compile errors on [[cadence-file-1]] or [[cadence-file-2]].",
+              "report": true
             },
             {
               "id": "cadence-report-2",
               "content": "Test reports",
               "format": "Text",
-              "description": "Reports mismatches between RTL response produced by simulation and the golden response."
+              "description": "Reports mismatches between RTL response produced by simulation and the golden response.",
+              "report": true
             }
           ]
         }
@@ -175,19 +175,19 @@
           "id": "cadence-flow-1",
           "condition": "Compile error",
           "route-to": "User",
-          "description": "User debugs the RTL design by analyzing out1 until there are no compile errors. Otherwise, we can proceed to simulation step."
+          "description": "User debugs the RTL design by analyzing cadence-report-1 until there are no compile errors. Otherwise, we can proceed to simulation step."
         },
         {
           "id": "cadence-flow-2",
           "condition": "Mismatch between RTL response and golden response",
           "route-to": "User",
-          "description": "User debugs the RTL design with out2 information. Otherwise we will have a verified RTL design."
+          "description": "User debugs the RTL design with cadence-report-2 information. Otherwise we will have a verified RTL design."
         },
         {
           "id": "cadence-flow-3",
           "condition": "Success",
           "route-to": "stage-logic-synthesizer",
-          "description": "Proceed to the next stage when out1 and out2 are resolved."
+          "description": "Proceed to the next stage when [[cadence-report-1]] and [[cadence-report-2]] are resolved."
         }
       ]
     },
@@ -237,22 +237,25 @@
               "content": "Gate-level netlist",
               "format": "Verilog/VHDL",
               "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.).",
-              "link": "file:///sync_mult.syn.v"
+              "link": "file:///sync_mult.syn.v",
+              "report": false
             },
             {
               "id": "synopsis-outfile2",
               "content": "Design constraints",
               "format": "Synopsis Design Constraints (SDC)",
-              "description": "Timing information of the elements from libraries presented in the netlist file. It's used by Stage 4 -Place and Route.",
+              "description": "Timing information of the elements from libraries presented in the netlist file. It's used by {{stage-place-and-route}}.",
               "notes": "As long as constraint syntax and arguments conform to the Tcl syntax rules that SDC follows, user will accept the SDC file.",
-              "link": "file:///sync_mult.sdc"
+              "link": "file:///sync_mult.sdc",
+              "report": false
             },
             {
               "id": "synopsis-outfile3",
               "content": "Synthesis Reports",
               "format": "Text file",
               "description": "It includes design hierarchy, area, timing, critical path highlighting, etc.",
-              "link": "file:///sync_mult.area"
+              "link": "file:///sync_mult.area",
+              "report": false
             }
           ]
         }
@@ -262,7 +265,7 @@
           "id": "synopsis-flow1",
           "condition": "Error message not synthesizable RTL design",
           "route-to": "User",
-          "description": "the user needs to modify the RTL design and redo Stage 1."
+          "description": "the user needs to modify the RTL design and redo {{stage-verilog-simulation}}."
         },
         {
           "id": "synopsis-flow2",
@@ -312,7 +315,8 @@
               "id": "lec-outfile1",
               "content": "Mapped points",
               "format": "Text file",
-              "description": "It includes the statistical information of matched, mapped, and compared points."
+              "description": "It includes the statistical information of matched, mapped, and compared points.",
+              "report": false
             },
             {
               "id": "lec-outfile2",
@@ -320,15 +324,15 @@
               "format": "Verilog/VHDL",
               "description": "The same as lec-infile2 if LEC passed.",
               "notes": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.)",
-              "link": "file:///sync_mult.syn.v"
-            }
-          ],
-          "reports": [
+              "link": "file:///sync_mult.syn.v",
+              "report": false
+            },
             {
               "id": "lec-rep1",
               "content": "Visual outputs",
               "format": "Visual outputs",
-              "description": "Visual outputs if LEC fails: logic cones, signal patterns, etc."
+              "description": "Visual outputs if LEC fails: logic cones, signal patterns, etc.",
+              "report": true
             }
           ]
         }
@@ -344,7 +348,7 @@
           "id": "lec-flow2",
           "condition": "Error message dues to aggressive synthesis constraints",
           "route-to": "User",
-          "description": "User needs to relax the constraints and restart stage 2 - Logic synthesizer."
+          "description": "User needs to relax the constraints and restart {{stage-logic-synthesizer}}."
         },
         {
           "id": "lec-flow3",
@@ -447,34 +451,39 @@
               "content": "Post-route netlist",
               "format": "Verilog/VHDL",
               "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file.",
-              "link": "file:///sync_mult.vo.v"
+              "link": "file:///sync_mult.vo.v",
+              "report": false
             },
             {
               "id": "ce-outfile2",
               "content": "Delay information",
               "format": "Standard Delay Format (SDF)",
               "description": "SDF is a text file that contains the instance names and delay parameters for each technology library primitive and routing element specific to the design. The SDF is used to back-annotate delays into the Verilog post-route netlist file.",
-              "link": "file:///sync_mult.sdf"
+              "link": "file:///sync_mult.sdf",
+              "report": false
             },
             {
               "id": "ce-outfile3",
               "content": "Parasitic information",
               "format": "Standard Parasitic Format (SPF)",
               "description": "SPF is a text file that contains parasitic data (resistance and capacitance) of wires in the design.",
-              "link": "file:///sync_mult.spf"
+              "link": "file:///sync_mult.spf",
+              "report": false
             },
             {
               "id": "ce-outfile4",
               "content": "Layout",
               "format": "Graphical Database System (GDS)",
               "description": "GDS is the industry standard for data exchange of IC layout artwork. It represents planar geometric shapes, text labels, and other information about the layout in hierarchical form.",
-              "notes": "Once successfully placed and routed, we can see all the instantiated standard cells and routed metals of the physical implementation."
+              "notes": "Once successfully placed and routed, we can see all the instantiated standard cells and routed metals of the physical implementation.",
+              "report": false
             },
             {
               "id": "ce-outfile5",
               "content": "Place and Route Reports",
               "format": "Text file",
-              "description": "It Includes information of geometry, metal density, connectivity, violation, etc."
+              "description": "It Includes information of geometry, metal density, connectivity, violation, etc.",
+              "report": false
             }
           ]
         }
@@ -484,7 +493,7 @@
           "id": "ce-flow1",
           "condition": "Error message dues to library fails",
           "route-to": "User",
-          "description": "User needs to replace the failing library with the alternative library and restart the flow at Stage 2 – Logic Synthesizer with the new library."
+          "description": "User needs to replace the failing library with the alternative library and restart the flow at {{stage-logic-synthesizer}} with the new library."
         },
         {
           "id": "ce-flow2",
@@ -557,7 +566,7 @@
               "format": "Verilog/VHDL",
               "provided-by": "User",
               "description": "Includes clock generation, instantiated modules, input stimuli for the instantiated modules, order of execution of input stimuli using delay statements, test cases (with corner cases), etc.",
-              "notes": "Testbench file is basically same as infile2 of Stage 1. Only difference is that back annotation (in Verilog, $sdf_annotate) is added to support the infile1.",
+              "notes": "Testbench file is basically same as [[cadence-file-2]] of {{stage-verilog-simulation}}. Only difference is that back annotation (in Verilog, $sdf_annotate) is added to support the infile1.",
               "link": "file:///tb_sync_mult_pnr.v"
             },
             {
@@ -591,15 +600,15 @@
               "content": "Verified post-route netlist",
               "format": "Verilog/VHDL",
               "description": "The same as input file1 if simulation passed.",
-              "link": "file:///sync_mult.vo.v"
-            }
-          ],
-          "reports": [
+              "link": "file:///sync_mult.vo.v",
+              "report": false
+            },
             {
               "id": "final-rep1",
               "content": "Test reports",
               "format": "Text",
-              "description": "Reports mismatches between RTL response produced by simulation and the golden response"
+              "description": "Reports mismatches between RTL response produced by simulation and the golden response",
+              "report": true
             }
           ]
         }
@@ -609,13 +618,7 @@
           "id": "final-flow1",
           "condition": "Mismatch between post-route netlist response and golden response",
           "route-to": "stage-place-and-route",
-          "description": "The tool performs place & route with the less aggressive option until the mismatch of out1 in Stage 5 is resolved."
-        },
-        {
-          "id": "final-flow2",
-          "condition": "Success",
-          "route-to": "",
-          "description": "Proceed to the next stage when final-outfile1 is resolved."
+          "description": "The tool performs place & route with the less aggressive option until the mismatch of [[final-rep1]] in Stage 5 is resolved."
         }
       ]
     }

@@ -1,0 +1,571 @@
+{
+  "name": "NVIDIA Design Flow",
+  "tools": [
+    {
+      "id": "cadence-nc-sim",
+      "name": "Cadence NC-Sim",
+      "version": "08.20-s029",
+      "functionality": {
+        "description": "The tool compiles and simulates RTL design provided in a Verilog/VHDL file format.",
+        "notes": "Functionality of Verilog RTL is verified using testbench. Verilog testbench file describes detailed information about which test vector to apply and how to apply."
+      },
+      "options": [
+        {
+          "id": "cadence-option-1",
+          "description": "Compiler Optimizations",
+          "purpose": "Use to increase simulation speed. (May reduce debugging visibility)",
+          "notes": "The tool applies a variety of optimizations: merging processes, pulling constants out of loops, clock suppression, and signal collapsing."
+        }
+      ]
+    },
+    {
+      "id": "synopsys-design-compiler",
+      "name": "Synopsys Design Compiler",
+      "version": "K-2015.06-SP5-5",
+      "functionality": {
+        "description": "Synthesis is used to derive a gate-level design for the given RTL design. Synthesis involves instantiation of appropriate primitive entities, for example, logic gates and flip-flops, which are in technology libraries.",
+        "notes": "Design constraints (timing, area, and power) are also provided by the user."
+      },
+      "options": [
+        {
+          "id": "synopsis-op1",
+          "description": "Optimization goal",
+          "purpose": "Use to optimize power and area."
+        },
+        {
+          "id": "synopsis-op2",
+          "description": "Optimization effort",
+          "purpose": "Use to adjust the level of effort towards optimization goal."
+        }
+      ]
+    },
+    {
+      "id": "mentor-catapult",
+      "name": "Mentor Catapult",
+      "notes": "We have no access to this tool at this time.",
+      "version": "TBD",
+      "functionality": {
+        "description": "The tool automates the manual transformation of the C++ reference into RTL."
+      },
+      "options": [
+        {
+          "id": "mentor-op1",
+          "description": "Area",
+          "purpose": "Use to adjust the level of effort towards area."
+        },
+        {
+          "id": "mentor-op2",
+          "description": "Performance",
+          "purpose": "Use to adjust the level of effort towards performance."
+        },
+        {
+          "id": "mentor-op2",
+          "description": "Power",
+          "purpose": "Use to adjust the level of effort towards power."
+        }
+      ]
+    },
+    {
+      "id": "synopsys-primetime-px",
+      "name": "Synopsys PrimeTime PX",
+      "version": "L-2016.06-SP1",
+      "functionality": {
+        "description": "Power Analysis"
+      },
+      "options": [
+        {
+          "id": "spp-op1",
+          "description": "TBD",
+          "purpose": "TBD"
+        }
+      ]
+    },
+    {
+      "id": "tbd-nvidia",
+      "name": "NVIDIA, please provide the information.",
+      "version": "NVIDIA, please provide the information.",
+      "functionality": {
+        "description": "NVIDIA, please provide the information."
+      },
+      "options": [
+        {
+          "id": "tbd-op1",
+          "description": "NVIDIA, please provide the information.",
+          "purpose": "NVIDIA, please provide the information."
+        }
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "id": "stage1-systemccpp-simulations",
+      "name": "System C/C++ Simulations",
+      "tool": {
+        "tool-id": "tbd-nvidia",
+        "option-control-module": [
+          {
+            "id": "stage1-rule1",
+            "description": "NVIDIA, please provide the information.",
+            "purpose": "NVIDIA, please provide the information.",
+            "notes": "NVIDIA, please provide the information."
+          }
+        ]
+      },
+      "inputs": [
+        {
+          "files": [
+            {
+              "id": "stage1-infile1",
+              "content": "MatchLib Components",
+              "format": "NVIDIA, please provide the information.",
+              "provided-by": "Vendor",
+              "description": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information.",
+            },
+            {
+              "id": "stage1-infile2",
+              "content": "HLS Vendor Libraries",
+              "format": "NVIDIA, please provide the information.",
+              "provided-by": "Vendor",
+              "description": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information.",
+            },
+            {
+              "id": "stage1-infile3",
+              "content": "Synthesizable Architectural Model",
+              "format": "C++/SystemC",
+              "provided-by": "User",
+              "description": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information.",
+            },
+            {
+              "id": "stage1-infile4",
+              "content": "Verification Testbenches",
+              "format": "C++/SystemC",
+              "provided-by": "User",
+              "description": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information.",
+            },
+            {
+              "id": "stage1-infile5",
+              "content": "C++/SystemC Libraries",
+              "format": "NVIDIA, please provide the information.",
+              "provided-by": "Vendor",
+              "description": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information."
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "files": [
+            {
+              "id": "stage1-outfile1",
+              "content": "Verified Synthesizable Architectural Model",
+              "format": "C++/SystemC",
+              "description": "The same as infile3 if simulation passed.",
+              "notes": "NVIDIA, please provide the information.",
+              "report": false
+            },
+            {
+              "id": "stage1-out1",
+              "content": "Compile errors",
+              "format": "Text",
+              "description": "Reports compile errors on [[stage1-infile3]] or [[stage1-infile4]].",
+              "report": true
+            },
+            {
+              "id": "stage1-out2",
+              "content": "Test reports",
+              "format": "Text",
+              "description": "Reports mismatches between C++/SystemC response produced by simulation and the golden response.",
+              "report": true
+            }
+          ]
+        }
+      ],
+      "flow-control": [
+        {
+          "id": "stage1-flow1",
+          "condition": "Compile error",
+          "route-to": "User",
+          "description": "User debugs the architectural model by analyzing [[stage1-out1]] until there are no compile errors. Otherwise, we can proceed to HLS Compilation step."
+        },
+        {
+          "id": "stage1-flow2",
+          "condition": "Mismatch between C++/SystemC response and golden response",
+          "route-to": "User",
+          "description": "User debugs the architectural model with [[stage1-out2]] information. Otherwise we will have a verified architectural model."
+        },
+        {
+          "id": "stage1-flow3",
+          "condition": "Success",
+          "route-to": "stage2-hls-compilation",
+          "description": "Proceed to the next stage when [[stage1-out1]] and [[stage1-out2]] are resolved."
+        }
+      ]
+    },
+    {
+      "id": "stage2-hls-compilation",
+      "name": "HLS Compilation",
+      "tool": {
+        "tool-id": "mentor-catapult",
+        "option-control-module": [
+          {
+            "id": "stage2-rule1",
+            "description": "TBD (area optimization)",
+            "purpose": "To optimize area",
+            "notes": "TBD"
+          },
+          {
+            "id": "stage2-rule2",
+            "description": "TBD (area optimization)",
+            "purpose": "To optimize performance",
+            "notes": "TBD"
+          },
+          {
+            "id": "stage2-rule3",
+            "description": "TBD (area optimization)",
+            "purpose": "To optimize power",
+            "notes": "TBD"
+          }
+        ]
+      },
+      "inputs": [
+        {
+          "files": [
+            {
+              "id": "stage2-infile1",
+              "content": "MatchLib Components",
+              "format": "NVIDIA, please provide the information.",
+              "provided-by": "Vendor",
+              "description": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information."
+            },
+            {
+              "id": "stage2-infile2",
+              "content": "HLS Vendor Libraries",
+              "format": "NVIDIA, please provide the information.",
+              "provided-by": "Vendor",
+              "description": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information."
+            },
+            {
+              "id": "stage2-infile3",
+              "content": "Synthesizable Architectural Model",
+              "format": "C++/SystemC",
+              "provided-by": "User",
+              "description": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information."
+            },
+            {
+              "id": "stage2-infile4",
+              "content": "Scripts for HLS",
+              "format": "NVIDIA, please provide the information.",
+              "provided-by": "User",
+              "description": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information."
+            },
+            {
+              "id": "stage2-infile5",
+              "content": "C++/SystemC Libraries",
+              "format": "NVIDIA, please provide the information.",
+              "provided-by": "Vendor",
+              "description": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information."
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "files": [
+            {
+              "id": "stage2-outfile1",
+              "content": "Verified RTL design",
+              "format": "Verilog/VHDL",
+              "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc. It must be written as synthesizable Verilog.",
+              "notes": "Hardware Description Languages (HDL) – Verilog and VHDL – are used to describe the structure and behavior using a language standardized by IEEE. As long as the same version of HDL is used, every simulator would produce the same response.",
+              "report": false
+            },
+            {
+              "id": "stage2-out1",
+              "content": "Compile errors",
+              "format": "Text",
+              "description": "Reports compile errors on [[stage2-infile3]].",
+              "report": true
+            }
+          ]
+        }
+      ],
+      "flow-control": [
+        {
+          "id": "synopsis-flow1",
+          "condition": "Compile error",
+          "route-to": "User",
+          "description": "User debugs the architectural model by analyzing [[stage2-out1]] and redo Stage 1 until there are no compile errors. Otherwise, we can proceed to {{stage3a-logic-synthesis}} step."
+        },
+        {
+          "id": "synopsis-flow2",
+          "condition": "Success",
+          "route-to": "stage3a-logic-synthesis",
+          "description": "Proceed to the next stage when [[stage2-out1]] is resolved."
+        }
+      ]
+    },
+    {
+      "id": "stage3a-logic-synthesis",
+      "name": "Logic synthesis",
+      "tool": {
+        "tool-id": "synopsys-design-compiler",
+        "option-control-module": [
+          {
+            "id": "stage3a-rule1",
+            "description": "Optimizations",
+            "purpose": "To optimize power and area",
+            "notes": "Use op1 for involving power and area optimization; Use op2 to adjust the effort level."
+          }
+        ]
+      },
+      "inputs": [
+        {
+          "files": [
+            {
+              "output-id": "stage2-outfile1",
+              "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc."
+            },
+            {
+              "id": "stage3a-infile2",
+              "content": "Design constraints",
+              "format": "Tool Command Language (Tcl)",
+              "provided-by": "User",
+              "description": "It defines clocks, loading, timing, and sets design rule constraints."
+            },
+            {
+              "id": "stage3a-infile3",
+              "content": "Technology libraries",
+              "format": "Binary file (e.g., *.db)",
+              "provided-by": "Vendor",
+              "description": "It's compiled from library file (*.lib), which specifies what cells are in the library, their functions, pin names, timing/power characteristics."
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "files": [
+            {
+              "id": "stage3a-outfile1",
+              "content": "Gate-level netlist",
+              "format": "Verilog/VHDL",
+              "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.).",
+              "report": false
+            },
+            {
+              "id": "stage3a-outfile2",
+              "content": "Design constraints",
+              "format": "Synopsys Design Constraints (SDC)",
+              "description": "Timing information of the elements from libraries presented in the netlist file.",
+              "notes": "As long as constraint syntax and arguments conform to the Tcl syntax rules that SDC follows, user will accept the SDC file.",
+              "report": false
+            },
+            {
+              "id": "stage3a-outfile3",
+              "content": "Synthesis Reports",
+              "format": "Text",
+              "description": "It includes design hierarchy, area, timing, critical path highlighting, etc.",
+              "report": false
+            }
+          ]
+        }
+      ],
+      "flow-control": [
+        {
+          "id": "stage3a-flow1",
+          "condition": "Error message not synthesizable RTL design",
+          "route-to": "User",
+          "description": "User needs to modify the architectural model design and redo {{stage1-systemccpp-simulations}}."
+        },
+        {
+          "id": "stage3a-flow2",
+          "condition": "Error message dues to aggressive optimization effort (op2)",
+          "route-to": "User",
+          "description": "User needs to relax the constraints and repeat this stage."
+        },
+        {
+          "id": "stage3a-flow3",
+          "condition": "Success",
+          "route-to": "stage4-power-analysis",
+          "description": "Proceed to the next stage."
+        }
+      ]
+    },
+    {
+      "id": "stage3c-simulation",
+      "name": "Simulation",
+      "tool": {
+        "tool-id": "cadence-nc-sim",
+        "option-control-module": [
+          {
+            "id": "versim-rule1",
+            "description": "Compiler Optimization (-O0)",
+            "purpose": "To increase debugging visibility (maximum)",
+            "notes": "Command line option for maximum debugging visibility and minimum simulation speed."
+          },
+          {
+            "id": "versim-rule2",
+            "description": "Compiler Optimization (-O1)",
+            "purpose": "To increase debugging visibility (high)",
+            "notes": "High debugging visibility and low simulation speed."
+          },
+          {
+            "id": "versim-rule3",
+            "description": "Compiler Optimization (-O2)",
+            "purpose": "To increase debugging visibility (medium)",
+            "notes": "Medium high debugging visibility and medium low simulation speed."
+          },
+          {
+            "id": "versim-rule4",
+            "description": "Compiler Optimization (-O3)",
+            "purpose": "To increase simulation speed (medium)",
+            "notes": "Medium low debugging visibility and medium high simulation speed."
+          },
+          {
+            "id": "versim-rule5",
+            "description": "Compiler Optimization (-O4)",
+            "purpose": "To increase simulation speed (high)",
+            "notes": "Low debugging visibility and high simulation speed."
+          },
+          {
+            "id": "versim-rule6",
+            "description": "Compiler Optimization (-O5)",
+            "purpose": "To increase simulation speed (maximum)",
+            "notes": "Minimum debugging visibility and maximum simulation speed."
+          }
+        ]
+      },
+      "inputs": [
+        {
+          "files": [
+            {
+              "output-id": "stage2-outfile1",
+              "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc.",
+            },
+            {
+              "id": "stage3c-infile2",
+              "content": "Verification Testbenches",
+              "format": "C++/SystemC",
+              "provided-by": "User",
+              "description": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information."
+            },
+            {
+              "id": "stage3c-infile3",
+              "optional": true,
+              "content": "Test scripts (optional)",
+              "format": "Scripting language for the OS (e.g., csh, *.bat, etc.)",
+              "provided-by": "User",
+              "description": "Includes functions to apply inputs, simulate, compare, and report.",
+              "notes": "Designed to automate testing process by enabling simulation for a circuit and a testbench for multiple vectors files, each containing a different set of test cases."
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "files": [
+            {
+              "id": "stage3c-outfile1",
+              "content": "FSDB trace",
+              "format": "FSDB (Fast Signal Database)",
+              "description": "Captures switching activity of the RTL design.",
+              "report": false
+            },
+            {
+              "id": "stage3c-out1",
+              "content": "Test reports",
+              "format": "Text",
+              "description": "Reports mismatches between RTL response produced by simulation and the golden response.",
+              "report": true
+            }
+          ]
+        }
+      ],
+      "flow-control": [
+        {
+          "id": "stage3c-flow1",
+          "condition": "Mismatch between RTL response and golden response",
+          "route-to": "User",
+          "description": "User modifies the architectural model design and redo {{stage1-systemccpp-simulations}} until functional verification and simulation are as desired"
+        },
+        {
+          "id": "stage3c-flow2",
+          "condition": "Success",
+          "route-to": "stage4-power-analysis",
+          "description": "Proceed to the next stage when [[stage3c-out1]] is resolved."
+        }
+      ]
+    },
+    {
+      "id": "stage4-power-analysis",
+      "name": "Power Analysis",
+      "tool": {
+        "tool-id": "synopsys-primetime-px"
+      },
+      "inputs": [
+        {
+          "files": [
+            {
+              "output-id": "stage3a-outfile2",
+              "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.)."
+            },
+            {
+              "output-id": "stage3c-outfile1",
+              "description": "FSDB captures switching activity of the RTL design."
+            },
+            {
+              "output-id": "stage3a-outfile2",
+              "description": "Timing information of the elements from libraries presented in the netlist file."
+            },
+            {
+              "id": "stage4-infile4",
+              "content": "Scripts for Power Analysis",
+              "format": "Tool Command Language (Tcl)",
+              "provided-by": "User",
+              "description": "It defines the search path, the link, the library, the PrimeTime PX variables and commands for power analysis."
+            },
+            {
+              "id": "stage4-infile5",
+              "content": "Technology libraries",
+              "format": "Binary file (e.g., *.db)",
+              "provided-by": "Vendor",
+              "description": "It's compiled from library file (*.lib), which specifies what cells are in the library, their functions, pin names, timing/power characteristics."
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "files": [
+            {
+              "id": "stage4-out1",
+              "content": "Timing Report",
+              "format": "Text",
+              "description": "The report shows itemized power consumption on each hierarchical instance.",
+              "report": true
+            }
+          ]
+        }
+      ],
+      "flow-control": [
+        {
+          "id": "stage4-flow1",
+          "condition": "Undesirable power verification",
+          "route-to": "User",
+          "description": "User needs to modify the architectural model design and redo {{stage1-systemccpp-simulations}} until power verification reported at {{stage4-out1}} is as desired."
+        }
+      ]
+    }
+  ]
+}

@@ -402,7 +402,7 @@
       ]
     },
     {
-      "id": "stage3c-simulation",
+      "id": "stage3b-simulation",
       "name": "Simulation",
       "tool": {
         "tool-id": "cadence-nc-sim",
@@ -453,7 +453,7 @@
               "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc.",
             },
             {
-              "id": "stage3c-infile2",
+              "id": "stage3b-infile2",
               "content": "Verification Testbenches",
               "format": "C++/SystemC",
               "provided-by": "User",
@@ -461,7 +461,7 @@
               "notes": "NVIDIA, please provide the information."
             },
             {
-              "id": "stage3c-infile3",
+              "id": "stage3b-infile3",
               "optional": true,
               "content": "Test scripts (optional)",
               "format": "Scripting language for the OS (e.g., csh, *.bat, etc.)",
@@ -476,14 +476,14 @@
         {
           "files": [
             {
-              "id": "stage3c-outfile1",
+              "id": "stage3b-outfile1",
               "content": "FSDB trace",
               "format": "FSDB (Fast Signal Database)",
               "description": "Captures switching activity of the RTL design.",
               "report": false
             },
             {
-              "id": "stage3c-out1",
+              "id": "stage3b-out1",
               "content": "Test reports",
               "format": "Text",
               "description": "Reports mismatches between RTL response produced by simulation and the golden response.",
@@ -494,16 +494,16 @@
       ],
       "flow-control": [
         {
-          "id": "stage3c-flow1",
+          "id": "stage3b-flow1",
           "condition": "Mismatch between RTL response and golden response",
           "route-to": "User",
           "description": "User modifies the architectural model design and redo {{stage1-systemccpp-simulations}} until functional verification and simulation are as desired"
         },
         {
-          "id": "stage3c-flow2",
+          "id": "stage3b-flow2",
           "condition": "Success",
           "route-to": "stage4-power-analysis",
-          "description": "Proceed to the next stage when [[stage3c-out1]] is resolved."
+          "description": "Proceed to the next stage when [[stage3b-out1]] is resolved."
         }
       ]
     },
@@ -521,7 +521,7 @@
               "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.)."
             },
             {
-              "output-id": "stage3c-outfile1",
+              "output-id": "stage3b-outfile1",
               "description": "FSDB captures switching activity of the RTL design."
             },
             {
@@ -563,7 +563,7 @@
           "id": "stage4-flow1",
           "condition": "Undesirable power verification",
           "route-to": "User",
-          "description": "User needs to modify the architectural model design and redo {{stage1-systemccpp-simulations}} until power verification reported at {{stage4-out1}} is as desired."
+          "description": "User needs to modify the architectural model design and redo {{stage1-systemccpp-simulations}} until power verification reported at [[stage4-out1]] is as desired."
         }
       ]
     }

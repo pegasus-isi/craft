@@ -120,7 +120,7 @@
               "format": "NVIDIA, please provide the information.",
               "provided-by": "Vendor",
               "description": "NVIDIA, please provide the information.",
-              "notes": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information."
             },
             {
               "id": "stage1-infile2",
@@ -128,7 +128,7 @@
               "format": "NVIDIA, please provide the information.",
               "provided-by": "Vendor",
               "description": "NVIDIA, please provide the information.",
-              "notes": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information."
             },
             {
               "id": "stage1-infile3",
@@ -136,7 +136,7 @@
               "format": "C++/SystemC",
               "provided-by": "User",
               "description": "NVIDIA, please provide the information.",
-              "notes": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information."
             },
             {
               "id": "stage1-infile4",
@@ -144,7 +144,7 @@
               "format": "C++/SystemC",
               "provided-by": "User",
               "description": "NVIDIA, please provide the information.",
-              "notes": "NVIDIA, please provide the information.",
+              "notes": "NVIDIA, please provide the information."
             },
             {
               "id": "stage1-infile5",
@@ -450,7 +450,7 @@
           "files": [
             {
               "output-id": "stage2-outfile1",
-              "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc.",
+              "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc."
             },
             {
               "id": "stage3b-infile2",

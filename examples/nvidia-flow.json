@@ -28,12 +28,12 @@
       },
       "options": [
         {
-          "id": "synopsis-op1",
+          "id": "synopsys-op1",
           "description": "Optimization goal",
           "purpose": "Use to optimize power and area."
         },
         {
-          "id": "synopsis-op2",
+          "id": "synopsys-op2",
           "description": "Optimization effort",
           "purpose": "Use to adjust the level of effort towards optimization goal."
         }
@@ -301,13 +301,13 @@
       ],
       "flow-control": [
         {
-          "id": "synopsis-flow1",
+          "id": "synopsys-flow1",
           "condition": "Compile error",
           "route-to": "User",
           "description": "User debugs the architectural model by analyzing [[stage2-out1]] and redo Stage 1 until there are no compile errors. Otherwise, we can proceed to {{stage3a-logic-synthesis}} step."
         },
         {
-          "id": "synopsis-flow2",
+          "id": "synopsys-flow2",
           "condition": "Success",
           "route-to": "stage3a-logic-synthesis",
           "description": "Proceed to the next stage when [[stage2-out1]] is resolved."

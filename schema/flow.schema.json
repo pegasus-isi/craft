@@ -360,7 +360,7 @@
                 },
                 "condition": {
                   "id": "https://github.com/pegasus-isi/craft-schema/stage/control/condition",
-                  "type": "string"
+                  "enum": [ "Success", "Error" ]
                 },
                 "route-to": {
                   "id": "https://github.com/pegasus-isi/craft-schema/stage/control/route-to",

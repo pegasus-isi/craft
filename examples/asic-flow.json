@@ -205,15 +205,15 @@
       "flow-control": [
         {
           "id": "stage1-flow1",
-          "condition": "Compile error",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User debugs the RTL design by analyzing stage1-out1 until there are no compile errors. Otherwise, we can proceed to simulation step."
+          "description": "Compile error. User debugs the RTL design by analyzing stage1-out1 until there are no compile errors. Otherwise, we can proceed to simulation step."
         },
         {
           "id": "stage1-flow2",
-          "condition": "Mismatch between RTL response and golden response",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User debugs the RTL design with stage1-out2 information. Otherwise we will have a verified RTL design."
+          "description": "Mismatch between RTL response and golden response. User debugs the RTL design with stage1-out2 information. Otherwise we will have a verified RTL design."
         },
         {
           "id": "stage1-flow3",
@@ -296,15 +296,15 @@
       "flow-control": [
         {
           "id": "stage2-flow1",
-          "condition": "Error message not synthesizable RTL design",
+          "condition": "Error",
           "route-to": "User",
-          "description": "the user needs to modify the RTL design and redo {{stage1-verilog-simulation}}."
+          "description": "Error message not synthesizable RTL design. The user needs to modify the RTL design and redo {{stage1-verilog-simulation}}."
         },
         {
           "id": "stage2-flow2",
-          "condition": "Error message dues to aggressive optimization effort (op2)",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User needs to relax the constraints and repeat this stage."
+          "description": "Error message dues to aggressive optimization effort (op2). User needs to relax the constraints and repeat this stage."
         },
         {
           "id": "stage2-flow3",
@@ -373,15 +373,15 @@
       "flow-control": [
         {
           "id": "stage3-flow1",
-          "condition": "Error message dues to library fails",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User needs to replace the failing library with the alternative library and repeat this stage."
+          "description": "Error message dues to library fails. User needs to replace the failing library with the alternative library and repeat this stage."
         },
         {
           "id": "stage3-flow2",
-          "condition": "Error message dues to aggressive synthesis constraints",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User needs to relax the constraints and restart {{stage2-logic-synthesizer}}."
+          "description": "Error message dues to aggressive synthesis constraints. User needs to relax the constraints and restart {{stage2-logic-synthesizer}}."
         },
         {
           "id": "stage3-flow3",
@@ -573,15 +573,15 @@
       "flow-control": [
         {
           "id": "stage4-flow1",
-          "condition": "Error message dues to library fails",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User needs to replace the failing library with the alternative library and restart the flow at {{stage2-logic-synthesizer}} with the new library."
+          "description": "Error message dues to library fails. User needs to replace the failing library with the alternative library and restart the flow at {{stage2-logic-synthesizer}} with the new library."
         },
         {
           "id": "stage4-flow2",
-          "condition": "Error message dues to aggressive optimization effort (stage4-op1)",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User needs to relax the constraints and repeat this stage."
+          "description": "Error message dues to aggressive optimization effort (stage4-op1). User needs to relax the constraints and repeat this stage."
         },
         {
           "id": "stage4-flow3",
@@ -698,10 +698,16 @@
       ],
       "flow-control": [
         {
-          "id": "final-flow1",
-          "condition": "Mismatch between post-route netlist response and golden response",
+          "id": "stage5-flow1",
+          "condition": "Error",
           "route-to": "stage4-place-and-route",
-          "description": "The tool performs place & route with the less aggressive option until the mismatch of [[stage5-out1]] in Stage 5 is resolved."
+          "description": "Mismatch between post-route netlist response and golden response. The tool performs place & route with the less aggressive option until the mismatch of [[stage5-out1]] in Stage 5 is resolved."
+        },
+        {
+          "id": "stage5-flow2",
+          "condition": "Success",
+          "route-to": "stage6-lec",
+          "description": "Proceed to the next stage."
         }
       ]
     },
@@ -765,15 +771,15 @@
       "flow-control": [
         {
           "id": "stage6-flow1",
-          "condition": "Error message dues to library fails",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User needs to replace the failing library with the alternative library and repeat this stage."
+          "description": "Error message dues to library fails. User needs to replace the failing library with the alternative library and repeat this stage."
         },
         {
           "id": "stage6-flow2",
-          "condition": "Error message dues to aggressive place and route constraints",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User needs to relax the constraints and restart {{stage4-place-and-route}}."
+          "description": "Error message dues to aggressive place and route constraints. User needs to relax the constraints and restart {{stage4-place-and-route}}."
         },
         {
           "id": "stage6-flow3",
@@ -841,9 +847,9 @@
       "flow-control": [
         {
           "id": "stage7-flow1",
-          "condition": "Timing Violation",
+          "condition": "Error",
           "route-to": "stage4-place-and-route",
-          "description": "The tool performs place & route with the less aggressive option until every timing violation of [[stage7-rep1]] or [[stage7-rep2]] in Stage 7 is resolved."
+          "description": "Timing Violation. The tool performs place & route with the less aggressive option until every timing violation of [[stage7-rep1]] or [[stage7-rep2]] in Stage 7 is resolved."
         },
         {
           "id": "stage7-flow2",
@@ -918,15 +924,15 @@
       "flow-control": [
         {
           "id": "stage8-flow1",
-          "condition": "Error message dues to DRC fails",
+          "condition": "Error",
           "route-to": "stage4-place-and-route",
-          "description": "Refine until out1 in Stage 8 resolved."
+          "description": "Error message dues to DRC fails. Refine until out1 in Stage 8 resolved."
         },
         {
           "id": "stage8-flow2",
-          "condition": "Error message dues to LVS fails",
+          "condition": "Error",
           "route-to": "stage4-place-and-route",
-          "description": "Refine until out2 in Stage 8 resolved."
+          "description": "Error message dues to LVS fails. Refine until out2 in Stage 8 resolved."
         }
       ]
     }

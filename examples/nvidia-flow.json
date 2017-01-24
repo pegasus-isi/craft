@@ -188,15 +188,15 @@
       "flow-control": [
         {
           "id": "stage1-flow1",
-          "condition": "Compile error",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User debugs the architectural model by analyzing [[stage1-out1]] until there are no compile errors. Otherwise, we can proceed to HLS Compilation step."
+          "description": "Compile error. User debugs the architectural model by analyzing [[stage1-out1]] until there are no compile errors. Otherwise, we can proceed to HLS Compilation step."
         },
         {
           "id": "stage1-flow2",
-          "condition": "Mismatch between C++/SystemC response and golden response",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User debugs the architectural model with [[stage1-out2]] information. Otherwise we will have a verified architectural model."
+          "description": "Mismatch between C++/SystemC response and golden response. User debugs the architectural model with [[stage1-out2]] information. Otherwise we will have a verified architectural model."
         },
         {
           "id": "stage1-flow3",
@@ -302,9 +302,9 @@
       "flow-control": [
         {
           "id": "synopsys-flow1",
-          "condition": "Compile error",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User debugs the architectural model by analyzing [[stage2-out1]] and redo Stage 1 until there are no compile errors. Otherwise, we can proceed to {{stage3a-logic-synthesis}} step."
+          "description": "Compile error. User debugs the architectural model by analyzing [[stage2-out1]] and redo Stage 1 until there are no compile errors. Otherwise, we can proceed to {{stage3a-logic-synthesis}} step."
         },
         {
           "id": "synopsys-flow2",
@@ -383,15 +383,15 @@
       "flow-control": [
         {
           "id": "stage3a-flow1",
-          "condition": "Error message not synthesizable RTL design",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User needs to modify the architectural model design and redo {{stage1-systemccpp-simulations}}."
+          "description": "Error message not synthesizable RTL design. User needs to modify the architectural model design and redo {{stage1-systemccpp-simulations}}."
         },
         {
           "id": "stage3a-flow2",
-          "condition": "Error message dues to aggressive optimization effort (op2)",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User needs to relax the constraints and repeat this stage."
+          "description": "Error message dues to aggressive optimization effort (op2). User needs to relax the constraints and repeat this stage."
         },
         {
           "id": "stage3a-flow3",
@@ -495,9 +495,9 @@
       "flow-control": [
         {
           "id": "stage3b-flow1",
-          "condition": "Mismatch between RTL response and golden response",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User modifies the architectural model design and redo {{stage1-systemccpp-simulations}} until functional verification and simulation are as desired"
+          "description": "Mismatch between RTL response and golden response. User modifies the architectural model design and redo {{stage1-systemccpp-simulations}} until functional verification and simulation are as desired"
         },
         {
           "id": "stage3b-flow2",
@@ -561,9 +561,9 @@
       "flow-control": [
         {
           "id": "stage4-flow1",
-          "condition": "Undesirable power verification",
+          "condition": "Error",
           "route-to": "User",
-          "description": "User needs to modify the architectural model design and redo {{stage1-systemccpp-simulations}} until power verification reported at [[stage4-out1]] is as desired."
+          "description": "Undesirable power verification. User needs to modify the architectural model design and redo {{stage1-systemccpp-simulations}} until power verification reported at [[stage4-out1]] is as desired."
         }
       ]
     }

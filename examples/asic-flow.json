@@ -140,68 +140,64 @@
           }
         ]
       },
-      "inputs": [
-        {
-          "files": [
-            {
-              "id": "stage1-infile1",
-              "content": "RTL design",
-              "format": "Verilog/VHDL",
-              "provided-by": "User",
-              "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc. It must be written as synthesizable Verilog.",
-              "notes": "Hardware Description Languages (HDL) – Verilog and VHDL – are used to describe the structure and behavior using a language standardized by IEEE. As long as the same version of HDL is used, every simulator would produce the same response.",
-              "link": "file:///sync_mult.v"
-            },
-            {
-              "id": "stage1-infile2",
-              "content": "Testbench",
-              "format": "Verilog/VHDL",
-              "provided-by": "User",
-              "description": "Includes clock generation, instantiated modules, input stimuli for the instantiated modules, order of execution of input stimuli using delay statements, test cases (with corner cases), etc.",
-              "notes": "Testbench file is not restricted to be synthesizable. Typically testbench file does not contain test cases, but refers to an external file, which contains test vectors and corresponding golden responses.",
-              "link": "file:///tb_sync_mult.v"
-            },
-            {
-              "id": "stage1-infile3",
-              "optional": true,
-              "content": "Test scripts (optional)",
-              "format": "Scripting language for the OS (e.g., csh, *.bat, etc.",
-              "provided-by": "User",
-              "description": "Includes functions to apply inputs, simulate, compare, and report.",
-              "notes": "Designed to automate testing process by enabling simulation for a circuit and a testbench for multiple vectors files, each containing a different set of test cases."
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "files": [
-            {
-              "id": "stage1-outfile1",
-              "content": "Verified RTL design",
-              "format": "Verilog/VHDL",
-              "description": "The same as input file1 if simulation passed.",
-              "notes": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc. It must be written as synthesizable Verilog.",
-              "link": "file:///sync_mult.v",
-              "report": false
-            },
-            {
-              "id": "stage1-out1",
-              "content": "Compile errors",
-              "format": "Text",
-              "description": "Reports compile errors on [[stage1-infile1]] or [[stage1-infile2]].",
-              "report": true
-            },
-            {
-              "id": "stage1-out2",
-              "content": "Test reports",
-              "format": "Text",
-              "description": "Reports mismatches between RTL response produced by simulation and the golden response.",
-              "report": true
-            }
-          ]
-        }
-      ],
+      "inputs": {
+        "files": [
+          {
+            "id": "stage1-infile1",
+            "content": "RTL design",
+            "format": "Verilog/VHDL",
+            "provided-by": "User",
+            "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc. It must be written as synthesizable Verilog.",
+            "notes": "Hardware Description Languages (HDL) – Verilog and VHDL – are used to describe the structure and behavior using a language standardized by IEEE. As long as the same version of HDL is used, every simulator would produce the same response.",
+            "link": "file:///sync_mult.v"
+          },
+          {
+            "id": "stage1-infile2",
+            "content": "Testbench",
+            "format": "Verilog/VHDL",
+            "provided-by": "User",
+            "description": "Includes clock generation, instantiated modules, input stimuli for the instantiated modules, order of execution of input stimuli using delay statements, test cases (with corner cases), etc.",
+            "notes": "Testbench file is not restricted to be synthesizable. Typically testbench file does not contain test cases, but refers to an external file, which contains test vectors and corresponding golden responses.",
+            "link": "file:///tb_sync_mult.v"
+          },
+          {
+            "id": "stage1-infile3",
+            "optional": true,
+            "content": "Test scripts (optional)",
+            "format": "Scripting language for the OS (e.g., csh, *.bat, etc.",
+            "provided-by": "User",
+            "description": "Includes functions to apply inputs, simulate, compare, and report.",
+            "notes": "Designed to automate testing process by enabling simulation for a circuit and a testbench for multiple vectors files, each containing a different set of test cases."
+          }
+        ]
+      },
+      "outputs": {
+        "files": [
+          {
+            "id": "stage1-outfile1",
+            "content": "Verified RTL design",
+            "format": "Verilog/VHDL",
+            "description": "The same as input file1 if simulation passed.",
+            "notes": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc. It must be written as synthesizable Verilog.",
+            "link": "file:///sync_mult.v",
+            "report": false
+          },
+          {
+            "id": "stage1-out1",
+            "content": "Compile errors",
+            "format": "Text",
+            "description": "Reports compile errors on [[stage1-infile1]] or [[stage1-infile2]].",
+            "report": true
+          },
+          {
+            "id": "stage1-out2",
+            "content": "Test reports",
+            "format": "Text",
+            "description": "Reports mismatches between RTL response produced by simulation and the golden response.",
+            "report": true
+          }
+        ]
+      },
       "flow-control": [
         {
           "id": "stage1-flow1",
@@ -237,62 +233,58 @@
           }
         ]
       },
-      "inputs": [
-        {
-          "files": [
-            {
-              "output-id": "stage1-outfile1",
-              "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc."
-            },
-            {
-              "id": "stage2-infile2",
-              "content": "Design constraints",
-              "format": "Tool Command Language (Tcl)",
-              "provided-by": "User",
-              "description": "It defines clocks, loading, timing, and sets design rule constraints."
-            },
-            {
-              "id": "stage2-infile3",
-              "content": "Technology libraries",
-              "format": "Binary file (e.g., *.db)",
-              "provided-by": "Vendor",
-              "description": "It's compiled from library file (*.lib), which specifies what cells are in the library, their functions, pin names, timing/power characteristics.",
-              "link": "file:///gscl45nm.db"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "files": [
-            {
-              "id": "stage2-outfile1",
-              "content": "Gate-level netlist",
-              "format": "Verilog/VHDL",
-              "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.).",
-              "link": "file:///sync_mult.syn.v",
-              "report": false
-            },
-            {
-              "id": "stage2-outfile2",
-              "content": "Design constraints",
-              "format": "synopsys Design Constraints (SDC)",
-              "description": "Timing information of the elements from libraries presented in the netlist file. It's used by {{stage4-place-and-route}}.",
-              "notes": "As long as constraint syntax and arguments conform to the Tcl syntax rules that SDC follows, user will accept the SDC file.",
-              "link": "file:///sync_mult.sdc",
-              "report": false
-            },
-            {
-              "id": "stage2-outfile3",
-              "content": "Synthesis Reports",
-              "format": "Text file",
-              "description": "It includes design hierarchy, area, timing, critical path highlighting, etc.",
-              "link": "file:///sync_mult.area",
-              "report": false
-            }
-          ]
-        }
-      ],
+      "inputs": {
+        "files": [
+          {
+            "output-id": "stage1-outfile1",
+            "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc."
+          },
+          {
+            "id": "stage2-infile2",
+            "content": "Design constraints",
+            "format": "Tool Command Language (Tcl)",
+            "provided-by": "User",
+            "description": "It defines clocks, loading, timing, and sets design rule constraints."
+          },
+          {
+            "id": "stage2-infile3",
+            "content": "Technology libraries",
+            "format": "Binary file (e.g., *.db)",
+            "provided-by": "Vendor",
+            "description": "It's compiled from library file (*.lib), which specifies what cells are in the library, their functions, pin names, timing/power characteristics.",
+            "link": "file:///gscl45nm.db"
+          }
+        ]
+      },
+      "outputs": {
+        "files": [
+          {
+            "id": "stage2-outfile1",
+            "content": "Gate-level netlist",
+            "format": "Verilog/VHDL",
+            "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.).",
+            "link": "file:///sync_mult.syn.v",
+            "report": false
+          },
+          {
+            "id": "stage2-outfile2",
+            "content": "Design constraints",
+            "format": "synopsys Design Constraints (SDC)",
+            "description": "Timing information of the elements from libraries presented in the netlist file. It's used by {{stage4-place-and-route}}.",
+            "notes": "As long as constraint syntax and arguments conform to the Tcl syntax rules that SDC follows, user will accept the SDC file.",
+            "link": "file:///sync_mult.sdc",
+            "report": false
+          },
+          {
+            "id": "stage2-outfile3",
+            "content": "Synthesis Reports",
+            "format": "Text file",
+            "description": "It includes design hierarchy, area, timing, critical path highlighting, etc.",
+            "link": "file:///sync_mult.area",
+            "report": false
+          }
+        ]
+      },
       "flow-control": [
         {
           "id": "stage2-flow1",
@@ -320,56 +312,48 @@
       "tool": {
         "tool-id": "cadence-encounter-conformal"
       },
-      "inputs": [
-        {
-          "files": [
-            {
-              "output-id": "stage1-outfile1",
-              "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc."
-            },
-            {
-              "output-id": "stage2-outfile1",
-              "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.)"
-            },
-            {
-              "id": "stage2-infile3",
-              "content": "Technology libraries",
-              "format": "Binary file (e.g., *.db)",
-              "provided-by": "Vendor",
-              "description": "It's compiled from library file (*.lib), which specifies what cells are in the library, their functions, pin names, timing/power characteristics"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "files": [
-            {
-              "id": "stage3-outfile1",
-              "content": "Mapped points",
-              "format": "Text file",
-              "description": "It includes the statistical information of matched, mapped, and compared points.",
-              "report": false
-            },
-            {
-              "id": "stage3-outfile2",
-              "content": "Gate-level netlist",
-              "format": "Verilog/VHDL",
-              "description": "The same as stage2-outfile1 if LEC passed.",
-              "notes": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.)",
-              "link": "file:///sync_mult.syn.v",
-              "report": false
-            },
-            {
-              "id": "stage3-rep1",
-              "content": "Visual outputs",
-              "format": "Visual outputs",
-              "description": "Visual outputs if LEC fails: logic cones, signal patterns, etc.",
-              "report": true
-            }
-          ]
-        }
-      ],
+      "inputs": {
+        "files": [
+          {
+            "output-id": "stage1-outfile1",
+            "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc."
+          },
+          {
+            "output-id": "stage2-outfile1",
+            "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.)"
+          },
+          {
+            "input-id": "stage2-infile3"
+          }
+        ]
+      },
+      "outputs": {
+        "files": [
+          {
+            "id": "stage3-outfile1",
+            "content": "Mapped points",
+            "format": "Text file",
+            "description": "It includes the statistical information of matched, mapped, and compared points.",
+            "report": false
+          },
+          {
+            "id": "stage3-outfile2",
+            "content": "Gate-level netlist",
+            "format": "Verilog/VHDL",
+            "description": "The same as stage2-outfile1 if LEC passed.",
+            "notes": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.)",
+            "link": "file:///sync_mult.syn.v",
+            "report": false
+          },
+          {
+            "id": "stage3-rep1",
+            "content": "Visual outputs",
+            "format": "Visual outputs",
+            "description": "Visual outputs if LEC fails: logic cones, signal patterns, etc.",
+            "report": true
+          }
+        ]
+      },
       "flow-control": [
         {
           "id": "stage3-flow1",
@@ -429,147 +413,143 @@
           }
         ]
       },
-      "inputs": [
-        {
-          "files": [
-            {
-              "output-id": "stage3-outfile2",
-              "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.)"
-            },
-            {
-              "id": "stage4-infile2",
-              "content": "Foundry Rule Decks",
-              "format": "DRC and LVS",
-              "provided-by": "Vendor",
-              "description": "These specifies foundry rule deck, foundry tech files, etc."
-            },
-            {
-              "id": "stage4-infile3",
-              "content": "GDS",
-              "format": "Graphical Database System (GDS)",
-              "provided-by": "Vendor",
-              "description": "GDS is the industry standard for data exchange of IC layout artwork. It represents planar geometric shapes, text labels, and other information about the layout in hierarchical form."
-            },
-            {
-              "id": "stage4-infile4",
-              "content": "Technology libraries",
-              "format": "Library Exchange Format (LEF, ASCII data format)",
-              "provided-by": "Vendor",
-              "description": "Includes the design rules for routing and the abstract of the cells, no information about the internal netlist of the cells.",
-              "link": "gscl45nm.lef"
-            },
-            {
-              "id": "stage4-infile5",
-              "content": "GDS Map",
-              "format": "Text",
-              "provided-by": "Vendor",
-              "description": "Includes mapping information of GDS.",
-              "link": "gds2_encounter.map"
-            }
-          ],
-          "interaction": [
-            {
-              "id": "stage4-in1",
-              "name": "Floorplan Specification"
-            },
-            {
-              "id": "stage4-in2",
-              "name": "Global net connections"
-            },
-            {
-              "id": "stage4-in3",
-              "name": "Power Planning"
-            },
-            {
-              "id": "stage4-in4",
-              "name": "Special Routing"
-            },
-            {
-              "id": "stage4-in5",
-              "name": "Placing Standard Cells"
-            },
-            {
-              "id": "stage4-in6",
-              "name": "Clock Tree Synthesis (CTS)"
-            },
-            {
-              "id": "stage4-in7",
-              "name": "Final Route"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "files": [
-            {
-              "id": "stage4-outfile1",
-              "content": "Post-route netlist",
-              "format": "Verilog/VHDL",
-              "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file.",
-              "link": "file:///sync_mult.vo.v",
-              "report": false
-            },
-            {
-              "id": "stage4-outfile2",
-              "content": "Delay information",
-              "format": "Standard Delay Format (SDF)",
-              "description": "SDF is a text file that contains the instance names and delay parameters for each technology library primitive and routing element specific to the design. The SDF is used to back-annotate delays into the Verilog post-route netlist file.",
-              "link": "file:///sync_mult.sdf",
-              "report": false
-            },
-            {
-              "id": "stage4-outfile3",
-              "content": "Parasitic information",
-              "format": "Standard Parasitic Format (SPF)",
-              "description": "SPF is a text file that contains parasitic data (resistance and capacitance) of wires in the design.",
-              "link": "file:///sync_mult.spf",
-              "report": false
-            },
-            {
-              "id": "stage4-outfile4",
-              "content": "Layout",
-              "format": "Graphical Database System (GDS)",
-              "description": "GDS is the industry standard for data exchange of IC layout artwork. It represents planar geometric shapes, text labels, and other information about the layout in hierarchical form.",
-              "notes": "Once successfully placed and routed, we can see all the instantiated standard cells and routed metals of the physical implementation.",
-              "link": "file:///sync_mult.gds",
-              "report": false
-            },
-            {
-              "id": "stage4-outfile5",
-              "content": "GDS Map",
-              "format": "Text",
-              "description": "Includes mapping information of GDS.",
-              "link": "file:///sync_mult.gdsmap.map",
-              "report": false
-            },
-            {
-              "id": "stage4-out1",
-              "content": "Place and Route report",
-              "format": "Text",
-              "description": "It Includes information of geometry, metal density, connectivity, violation, etc.",
-              "link": "file:///sync_mult.stage4.summaryreport.rpt",
-              "report": true
-            },
-            {
-              "id": "stage4-out2",
-              "content": "Geometry report",
-              "format": "Text",
-              "description": "It Includes information of geometry violations - cells, same net, wiring, etc.",
-              "link": "file:///sync_mult.stage4.geom.rpt",
-              "report": true
-            },
-            {
-              "id": "stage4-out3",
-              "content": "Connectivity report",
-              "format": "Text",
-              "description": "It Includes information of connectivity violations.",
-              "link": "file:///sync_mult.stage4.conn.rpt",
-              "report": true
-            }
-          ]
-        }
-      ],
+      "inputs": {
+        "files": [
+          {
+            "output-id": "stage3-outfile2",
+            "description": "Gate level design that includes elements from libraries (e.g., gates, flip-flops, a list of nets, their delays, etc.)"
+          },
+          {
+            "id": "stage4-infile2",
+            "content": "Foundry Rule Decks",
+            "format": "DRC and LVS",
+            "provided-by": "Vendor",
+            "description": "These specifies foundry rule deck, foundry tech files, etc."
+          },
+          {
+            "id": "stage4-infile3",
+            "content": "GDS",
+            "format": "Graphical Database System (GDS)",
+            "provided-by": "Vendor",
+            "description": "GDS is the industry standard for data exchange of IC layout artwork. It represents planar geometric shapes, text labels, and other information about the layout in hierarchical form."
+          },
+          {
+            "id": "stage4-infile4",
+            "content": "Technology libraries",
+            "format": "Library Exchange Format (LEF, ASCII data format)",
+            "provided-by": "Vendor",
+            "description": "Includes the design rules for routing and the abstract of the cells, no information about the internal netlist of the cells.",
+            "link": "gscl45nm.lef"
+          },
+          {
+            "id": "stage4-infile5",
+            "content": "GDS Map",
+            "format": "Text",
+            "provided-by": "Vendor",
+            "description": "Includes mapping information of GDS.",
+            "link": "gds2_encounter.map"
+          }
+        ],
+        "interaction": [
+          {
+            "id": "stage4-in1",
+            "name": "Floorplan Specification"
+          },
+          {
+            "id": "stage4-in2",
+            "name": "Global net connections"
+          },
+          {
+            "id": "stage4-in3",
+            "name": "Power Planning"
+          },
+          {
+            "id": "stage4-in4",
+            "name": "Special Routing"
+          },
+          {
+            "id": "stage4-in5",
+            "name": "Placing Standard Cells"
+          },
+          {
+            "id": "stage4-in6",
+            "name": "Clock Tree Synthesis (CTS)"
+          },
+          {
+            "id": "stage4-in7",
+            "name": "Final Route"
+          }
+        ]
+      },
+      "outputs": {
+        "files": [
+          {
+            "id": "stage4-outfile1",
+            "content": "Post-route netlist",
+            "format": "Verilog/VHDL",
+            "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file.",
+            "link": "file:///sync_mult.vo.v",
+            "report": false
+          },
+          {
+            "id": "stage4-outfile2",
+            "content": "Delay information",
+            "format": "Standard Delay Format (SDF)",
+            "description": "SDF is a text file that contains the instance names and delay parameters for each technology library primitive and routing element specific to the design. The SDF is used to back-annotate delays into the Verilog post-route netlist file.",
+            "link": "file:///sync_mult.sdf",
+            "report": false
+          },
+          {
+            "id": "stage4-outfile3",
+            "content": "Parasitic information",
+            "format": "Standard Parasitic Format (SPF)",
+            "description": "SPF is a text file that contains parasitic data (resistance and capacitance) of wires in the design.",
+            "link": "file:///sync_mult.spf",
+            "report": false
+          },
+          {
+            "id": "stage4-outfile4",
+            "content": "Layout",
+            "format": "Graphical Database System (GDS)",
+            "description": "GDS is the industry standard for data exchange of IC layout artwork. It represents planar geometric shapes, text labels, and other information about the layout in hierarchical form.",
+            "notes": "Once successfully placed and routed, we can see all the instantiated standard cells and routed metals of the physical implementation.",
+            "link": "file:///sync_mult.gds",
+            "report": false
+          },
+          {
+            "id": "stage4-outfile5",
+            "content": "GDS Map",
+            "format": "Text",
+            "description": "Includes mapping information of GDS.",
+            "link": "file:///sync_mult.gdsmap.map",
+            "report": false
+          },
+          {
+            "id": "stage4-out1",
+            "content": "Place and Route report",
+            "format": "Text",
+            "description": "It Includes information of geometry, metal density, connectivity, violation, etc.",
+            "link": "file:///sync_mult.stage4.summaryreport.rpt",
+            "report": true
+          },
+          {
+            "id": "stage4-out2",
+            "content": "Geometry report",
+            "format": "Text",
+            "description": "It Includes information of geometry violations - cells, same net, wiring, etc.",
+            "link": "file:///sync_mult.stage4.geom.rpt",
+            "report": true
+          },
+          {
+            "id": "stage4-out3",
+            "content": "Connectivity report",
+            "format": "Text",
+            "description": "It Includes information of connectivity violations.",
+            "link": "file:///sync_mult.stage4.conn.rpt",
+            "report": true
+          }
+        ]
+      },
       "flow-control": [
         {
           "id": "stage4-flow1",
@@ -635,67 +615,58 @@
           }
         ]
       },
-      "inputs": [
-        {
-          "files": [
-            {
-              "output-id": "stage4-outfile1",
-              "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file."
-            },
-            {
-              "id": "stage5-infile2",
-              "content": "Testbench",
-              "format": "Verilog/VHDL",
-              "provided-by": "User",
-              "description": "Includes clock generation, instantiated modules, input stimuli for the instantiated modules, order of execution of input stimuli using delay statements, test cases (with corner cases), etc.",
-              "notes": "Testbench file is basically same as [[stage1-infile2]] of {{stage1-verilog-simulation}}. Only difference is that back annotation (in Verilog, $sdf_annotate) is added to support the infile1.",
-              "link": "file:///tb_sync_mult_pnr.v"
-            },
-            {
-              "output-id": "stage4-outfile2",
-              "description": "SDF is a text file that contains the instance names and delay parameters for each technology library primitive and routing element specific to the design. The SDF is used to back-annotate delays into the Verilog post-route netlist file."
-            },
-            {
-              "id": "stage2-infile3",
-              "content": "Technology libraries",
-              "format": "Binary file (e.g., *.db)",
-              "provided-by": "Vendor",
-              "description": "It's compiled from library file (*.lib), which specifies what cells are in the library, their functions, pin names, timing/power characteristics",
-              "link": "file:///gscl45nm.db"
-            },
-            {
-              "id": "stage5-infile5",
-              "optional": true,
-              "content": "Test scripts (optional)",
-              "format": "Scripting language for the OS (e.g., csh, *.bat, etc.)",
-              "provided-by": "User",
-              "description": "Includes functions to apply inputs, simulate, compare, and report.",
-              "notes": "Designed to automate testing process by enabling simulation for a circuit and a testbench for multiple vectors files, each containing a different set of test cases."
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "files": [
-            {
-              "id": "stage5-outfile1",
-              "content": "Verified post-route netlist",
-              "format": "Verilog/VHDL",
-              "description": "The same as input file1 if simulation passed.",
-              "link": "file:///sync_mult.vo.v",
-              "report": false
-            },
-            {
-              "id": "stage5-out1",
-              "content": "Test reports",
-              "format": "Text",
-              "description": "Reports mismatches between RTL response produced by simulation and the golden response",
-              "report": true
-            }
-          ]
-        }
-      ],
+      "inputs": {
+        "files": [
+          {
+            "output-id": "stage4-outfile1",
+            "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file."
+          },
+          {
+            "id": "stage5-infile2",
+            "content": "Testbench",
+            "format": "Verilog/VHDL",
+            "provided-by": "User",
+            "description": "Includes clock generation, instantiated modules, input stimuli for the instantiated modules, order of execution of input stimuli using delay statements, test cases (with corner cases), etc.",
+            "notes": "Testbench file is basically same as [[stage1-infile2]] of {{stage1-verilog-simulation}}. Only difference is that back annotation (in Verilog, $sdf_annotate) is added to support the infile1.",
+            "link": "file:///tb_sync_mult_pnr.v"
+          },
+          {
+            "output-id": "stage4-outfile2",
+            "description": "SDF is a text file that contains the instance names and delay parameters for each technology library primitive and routing element specific to the design. The SDF is used to back-annotate delays into the Verilog post-route netlist file."
+          },
+          {
+            "input-id": "stage2-infile3"
+          },
+          {
+            "id": "stage5-infile5",
+            "optional": true,
+            "content": "Test scripts (optional)",
+            "format": "Scripting language for the OS (e.g., csh, *.bat, etc.)",
+            "provided-by": "User",
+            "description": "Includes functions to apply inputs, simulate, compare, and report.",
+            "notes": "Designed to automate testing process by enabling simulation for a circuit and a testbench for multiple vectors files, each containing a different set of test cases."
+          }
+        ]
+      },
+      "outputs": {
+        "files": [
+          {
+            "id": "stage5-outfile1",
+            "content": "Verified post-route netlist",
+            "format": "Verilog/VHDL",
+            "description": "The same as input file1 if simulation passed.",
+            "link": "file:///sync_mult.vo.v",
+            "report": false
+          },
+          {
+            "id": "stage5-out1",
+            "content": "Test reports",
+            "format": "Text",
+            "description": "Reports mismatches between RTL response produced by simulation and the golden response",
+            "report": true
+          }
+        ]
+      },
       "flow-control": [
         {
           "id": "stage5-flow1",
@@ -717,57 +688,48 @@
       "tool": {
         "tool-id": "cadence-encounter-conformal"
       },
-      "inputs": [
-        {
-          "files": [
-            {
-              "output-id": "stage1-outfile1",
-              "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc."
-            },
-            {
-              "output-id": "stage5-outfile1",
-              "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file."
-            },
-            {
-              "id": "stage2-infile3",
-              "content": "Technology libraries",
-              "format": "Binary file (e.g., *.db)",
-              "provided-by": "Vendor",
-              "description": "It's compiled from library file (*.lib), which specifies what cells are in the library, their functions, pin names, timing/power characteristics.",
-              "link": "file:///gscl45nm.db"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "files": [
-            {
-              "id": "stage6-outfile1",
-              "content": "LEC-passed post-route netlist",
-              "format": "Verilog/VHDL",
-              "description": "The same as lec-infile2 if LEC passed.",
-              "notes": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file.",
-              "link": "file:///sync_mult.vo.v",
-              "report": false
-            },
-            {
-              "id": "stage6-rep1",
-              "content": "Visual outputs",
-              "format": "Visual outputs",
-              "description": "Visual outputs if LEC fails: logic cones, signal patterns, etc.",
-              "report": true
-            },
-            {
-              "id": "stage6-rep2",
-              "content": "Mapped points",
-              "format": "Text",
-              "description": "It includes the statistical information of matched, mapped, and compared points.",
-              "report": true
-            }
-          ]
-        }
-      ],
+      "inputs": {
+        "files": [
+          {
+            "output-id": "stage1-outfile1",
+            "description": "Includes modules with input/output list, instantiated modules, wires, registers, always blocks, etc."
+          },
+          {
+            "output-id": "stage5-outfile1",
+            "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file."
+          },
+          {
+            "input-id": "stage2-infile3"
+          }
+        ]
+      },
+      "outputs": {
+        "files": [
+          {
+            "id": "stage6-outfile1",
+            "content": "LEC-passed post-route netlist",
+            "format": "Verilog/VHDL",
+            "description": "The same as lec-infile2 if LEC passed.",
+            "notes": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file.",
+            "link": "file:///sync_mult.vo.v",
+            "report": false
+          },
+          {
+            "id": "stage6-rep1",
+            "content": "Visual outputs",
+            "format": "Visual outputs",
+            "description": "Visual outputs if LEC fails: logic cones, signal patterns, etc.",
+            "report": true
+          },
+          {
+            "id": "stage6-rep2",
+            "content": "Mapped points",
+            "format": "Text",
+            "description": "It includes the statistical information of matched, mapped, and compared points.",
+            "report": true
+          }
+        ]
+      },
       "flow-control": [
         {
           "id": "stage6-flow1",
@@ -795,55 +757,46 @@
       "tool": {
         "tool-id": "synopsys-primetime"
       },
-      "inputs": [
-        {
-          "files": [
-            {
-              "output-id": "stage6-outfile1",
-              "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file."
-            },
-            {
-              "output-id": "stage4-outfile3",
-              "description": "SPF is a text file that contains parasitic data (resistance and capacitance) of wires in the design."
-            },
-            {
-              "id": "stage7-infile3",
-              "content": "Scripts for Timing Analysis",
-              "format": "Tool Command Language (Tcl)",
-              "provided-by": "User",
-              "description": "It defines the search path, the link, the library, the PrimeTime variables and commands for chip variation strategy."
-            },
-            {
-              "id": "stage2-infile3",
-              "content": "Technology libraries",
-              "format": "Binary file (e.g., *.db)",
-              "provided-by": "Vendor",
-              "description": "It's compiled from library file (*.lib), which specifies what cells are in the library, their functions, pin names, timing/power characteristics.",
-              "link": "file:///gscl45nm.db"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "files": [
-            {
-              "id": "stage7-rep1",
-              "content": "Timing Report",
-              "format": "Text",
-              "description": "It reports critical paths and timing violations.",
-              "report": true
-            },
-            {
-              "id": "stage7-rep2",
-              "content": "Path Slack Histogram",
-              "format": "Graph",
-              "description": "Histogram consists of path slacks to easily capture a distribution of path slacks.",
-              "report": true
-            }
-          ]
-        }
-      ],
+      "inputs": {
+        "files": [
+          {
+            "output-id": "stage6-outfile1",
+            "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file."
+          },
+          {
+            "output-id": "stage4-outfile3",
+            "description": "SPF is a text file that contains parasitic data (resistance and capacitance) of wires in the design."
+          },
+          {
+            "id": "stage7-infile3",
+            "content": "Scripts for Timing Analysis",
+            "format": "Tool Command Language (Tcl)",
+            "provided-by": "User",
+            "description": "It defines the search path, the link, the library, the PrimeTime variables and commands for chip variation strategy."
+          },
+          {
+            "input-id": "stage2-infile3"
+          }
+        ]
+      },
+      "outputs": {
+        "files": [
+          {
+            "id": "stage7-rep1",
+            "content": "Timing Report",
+            "format": "Text",
+            "description": "It reports critical paths and timing violations.",
+            "report": true
+          },
+          {
+            "id": "stage7-rep2",
+            "content": "Path Slack Histogram",
+            "format": "Graph",
+            "description": "Histogram consists of path slacks to easily capture a distribution of path slacks.",
+            "report": true
+          }
+        ]
+      },
       "flow-control": [
         {
           "id": "stage7-flow1",
@@ -865,62 +818,54 @@
       "tool": {
         "tool-id": "mentor-calibre"
       },
-      "inputs": [
-        {
-          "files": [
-            {
-              "output-id": "stage6-outfile1",
-              "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file."
-            },
-            {
-              "output-id": "stage4-outfile4",
-              "description": "GDS is the industry standard for data exchange of IC layout artwork. It represents planar geometric shapes, text labels, and other information about the layout in hierarchical form."
-            },
-            {
-              "id": "stage8-infile3",
-              "content": "Scan Def file",
-              "format": "TBD",
-              "provided-by": "User",
-              "description": "Specifies design and scanning of chip in test mode."
-            },
-            {
-              "id": "stage4-infile2",
-              "content": "Foundry Rule Decks",
-              "format": "DRC and LVS",
-              "provided-by": "Vendor",
-              "description": "These specify foundry rule deck, foundry tech files, etc."
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "files": [
-            {
-              "id": "stage8-outfile1",
-              "content": "Verified Layout",
-              "format": "Graphical Database System (GDS)",
-              "description": "The same as [[stage4-infile4]] if DRC and LVS passed.",
-              "report": false,
-              "link": "file:///sync_mult.gds"
-            },
-            {
-              "id": "stage8-rep1",
-              "content": "DRC Report",
-              "format": "Text",
-              "description": "Reports the results of DRC.",
-              "report": true
-            },
-            {
-              "id": "stage8-rep2",
-              "content": "LVS Report",
-              "format": "Text",
-              "description": "Reports the results of LVS.",
-              "report": true
-            }
-          ]
-        }
-      ],
+      "inputs": {
+        "files": [
+          {
+            "output-id": "stage6-outfile1",
+            "description": "It is a netlist of the design mapped to technology-specific primitives. It is created from the routed design and supported by the SDF file."
+          },
+          {
+            "output-id": "stage4-outfile4",
+            "description": "GDS is the industry standard for data exchange of IC layout artwork. It represents planar geometric shapes, text labels, and other information about the layout in hierarchical form."
+          },
+          {
+            "id": "stage8-infile3",
+            "content": "Scan Def file",
+            "format": "TBD",
+            "provided-by": "User",
+            "description": "Specifies design and scanning of chip in test mode."
+          },
+          {
+            "input-id": "stage4-infile2"
+          }
+        ]
+      },
+      "outputs": {
+        "files": [
+          {
+            "id": "stage8-outfile1",
+            "content": "Verified Layout",
+            "format": "Graphical Database System (GDS)",
+            "description": "The same as [[stage4-infile4]] if DRC and LVS passed.",
+            "report": false,
+            "link": "file:///sync_mult.gds"
+          },
+          {
+            "id": "stage8-rep1",
+            "content": "DRC Report",
+            "format": "Text",
+            "description": "Reports the results of DRC.",
+            "report": true
+          },
+          {
+            "id": "stage8-rep2",
+            "content": "LVS Report",
+            "format": "Text",
+            "description": "Reports the results of LVS.",
+            "report": true
+          }
+        ]
+      },
       "flow-control": [
         {
           "id": "stage8-flow1",

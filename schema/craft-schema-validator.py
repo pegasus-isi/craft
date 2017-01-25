@@ -91,7 +91,7 @@ for s in data['stages']:
         semantic_errors += 1
 
     # add input files
-    for f in s['inputs'][0]['files']:
+    for f in s['inputs']['files']:
         if 'id' in f:
             if f['id'] in file_ids:
                 print('[ERROR] Input file "%s (%s)" has already been declared. If this is a reference to a ' \
@@ -117,7 +117,7 @@ for s in data['stages']:
             files_ref.extend(_extract_references(f['notes'], False))
 
     # add output files
-    for f in s['outputs'][0]['files']:
+    for f in s['outputs']['files']:
         if f['id'] in file_ids:
             print(
                 '[ERROR] Output file "%s (%s)" has already been declared.' % (f['id'], s['tool']['tool-id']))

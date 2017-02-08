@@ -48,10 +48,12 @@ else:
 # read data file
 try:
     data = json.loads(open(args.data_file).read())
-except ValueError, e:
+except ValueError as e:
     if 'Expecting property name' in e.message:
         pos = e.message[e.message.index(':') + 1:e.message.index('(')].strip()
         print('[ERROR] JSON standard does not allow trailing comma (%s): %s' % (pos, args.data_file))
+    else:
+        print('[ERROR] %s ' % e)
     exit(1)
 
 # validate against schema

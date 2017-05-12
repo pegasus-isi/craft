@@ -1,0 +1,833 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://craftproject.org/schema/ip",
+  "type": "object",
+  "title": "IP Cores",
+  "definitions": {
+    "yesno": {
+      "type": "string",
+      "enum": [
+        "YES",
+        "NO",
+        "N/A"
+      ]
+    },
+    "categories": {
+      "enum": [
+        "Analog & Mixed Signal",
+        "Interface Controller & PHY",
+        "Processor & Microcontroller",
+        "Memory & Logic Library",
+        "Wireless Communication",
+        "Wireline Communication",
+        "Graphic & Peripheral",
+        "Security",
+        "Multimedia",
+        "Network-on-Chip (NoC)",
+        "Memory Controller & PHY",
+        "Other"
+      ],
+      "Analog & Mixed Signal": {
+        "enum": [
+          "ADC",
+          "DAC",
+          "PLL",
+          "Standard Cell",
+          "Other"
+        ],
+        "ADC": {
+          "enum": [
+            "6-Bit ADC",
+            "8-Bit ADC",
+            "10-Bit ADC",
+            "Other"
+          ]
+        },
+        "DAC": {
+          "enum": [
+            "8-Bit DAC",
+            "9-Bit DAC",
+            "Other"
+          ]
+        },
+        "PLL": {
+          "enum": [
+            "Clock Generator PLL",
+            "Deskew PLL",
+            "General Purpose PLL"
+          ]
+        },
+        "Category Specific Attributes": {
+          "type": "object",
+          "properties": {
+            "bandwidth": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "pipeline-width": {
+                  "type": "string"
+                },
+                "vdd": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "data-rate": {
+                      "type": "string"
+                    },
+                    "power-reduction": {
+                      "$ref": "#/definitions/yesno"
+                    },
+                    "differential-input-MUX": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "Interface Controller & PHY": {
+        "enum": [
+          "AMBA AHB/APB/AXI",
+          "HDMI",
+          "Other"
+        ]
+      },
+      "Processor & Microcontroller": {
+        "enum": [
+          "DSP Core",
+          "Microprocessor",
+          "Coprocessor",
+          "CPU",
+          "Digital Signal Processing",
+          "Microcontroller"
+        ],
+        "DSP Core": {
+          "enum": [
+            "16-Bit",
+            "24-Bit",
+            "32-Bit",
+            "64-Bit",
+            "Configurable"
+          ]
+        },
+        "Microprocessor": {
+          "enum": [
+            "8-Bit Microprocessor",
+            "32-Bit Microprocessor"
+          ]
+        },
+        "Category Specific Attributes": {
+          "type": "object",
+          "properties": {
+            "processor-type": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "ISA": {
+                  "type": "string"
+                },
+                "datapath-width": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "integer"
+                    },
+                    "number-of-cores": {
+                      "type": "integer"
+                    },
+                    "levels-of-caches": {
+                      "type": "integer"
+                    },
+                    "program-memory": {
+                      "type": "string"
+                    },
+                    "data-memory": {
+                      "type": "string"
+                    },
+                    "pipeline-stages": {
+                      "type": "string"
+                    },
+                    "endianness": {
+                      "type": "string"
+                    },
+                    "datapath-width": {
+                      "type": "string"
+                    },
+                    "RAS-features": {
+                      "type": "string"
+                    },
+                    "data-rate": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "Memory & Logic Library": {
+        "enum": [
+          "Embedded Memories",
+          "I/O Library",
+          "Standard Cell"
+        ]
+      },
+      "Wireline Communication": {
+        "enum": [
+          "Error Correction/Detection",
+          "Ethernet",
+          "Other"
+        ]
+      },
+      "Wireless Communication": {
+        "enum": [
+          "802.11"
+        ],
+        "Category Specific Attributes": {
+          "type": "object",
+          "properties": {
+            "wireless-protocol": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "frequency-band": {
+                  "type": "string"
+                },
+                "data-rate": {
+                  "type": "string"
+                },
+                "WPS": {
+                  "$ref": "#/definitions/yesno"
+                },
+                "WFA": {
+                  "$ref": "#/definitions/yesno"
+                },
+                "wifi-direct": {
+                  "$ref": "#/definitions/yesno"
+                },
+                "wifi-aware": {
+                  "$ref": "#/definitions/yesno"
+                },
+                "modulation-modes": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "Memory Controller & PHY": {
+        "enum": [
+          "DDR"
+        ],
+        "DDR": {
+          "enum": [
+            "DDR Controller"
+          ]
+        },
+        "Category Specific Attributes": {
+          "type": "object",
+          "properties": {
+            "memory-type": {
+              "type": "string"
+            },
+            "memory-protocol": {
+              "type": "string"
+            },
+            "interface-protocol": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "enum": [
+                        "PHY",
+                        "Controller"
+                      ]
+                    },
+                    "data-rate": {
+                      "type": "string"
+                    },
+                    "datapath-width": {
+                      "type": "string"
+                    },
+                    "RAS-features": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "Other": {
+        "enum": [
+          "Arithmetic & Mathematic",
+          "Clock Generator",
+          "Other"
+        ],
+        "Arithmetic & Mathematic": {
+          "enum": [
+            "Datapath"
+          ]
+        },
+        "Category Specific Attributes": {
+          "type": "object",
+          "properties": {
+            "function": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "datapath-or-control": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "enum": [
+                        "Datapath",
+                        "Control"
+                      ]
+                    },
+                    "data-rate": {
+                      "type": "string"
+                    },
+                    "latency": {
+                      "type": "string"
+                    },
+                    "endianness": {
+                      "type": "string"
+                    },
+                    "datapath-width": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "properties": {
+    "basic-information": {
+      "type": "object",
+      "properties": {
+        "core-name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "description": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "anyOf": [
+        {
+          "properties": {
+            "category": {
+              "$ref": "#/definitions/categories"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Analog & Mixed Signal"
+              ]
+            },
+            "subcategory": {
+              "$ref": "#/definitions/categories/Analog & Mixed Signal"
+            },
+            "category-specific-data": {
+              "$ref": "#/definitions/categories/Analog & Mixed Signal/Category Specific Attributes"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Analog & Mixed Signal"
+              ]
+            },
+            "subcategory": {
+              "enum": [
+                "ADC"
+              ]
+            },
+            "subsubcategory": {
+              "$ref": "#/definitions/categories/Analog & Mixed Signal/ADC"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Analog & Mixed Signal"
+              ]
+            },
+            "subcategory": {
+              "enum": [
+                "DAC"
+              ]
+            },
+            "subsubcategory": {
+              "$ref": "#/definitions/categories/Analog & Mixed Signal/DAC"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Analog & Mixed Signal"
+              ]
+            },
+            "subcategory": {
+              "enum": [
+                "PLL"
+              ]
+            },
+            "subsubcategory": {
+              "$ref": "#/definitions/categories/Analog & Mixed Signal/PLL"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Interface Controller & PHY"
+              ]
+            },
+            "subcategory": {
+              "$ref": "#/definitions/categories/Interface Controller & PHY"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Processor & Microcontroller"
+              ]
+            },
+            "subcategory": {
+              "enum": [
+                "DSP Core"
+              ]
+            },
+            "subsubcategory": {
+              "$ref": "#/definitions/categories/Processor & Microcontroller/DSP Core"
+            },
+            "category-specific-data": {
+              "$ref": "#/definitions/categories/Processor & Microcontroller/Category Specific Attributes"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Processor & Microcontroller"
+              ]
+            },
+            "subcategory": {
+              "enum": [
+                "Microprocessor"
+              ]
+            },
+            "subsubcategory": {
+              "$ref": "#/definitions/categories/Processor & Microcontroller/Microprocessor"
+            },
+            "category-specific-data": {
+              "$ref": "#/definitions/categories/Processor & Microcontroller/Category Specific Attributes"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Processor & Microcontroller"
+              ]
+            },
+            "subcategory": {
+              "$ref": "#/definitions/categories/Processor & Microcontroller"
+            },
+            "category-specific-data": {
+              "$ref": "#/definitions/categories/Processor & Microcontroller/Category Specific Attributes"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Memory & Logic Library"
+              ]
+            },
+            "subcategory": {
+              "$ref": "#/definitions/categories/Memory & Logic Library"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Wireline Communication"
+              ]
+            },
+            "subcategory": {
+              "$ref": "#/definitions/categories/Wireline Communication"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Wireless Communication"
+              ]
+            },
+            "subcategory": {
+              "$ref": "#/definitions/categories/Wireless Communication"
+            },
+            "category-specific-data": {
+              "$ref": "#/definitions/categories/Wireless Communication/Category Specific Attributes"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Wireless Communication"
+              ]
+            },
+            "subcategory": {
+              "enum": [
+                "802.11"
+              ]
+            },
+            "category-specific-data": {
+              "$ref": "#/definitions/categories/Wireless Communication/Category Specific Attributes"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Memory Controller & PHY"
+              ]
+            },
+            "subcategory": {
+              "enum": [
+                "DDR"
+              ]
+            },
+            "subsubcategory": {
+              "$ref": "#/definitions/categories/Memory Controller & PHY/DDR"
+            },
+            "category-specific-data": {
+              "$ref": "#/definitions/categories/Memory Controller & PHY/Category Specific Attributes"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Other"
+              ]
+            },
+            "subcategory": {
+              "$ref": "#/definitions/categories/Other"
+            },
+            "category-specific-data": {
+              "$ref": "#/definitions/categories/Other/Category Specific Attributes"
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "enum": [
+                "Other"
+              ]
+            },
+            "subcategory": {
+              "enum": [
+                "Arithmetic & Mathematic"
+              ]
+            },
+            "subsubcategory": {
+              "$ref": "#/definitions/categories/Other/Arithmetic & Mathematic"
+            },
+            "category-specific-data": {
+              "$ref": "#/definitions/categories/Other/Category Specific Attributes"
+            }
+          }
+        }
+      ],
+      "required": [
+        "core-name",
+        "category",
+        "description"
+      ]
+    },
+    "common-attributes": {
+      "type": "object",
+      "properties": {
+        "vendor-core": {
+          "type": "string",
+          "minLength": 1
+        },
+        "vendor-implement": {
+          "type": "object",
+          "properties": {
+            "asic-fabricator": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "technology": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            },
+            "fpga-vendor": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "chips": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ]
+            }
+          }
+        },
+        "specifications": {
+          "type": "object",
+          "properties": {
+            "standard": {
+              "type": "string"
+            },
+            "clock-frequency": {
+              "type": "string"
+            },
+            "area": {
+              "type": "string"
+            },
+            "power-consumption": {
+              "type": "string"
+            },
+            "special-tools-req": {
+              "$ref": "#/definitions/yesno"
+            },
+            "low-power-support": {
+              "$ref": "#/definitions/yesno"
+            },
+            "components": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "needs-special-tools": {
+              "$ref": "#/definitions/yesno"
+            }
+          }
+        }
+      },
+      "required": [
+        "vendor-core",
+        "vendor-implement",
+        "specifications"
+      ]
+    },
+    "design-reuse-support": {
+      "type": "object",
+      "properties": {
+        "used-in-other-asic-designs": {
+          "$ref": "#/definitions/yesno"
+        },
+        "synthesis-scripts-into-gate-level-netlist": {
+          "$ref": "#/definitions/yesno"
+        }
+      }
+    },
+    "level-of-maturity": {
+      "type": "object",
+      "properties": {
+        "characterization-data-from-silicon": {
+          "type": "string"
+        },
+        "comprehensiveness-of-verification": {
+          "type": "string"
+        },
+        "number-of-downloads": {
+          "type": "integer"
+        },
+        "user-rating": {
+          "type": "number"
+        },
+        "number-of-chips-implemented": {
+          "type": "integer"
+        }
+      }
+    },
+    "file-system": {
+      "type": "object",
+      "properties": {
+        "design": {
+          "type": "object",
+          "properties": {
+            "rtl-design": {
+              "$ref": "#/definitions/yesno"
+            },
+            "gate-level-netlist": {
+              "$ref": "#/definitions/yesno"
+            },
+            "physical-layout": {
+              "$ref": "#/definitions/yesno"
+            },
+            "readme": {
+              "$ref": "#/definitions/yesno"
+            }
+          }
+        },
+        "special-tools": {
+          "$ref": "#/definitions/yesno"
+        },
+        "testing-and-verification": {
+          "type": "object",
+          "properties": {
+            "testbenches": {
+              "$ref": "#/definitions/yesno"
+            },
+            "design-corners-and-results": {
+              "$ref": "#/definitions/yesno"
+            },
+            "scripts": {
+              "$ref": "#/definitions/yesno"
+            },
+            "fpga-synthesis-result": {
+              "$ref": "#/definitions/yesno"
+            },
+            "readme": {
+              "$ref": "#/definitions/yesno"
+            }
+          }
+        },
+        "manuals": {
+          "type": "object",
+          "properties": {
+            "algorithms": {
+              "$ref": "#/definitions/yesno"
+            },
+            "timing-diagrams": {
+              "$ref": "#/definitions/yesno"
+            },
+            "diagrams-structure-architecture": {
+              "$ref": "#/definitions/yesno"
+            },
+            "description-design-architecture": {
+              "$ref": "#/definitions/yesno"
+            },
+            "input-output-pins": {
+              "$ref": "#/definitions/yesno"
+            },
+            "verification-fpga": {
+              "$ref": "#/definitions/yesno"
+            },
+            "file-directory-structure": {
+              "$ref": "#/definitions/yesno"
+            },
+            "related-products-ips": {
+              "$ref": "#/definitions/yesno"
+            }
+          }
+        },
+        "applications": {
+          "type": "object",
+          "properties": {
+            "source-code": {
+              "$ref": "#/definitions/yesno"
+            },
+            "executable": {
+              "$ref": "#/definitions/yesno"
+            },
+            "readme": {
+              "$ref": "#/definitions/yesno"
+            }
+          }
+        },
+        "training-courses": {
+          "$ref": "#/definitions/yesno"
+        }
+      },
+      "required": [
+        "design",
+        "special-tools",
+        "testing-and-verification",
+        "manuals",
+        "applications",
+        "training-courses"
+      ]
+    }
+  },
+  "required": [
+    "basic-information",
+    "common-attributes",
+    "design-reuse-support",
+    "level-of-maturity",
+    "file-system"
+  ],
+  "additionalProperties": false
+}

@@ -13,6 +13,8 @@
       ]
     },
     "categories": {
+      "title": "Category",
+      "description": "",
       "enum": [
         "Analog & Mixed Signal",
         "Interface Controller & PHY",
@@ -28,6 +30,8 @@
         "Other"
       ],
       "Analog & Mixed Signal": {
+        "title": "Sub-Category",
+        "description": "",
         "enum": [
           "ADC",
           "DAC",
@@ -36,6 +40,8 @@
           "Other"
         ],
         "ADC": {
+          "title": "Sub-Sub-Category",
+          "description": "",
           "enum": [
             "6-Bit ADC",
             "8-Bit ADC",
@@ -44,6 +50,8 @@
           ]
         },
         "DAC": {
+          "title": "Sub-Sub-Category",
+          "description": "",
           "enum": [
             "8-Bit DAC",
             "9-Bit DAC",
@@ -51,6 +59,8 @@
           ]
         },
         "PLL": {
+          "title": "Sub-Sub-Category",
+          "description": "",
           "enum": [
             "Clock Generator PLL",
             "Deskew PLL",
@@ -58,30 +68,48 @@
           ]
         },
         "Category Specific Attributes": {
+          "title": "Category Specific Attributes",
+          "description": "",
           "type": "object",
           "properties": {
             "bandwidth": {
+              "title": "Bandwidth",
+              "description": "",
               "type": "object",
               "properties": {
                 "value": {
+                  "title": "Value",
+                  "description": "",
                   "type": "string"
                 },
                 "pipeline-width": {
+                  "title": "Pipeline Width",
+                  "description": "",
                   "type": "string"
                 },
                 "vdd": {
+                  "title": "VDD",
+                  "description": "",
                   "type": "object",
                   "properties": {
                     "value": {
+                      "title": "Value",
+                      "description": "",
                       "type": "string"
                     },
                     "data-rate": {
+                      "title": "Data Rate",
+                      "description": "",
                       "type": "string"
                     },
                     "power-reduction": {
+                      "title": "Power Reduction",
+                      "description": "",
                       "$ref": "#/definitions/yesno"
                     },
                     "differential-input-MUX": {
+                      "title": "Differential Input MUX",
+                      "description": "",
                       "type": "string"
                     }
                   },
@@ -95,6 +123,8 @@
         }
       },
       "Interface Controller & PHY": {
+        "title": "Sub-Category",
+        "description": "",
         "enum": [
           "AMBA AHB/APB/AXI",
           "HDMI",
@@ -102,6 +132,8 @@
         ]
       },
       "Processor & Microcontroller": {
+        "title": "Sub-Category",
+        "description": "",
         "enum": [
           "DSP Core",
           "Microprocessor",
@@ -111,6 +143,8 @@
           "Microcontroller"
         ],
         "DSP Core": {
+          "title": "Sub-Sub-Category",
+          "description": "",
           "enum": [
             "16-Bit",
             "24-Bit",
@@ -120,54 +154,86 @@
           ]
         },
         "Microprocessor": {
+          "title": "Sub-Sub-Category",
+          "description": "",
           "enum": [
             "8-Bit Microprocessor",
             "32-Bit Microprocessor"
           ]
         },
         "Category Specific Attributes": {
+          "title": "Category Specific Attributes",
+          "description": "",
           "type": "object",
           "properties": {
             "processor-type": {
+              "title": "Processor Type",
+              "description": "",
               "type": "object",
               "properties": {
                 "value": {
+                  "title": "Value",
+                  "description": "",
                   "type": "string"
                 },
                 "ISA": {
+                  "title": "ISA",
+                  "description": "",
                   "type": "string"
                 },
                 "datapath-width": {
+                  "title": "Datapath Width",
+                  "description": "",
                   "type": "object",
                   "properties": {
                     "value": {
+                      "title": "Value",
+                      "description": "",
                       "type": "integer"
                     },
                     "number-of-cores": {
+                      "title": "Number of Cores",
+                      "description": "",
                       "type": "integer"
                     },
                     "levels-of-caches": {
+                      "title": "Levels of Cache",
+                      "description": "",
                       "type": "integer"
                     },
                     "program-memory": {
+                      "title": "Program Memory",
+                      "description": "",
                       "type": "string"
                     },
                     "data-memory": {
+                      "title": "Data Memory",
+                      "description": "",
                       "type": "string"
                     },
                     "pipeline-stages": {
+                      "title": "Pipeline Stages",
+                      "description": "",
                       "type": "string"
                     },
                     "endianness": {
+                      "title": "Endianess",
+                      "description": "",
                       "type": "string"
                     },
                     "datapath-width": {
+                      "title": "Datapath Widths",
+                      "description": "",
                       "type": "string"
                     },
                     "RAS-features": {
+                      "title": "RAS Features",
+                      "description": "",
                       "type": "string"
                     },
                     "data-rate": {
+                      "title": "Data Rate",
+                      "description": "",
                       "type": "string"
                     }
                   },
@@ -181,6 +247,8 @@
         }
       },
       "Memory & Logic Library": {
+        "title": "Sub-Category",
+        "description": "",
         "enum": [
           "Embedded Memories",
           "I/O Library",
@@ -188,6 +256,8 @@
         ]
       },
       "Wireline Communication": {
+        "title": "Sub-Category",
+        "description": "",
         "enum": [
           "Error Correction/Detection",
           "Ethernet",
@@ -195,37 +265,59 @@
         ]
       },
       "Wireless Communication": {
+        "title": "Sub-Category",
+        "description": "",
         "enum": [
           "802.11"
         ],
         "Category Specific Attributes": {
+          "title": "Category Specific Attributes",
+          "description": "",
           "type": "object",
           "properties": {
             "wireless-protocol": {
+              "title": "Wireless Protocol",
+              "description": "",
               "type": "object",
               "properties": {
                 "value": {
+                  "title": "Value",
+                  "description": "",
                   "type": "string"
                 },
                 "frequency-band": {
+                  "title": "Frequency Band",
+                  "description": "",
                   "type": "string"
                 },
                 "data-rate": {
+                  "title": "Data Rate",
+                  "description": "",
                   "type": "string"
                 },
                 "WPS": {
+                  "title": "WPS",
+                  "description": "",
                   "$ref": "#/definitions/yesno"
                 },
                 "WFA": {
+                  "title": "WFA",
+                  "description": "",
                   "$ref": "#/definitions/yesno"
                 },
                 "wifi-direct": {
+                  "title": "Wi-fi Direct",
+                  "description": "",
                   "$ref": "#/definitions/yesno"
                 },
                 "wifi-aware": {
+                  "title": "Wi-fi Aware",
+                  "description": "",
                   "$ref": "#/definitions/yesno"
                 },
                 "modulation-modes": {
+                  "title": "Modulation Modes",
+                  "description": "",
                   "type": "string"
                 }
               },
@@ -236,45 +328,69 @@
         }
       },
       "Memory Controller & PHY": {
+        "title": "Sub-Category",
+        "description": "",
         "enum": [
           "DDR"
         ],
         "DDR": {
+          "title": "Sub-Sub-Category",
+          "description": "",
           "enum": [
             "DDR Controller"
           ]
         },
         "Category Specific Attributes": {
+          "title": "Category Specific Attributes",
+          "description": "",
           "type": "object",
           "properties": {
             "memory-type": {
+              "title": "Memory Type",
+              "description": "",
               "type": "string"
             },
             "memory-protocol": {
+              "title": "Memory Protocol",
+              "description": "",
               "type": "string"
             },
             "interface-protocol": {
+              "title": "Interface Protocol",
+              "description": "",
               "type": "object",
               "properties": {
                 "value": {
+                  "title": "Value",
+                  "description": "",
                   "type": "string"
                 },
                 "type": {
+                  "title": "Type",
+                  "description": "",
                   "type": "object",
                   "properties": {
                     "value": {
+                      "title": "Value",
+                      "description": "",
                       "enum": [
                         "PHY",
                         "Controller"
                       ]
                     },
                     "data-rate": {
+                      "title": "Data Rate",
+                      "description": "",
                       "type": "string"
                     },
                     "datapath-width": {
+                      "title": "Datapath Width",
+                      "description": "",
                       "type": "string"
                     },
                     "RAS-features": {
+                      "title": "RAS Features",
+                      "description": "",
                       "type": "string"
                     }
                   },
@@ -288,44 +404,66 @@
         }
       },
       "Other": {
+        "title": "Sub-Category",
+        "description": "",
         "enum": [
           "Arithmetic & Mathematic",
           "Clock Generator",
           "Other"
         ],
         "Arithmetic & Mathematic": {
+          "title": "Sub-Sub-Category",
+          "description": "",
           "enum": [
             "Datapath"
           ]
         },
         "Category Specific Attributes": {
+          "title": "Category Specific Attributes",
+          "description": "",
           "type": "object",
           "properties": {
             "function": {
+              "title": "Function",
+              "description": "",
               "type": "object",
               "properties": {
                 "value": {
+                  "title": "Value",
+                  "description": "",
                   "type": "string"
                 },
                 "datapath-or-control": {
+                  "title": "Datapath or Control",
+                  "description": "",
                   "type": "object",
                   "properties": {
                     "value": {
+                      "title": "Value",
+                      "description": "",
                       "enum": [
                         "Datapath",
                         "Control"
                       ]
                     },
                     "data-rate": {
+                      "title": "Data Rate",
+                      "description": "",
                       "type": "string"
                     },
                     "latency": {
+                      "title": "Latency",
+                      "description": "",
                       "type": "string"
                     },
                     "endianness": {
+                      "title": "Endianness",
+                      "description": "",
                       "type": "string"
                     },
                     "datapath-width": {
+                      "title": "Datapath Width",
+                      "description": "",
                       "type": "string"
                     }
                   },
@@ -342,13 +480,19 @@
   },
   "properties": {
     "basic-information": {
+      "title": "Basic Information",
+      "description": "",
       "type": "object",
       "properties": {
         "core-name": {
+          "title": "Core Name",
+          "description": "",
           "minLength": 1,
           "type": "string"
         },
         "description": {
+          "title": "Description",
+          "description": "",
           "minLength": 1,
           "type": "string"
         }
@@ -613,22 +757,34 @@
       ]
     },
     "common-attributes": {
+      "title": "Common Attributes",
+      "description": "",
       "type": "object",
       "properties": {
         "vendor-core": {
+          "title": "Vendor Core",
+          "description": "",
           "type": "string",
           "minLength": 1
         },
         "vendor-implement": {
+          "title": "Vendor Implement",
+          "description": "",
           "type": "object",
           "properties": {
             "asic-fabricator": {
+              "title": "ASIC Fabricator",
+              "description": "",
               "type": "object",
               "properties": {
                 "name": {
+                  "title": "Name",
+                  "description": "",
                   "type": "string"
                 },
                 "technology": {
+                  "title": "Technology",
+                  "description": "",
                   "type": "string"
                 }
               },
@@ -637,12 +793,18 @@
               ]
             },
             "fpga-vendor": {
+              "title": "FPGA Vendor",
+              "description": "",
               "type": "object",
               "properties": {
                 "name": {
+                  "title": "Name",
+                  "description": "",
                   "type": "string"
                 },
                 "chips": {
+                  "title": "Chips",
+                  "description": "",
                   "type": "string"
                 }
               },
@@ -653,33 +815,53 @@
           }
         },
         "specifications": {
+          "title": "Specifications",
+          "description": "",
           "type": "object",
           "properties": {
             "standard": {
+              "title": "Standard",
+              "description": "",
               "type": "string"
             },
             "clock-frequency": {
+              "title": "Clock Frequency",
+              "description": "",
               "type": "string"
             },
             "area": {
+              "title": "Area",
+              "description": "mm2, um2, number of gates, or usage of FPGA gate area",
               "type": "string"
             },
             "power-consumption": {
+              "title": "Power Consumption",
+              "description": "",
               "type": "string"
             },
             "special-tools-req": {
+              "title": "Special Tools Requirement",
+              "description": "",
               "$ref": "#/definitions/yesno"
             },
             "low-power-support": {
+              "title": "Low Power Support",
+              "description": "",
               "$ref": "#/definitions/yesno"
             },
             "components": {
+              "title": "Components",
+              "description": "",
               "type": "string"
             },
             "version": {
+              "title": "Version",
+              "description": "",
               "type": "string"
             },
             "needs-special-tools": {
+              "title": "Needs Special Tools",
+              "description": "",
               "$ref": "#/definitions/yesno"
             }
           }
@@ -692,123 +874,195 @@
       ]
     },
     "design-reuse-support": {
+      "title": "Design Reuse Support",
+      "description": "",
       "type": "object",
       "properties": {
         "used-in-other-asic-designs": {
+          "title": "Can be directly used in other ASIC designs",
+          "description": "",
           "$ref": "#/definitions/yesno"
         },
         "synthesis-scripts-into-gate-level-netlist": {
+          "title": "Synthesis scripts into gate level netlist",
+          "description": "",
           "$ref": "#/definitions/yesno"
         }
       }
     },
     "level-of-maturity": {
+      "title": "Level of Maturity",
+      "description": "",
       "type": "object",
       "properties": {
         "characterization-data-from-silicon": {
+          "title": "Characterization Data from Silicon",
+          "description": "",
           "type": "string"
         },
         "comprehensiveness-of-verification": {
+          "title": "Comprehensivenesss of Verification",
+          "description": "",
           "type": "string"
         },
         "number-of-downloads": {
+          "title": "Number of Downloads",
+          "description": "",
           "type": "integer"
         },
         "user-rating": {
+          "title": "User Rating",
+          "description": "",
           "type": "number"
         },
         "number-of-chips-implemented": {
+          "title": "Number of Chips Implemented",
+          "description": "",
           "type": "integer"
         }
       }
     },
     "file-system": {
+      "title": "File System",
+      "description": "",
       "type": "object",
       "properties": {
         "design": {
+          "title": "Design",
+          "description": "Folder",
           "type": "object",
           "properties": {
             "rtl-design": {
+              "title": "RTL Design",
+              "description": "File: Verilog/VHDL",
               "$ref": "#/definitions/yesno"
             },
             "gate-level-netlist": {
+              "title": "Gate-level netlist",
+              "description": "File: Verilog/VHDL",
               "$ref": "#/definitions/yesno"
             },
             "physical-layout": {
+              "title": "Physical Layout",
+              "description": "File: GDS",
               "$ref": "#/definitions/yesno"
             },
             "readme": {
+              "title": "README",
+              "description": "File: TXT",
               "$ref": "#/definitions/yesno"
             }
           }
         },
         "special-tools": {
+          "title": "Special Tools",
+          "description": "Folder",
           "$ref": "#/definitions/yesno"
         },
         "testing-and-verification": {
+          "title": "Testing and Verification",
+          "description": "Folder",
           "type": "object",
           "properties": {
             "testbenches": {
+              "title": "Comprehensive testbenches for RTL/gate-level simulation",
+              "description": "File: Verilog/VHDL",
               "$ref": "#/definitions/yesno"
             },
             "design-corners-and-results": {
+              "title": "Design Corners and Results",
+              "description": "",
               "$ref": "#/definitions/yesno"
             },
             "scripts": {
+              "title": "Scripts for RTL/gate-level simulation",
+              "description": "File: Script",
               "$ref": "#/definitions/yesno"
             },
             "fpga-synthesis-result": {
+              "title": "FPGA Synthesis Result",
+              "description": "File: TXT",
               "$ref": "#/definitions/yesno"
             },
             "readme": {
+              "title": "README",
+              "description": "File: TXT",
               "$ref": "#/definitions/yesno"
             }
           }
         },
         "manuals": {
+          "title": "Manuals",
+          "description": "Folder",
           "type": "object",
           "properties": {
             "algorithms": {
+              "title": "Algorithms",
+              "description": "",
               "$ref": "#/definitions/yesno"
             },
             "timing-diagrams": {
+              "title": "Timing Diagrams",
+              "description": "",
               "$ref": "#/definitions/yesno"
             },
             "diagrams-structure-architecture": {
+              "title": "Diagrams of Structure and Architecture",
+              "description": "",
               "$ref": "#/definitions/yesno"
             },
             "description-design-architecture": {
+              "title": "Description of Design Architecture",
+              "description": "",
               "$ref": "#/definitions/yesno"
             },
             "input-output-pins": {
+              "title": "Input/Output Pins",
+              "description": "",
               "$ref": "#/definitions/yesno"
             },
             "verification-fpga": {
+              "title": "Verification on FPGA",
+              "description": "",
               "$ref": "#/definitions/yesno"
             },
             "file-directory-structure": {
+              "title": "File and Directory Structure",
+              "description": "",
               "$ref": "#/definitions/yesno"
             },
             "related-products-ips": {
+              "title": "Related Products and IPs",
+              "description": "",
               "$ref": "#/definitions/yesno"
             }
           }
         },
         "applications": {
+          "title": "Applications",
+          "description": "Folder",
           "type": "object",
           "properties": {
             "source-code": {
+              "title": "Source Code",
+              "description": "File: C/C++/etc.",
               "$ref": "#/definitions/yesno"
             },
             "executable": {
+              "title": "Executable",
+              "description": "File: EXE, SH",
               "$ref": "#/definitions/yesno"
             },
             "readme": {
+              "title": "README",
+              "description": "File: TXT",
               "$ref": "#/definitions/yesno"
             }
           }
         },
         "training-courses": {
+          "title": "Training Courses",
+          "description": "File: Video",
           "$ref": "#/definitions/yesno"
         }
       },

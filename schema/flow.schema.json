@@ -288,7 +288,12 @@
                       "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs/library/link",
                       "type": "string"
                     }
-                  }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "compatible_versions"
+                  ]
                 }
               },
               "interaction": {

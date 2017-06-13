@@ -1,0 +1,88 @@
+{
+  "basic-information": {
+    "core-name": "ADC 10B 2MSPS SAR SMIC65LL",
+    "description": "In many systems-on-chip (SoC) that require analog interfaces, the 40-nm and 65-nm process nodes are the processes of choice due to their lower cost and stability when compared to more advanced nodes. This IP core is a 10-bit 2MSPS 2.5V SAR high-speed pipeline ADC with 8:1 differential input MUX in SMIC65LL. This ADC is a part of Synopsys' high-speed DesignWare Data Converter IP.",
+    "category": "Analog & Mixed Signal",
+    "subcategory": "ADC",
+    "subsubcategory": "10-Bit ADC",
+    "category-specific-data": {
+      "bandwidth": {
+        "value": "N/A",
+        "pipeline-width": "10-Bit",
+        "vdd": {
+          "value": "2.5 V",
+          "data-rate": "up to 2 MSPS",
+          "power-reduction": "YES",
+          "differential-input-MUX": "8:1"
+        }
+      }
+    }
+  },
+  "common-attributes": {
+    "vendor-core": "Synopsys",
+    "vendor-implement": {
+      "asic-fabricator": {
+        "name": "SMIC",
+        "technology": "SMIC 65nm LL"
+      },
+      "fpga-vendor": {
+        "name": "N/A",
+        "chips": "N/A"
+      }
+    },
+    "specifications": {
+      "standard": "N/A",
+      "clock-frequency": "N/A",
+      "area": "N/A",
+      "power-consumption": "N/A",
+      "special-tools-req": "N/A",
+      "low-power-support": "YES",
+      "components": "N/A",
+      "version": "N/A",
+      "needs-special-tools": "N/A"
+    }
+  },
+  "design-reuse-support": {
+    "used-in-other-asic-designs": "N/A",
+    "synthesis-scripts-into-gate-level-netlist": "N/A"
+  },
+  "level-of-maturity": {
+    "characterization-data-from-silicon": "N/A",
+    "comprehensiveness-of-verification": "N/A",
+    "number-of-downloads": -1,
+    "user-rating": -1,
+    "number-of-chips-implemented": -1
+  },
+  "file-system": {
+    "design": {
+      "rtl-design": "YES",
+      "gate-level-netlist": "YES",
+      "physical-layout": "YES",
+      "readme": "N/A"
+    },
+    "special-tools": "N/A",
+    "testing-and-verification": {
+      "testbenches": "YES",
+      "design-corners-and-results": "N/A",
+      "scripts": "N/A",
+      "fpga-synthesis-result": "N/A",
+      "readme": "N/A"
+    },
+    "manuals": {
+      "algorithms": "N/A",
+      "timing-diagrams": "N/A",
+      "diagrams-structure-architecture": "N/A",
+      "description-design-architecture": "N/A",
+      "input-output-pins": "N/A",
+      "verification-fpga": "N/A",
+      "file-directory-structure": "N/A",
+      "related-products-ips": "N/A"
+    },
+    "applications": {
+      "source-code": "N/A",
+      "executable": "N/A",
+      "readme": "N/A"
+    },
+    "training-courses": "N/A"
+  }
+}

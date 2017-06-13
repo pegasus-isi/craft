@@ -1,0 +1,89 @@
+{
+  "basic-information": {
+    "core-name": "IP1034 - DDR4 Memory Controller",
+    "description": "The Cadence Denali Controller IP for DDR4 is a highly configurable DDR design that provides the high flexibility needed to enable application specific configurations ranging from high performance networking and mobile to consumer.     It includes sophisticated engines to rearrange transactions and maximize memory bus utilization. Programmable arbitration algorithms allow for multiple ports to share the memory bus efficiently. The Denali Controller IP for DDR4 is configurable to meet specific data profiles and enables performance optimization for an individual system and memory requirements.",
+    "category": "Memory Controller & PHY",
+    "subcategory": "DDR",
+    "subsubcategory": "DDR Controller",
+    "category-specific-data": {
+      "memory-type": "DRAM",
+      "memory-protocol": "DDR4",
+      "interface-protocol": {
+        "value": "AXI, AHB, OCP, DEN",
+        "type": {
+          "value": "Controller",
+          "data-rate": "N/A",
+          "datapath-width": "N/A",
+          "RAS-features": "SECDED ECC, Error Scrubbing, Parity"
+        }
+      }
+    }
+  },
+  "common-attributes": {
+    "vendor-core": "Cadence",
+    "vendor-implement": {
+      "asic-fabricator": {
+        "name": "N/A",
+        "technology": "N/A"
+      },
+      "fpga-vendor": {
+        "name": "N/A",
+        "chips": "N/A"
+      }
+    },
+    "specifications": {
+      "standard": "N/A",
+      "clock-frequency": "N/A",
+      "area": "N/A",
+      "power-consumption": "N/A",
+      "special-tools-req": "N/A",
+      "low-power-support": "N/A",
+      "components": "N/A",
+      "version": "N/A",
+      "needs-special-tools": "N/A"
+    }
+  },
+  "design-reuse-support": {
+    "used-in-other-asic-designs": "N/A",
+    "synthesis-scripts-into-gate-level-netlist": "N/A"
+  },
+  "level-of-maturity": {
+    "characterization-data-from-silicon": "N/A",
+    "comprehensiveness-of-verification": "N/A",
+    "number-of-downloads": -1,
+    "user-rating": -1,
+    "number-of-chips-implemented": -1
+  },
+  "file-system": {
+    "design": {
+      "rtl-design": "YES",
+      "gate-level-netlist": "N/A",
+      "physical-layout": "N/A",
+      "readme": "N/A"
+    },
+    "special-tools": "N/A",
+    "testing-and-verification": {
+      "testbenches": "N/A",
+      "design-corners-and-results": "N/A",
+      "scripts": "N/A",
+      "fpga-synthesis-result": "N/A",
+      "readme": "N/A"
+    },
+    "manuals": {
+      "algorithms": "N/A",
+      "timing-diagrams": "N/A",
+      "diagrams-structure-architecture": "N/A",
+      "description-design-architecture": "N/A",
+      "input-output-pins": "N/A",
+      "verification-fpga": "N/A",
+      "file-directory-structure": "N/A",
+      "related-products-ips": "N/A"
+    },
+    "applications": {
+      "source-code": "N/A",
+      "executable": "N/A",
+      "readme": "N/A"
+    },
+    "training-courses": "N/A"
+  }
+}

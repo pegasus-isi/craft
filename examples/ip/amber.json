@@ -1,0 +1,94 @@
+{
+  "basic-information": {
+    "core-name": "Amber core",
+    "description": "The Amber processor core is an ARM-compatible 32-bit RISC processor. The Amber core is fully compatible with the ARM v2a instruction set architecture (ISA) and is therefore supported by the GNU toolset. The Amber project provides a complete embedded  system incorporating the Amber core and a number of peripherals, including a UART, a timer and an Ethernet MAC.",
+    "category": "Processor & Microcontroller",
+    "subcategory": "Microprocessor",
+    "subsubcategory": "32-Bit Microprocessor",
+    "category-specific-data": {
+      "processor-type": {
+        "value": "Microprocessor",
+        "ISA": "ARM v2a",
+        "datapath-width": {
+          "value": 32,
+          "number-of-cores": 1,
+          "levels-of-caches": 1,
+          "program-memory": "N/A",
+          "data-memory": "N/A",
+          "pipeline-stages": "3-5",
+          "endianness": "Little endian",
+          "datapath-width": "32 bits",
+          "RAS-features": "None",
+          "data-rate": "0.8 and 1.0 DMIPS per MHz for the two designs"
+        }
+      }
+    }
+  },
+  "common-attributes": {
+    "vendor-core": "OpenCores",
+    "vendor-implement": {
+      "asic-fabricator": {
+        "name": "N/A",
+        "technology": "N/A"
+      },
+      "fpga-vendor": {
+        "name": "Xilinx",
+        "chips": "Xilinx Spartan-6"
+      }
+    },
+    "specifications": {
+      "standard": "ARM v2a",
+      "clock-frequency": "40MHz",
+      "area": "32% of the Spartan-6 FPGA LUTs",
+      "power-consumption": "N/A",
+      "special-tools-req": "NO",
+      "low-power-support": "NO",
+      "components": "Uart, Xilinx Spartan-6 DDR3 controller, Timers and an Ethernet MAC, Wishbone system bus",
+      "version": "N/A",
+      "needs-special-tools": "NO"
+    }
+  },
+  "design-reuse-support": {
+    "used-in-other-asic-designs": "NO",
+    "synthesis-scripts-into-gate-level-netlist": "NO"
+  },
+  "level-of-maturity": {
+    "characterization-data-from-silicon": "N/A",
+    "comprehensiveness-of-verification": "N/A",
+    "number-of-downloads": 2168,
+    "user-rating": 0.0,
+    "number-of-chips-implemented": 0
+  },
+  "file-system": {
+    "design": {
+      "rtl-design": "YES",
+      "gate-level-netlist": "NO",
+      "physical-layout": "NO",
+      "readme": "YES"
+    },
+    "special-tools": "N/A",
+    "testing-and-verification": {
+      "testbenches": "YES",
+      "design-corners-and-results": "NO",
+      "scripts": "YES",
+      "fpga-synthesis-result": "YES",
+      "readme": "YES"
+    },
+    "manuals": {
+      "algorithms": "YES",
+      "timing-diagrams": "NO",
+      "diagrams-structure-architecture": "YES",
+      "description-design-architecture": "YES",
+      "input-output-pins": "YES",
+      "verification-fpga": "YES",
+      "file-directory-structure": "YES",
+      "related-products-ips": "NO"
+    },
+    "applications": {
+      "source-code": "N/A",
+      "executable": "N/A",
+      "readme": "N/A"
+    },
+    "training-courses": "NO"
+  }
+}

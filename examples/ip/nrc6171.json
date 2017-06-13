@@ -1,0 +1,87 @@
+{
+  "basic-information": {
+    "core-name": "NRC6171 - IEEE 802.11b/g/n Baseband/MAC",
+    "description": "The NRC6171 is the IEEE 802.11n Baseband/MAC wireless solution operating in a single-stream mode for low-power standalones, embedded stations, access points, and Internet of Things (IoT) applications. This IP supports both mandatory and optional features of the IEEE 802.11n standard and its corresponding Wi-Fi Alliance certifications. It can also be used in a variety of configurations, including IEEE 802.11b only and IEEE 802.11b/g or IEEEE 802.11b/g/n combinations. The single stream 1x1 IEEE 802.11n mode provides up to 72Mbps data rate.",
+    "category": "Wireless Communication",
+    "subcategory": "802.11",
+    "category-specific-data": {
+      "wireless-protocol": {
+        "value": "802.11",
+        "frequency-band": "2.4GHz",
+        "data-rate": "IEEE 802.11b: 1-11Mbps, IEEE 802.11g: 6-54Mbps, IEEE 802.11n: 6.5-72.2Mbps",
+        "WPS": "YES",
+        "WFA": "YES",
+        "wifi-direct": "YES",
+        "wifi-aware": "YES",
+        "modulation-modes": "OFDM with BPSK, QPSK, 16-QAM, 64-QAM, DSSS, CCK"
+      }
+    }
+  },
+  "common-attributes": {
+    "vendor-core": "NEWRACOM",
+    "vendor-implement": {
+      "asic-fabricator": {
+        "name": "N/A",
+        "technology": "N/A"
+      },
+      "fpga-vendor": {
+        "name": "Xilinx",
+        "chips": "Xilinx Virtex 6, Virtex 7"
+      }
+    },
+    "specifications": {
+      "standard": "IEEE 802.11n",
+      "clock-frequency": "N/A",
+      "area": "N/A",
+      "power-consumption": "N/A",
+      "special-tools-req": "N/A",
+      "low-power-support": "YES",
+      "components": "MAC, Digital Baseband",
+      "version": "N/A",
+      "needs-special-tools": "N/A"
+    }
+  },
+  "design-reuse-support": {
+    "used-in-other-asic-designs": "N/A",
+    "synthesis-scripts-into-gate-level-netlist": "N/A"
+  },
+  "level-of-maturity": {
+    "characterization-data-from-silicon": "N/A",
+    "comprehensiveness-of-verification": "N/A",
+    "number-of-downloads": -1,
+    "user-rating": -1,
+    "number-of-chips-implemented": -1
+  },
+  "file-system": {
+    "design": {
+      "rtl-design": "N/A",
+      "gate-level-netlist": "N/A",
+      "physical-layout": "N/A",
+      "readme": "N/A"
+    },
+    "special-tools": "N/A",
+    "testing-and-verification": {
+      "testbenches": "N/A",
+      "design-corners-and-results": "N/A",
+      "scripts": "N/A",
+      "fpga-synthesis-result": "N/A",
+      "readme": "N/A"
+    },
+    "manuals": {
+      "algorithms": "N/A",
+      "timing-diagrams": "N/A",
+      "diagrams-structure-architecture": "N/A",
+      "description-design-architecture": "N/A",
+      "input-output-pins": "N/A",
+      "verification-fpga": "YES",
+      "file-directory-structure": "N/A",
+      "related-products-ips": "N/A"
+    },
+    "applications": {
+      "source-code": "N/A",
+      "executable": "N/A",
+      "readme": "N/A"
+    },
+    "training-courses": "N/A"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "basic-information": {
+    "core-name": "FPU",
+    "description": "This is a 32-bit floating point unit (FPU), which I developed in a project within the Vienna University of Technology. It can do arithmetic operations on floating point numbers. The FPU complies fully with the IEEE 754 Standard. The FPU was tested and simulated in hardware and software.",
+    "category": "Other",
+    "subcategory": "Arithmetic & Mathematic",
+    "subsubcategory": "Datapath",
+    "category-specific-data": {
+      "function": {
+        "value": "Arithmetic and Mathematic",
+        "datapath-or-control": {
+          "value": "Datapath",
+          "data-rate": "N/A",
+          "latency": "7 cycles for addition/subtraction, 12 cycles for multiplication, 35 cycles for division, 35 cycles for squre-root calculations",
+          "endianness": "Little endian",
+          "datapath-width": "32 bits"
+        }
+      }
+    }
+  },
+  "common-attributes": {
+    "vendor-core": "OpenCores",
+    "vendor-implement": {
+      "asic-fabricator": {
+        "name": "N/A",
+        "technology": "N/A"
+      },
+      "fpga-vendor": {
+        "name": "Altera",
+        "chips": "Altera Quartus II"
+      }
+    },
+    "specifications": {
+      "standard": "IEEE 754",
+      "clock-frequency": "100MHz",
+      "area": "4378 LUTs on  Altera Quartus II FPGA",
+      "power-consumption": "N/A",
+      "special-tools-req": "NO",
+      "low-power-support": "NO",
+      "components": "ALU, Multiplier/Divider, Square-root unit",
+      "version": "N/A",
+      "needs-special-tools": "NO"
+    }
+  },
+  "design-reuse-support": {
+    "used-in-other-asic-designs": "YES",
+    "synthesis-scripts-into-gate-level-netlist": "NO"
+  },
+  "level-of-maturity": {
+    "characterization-data-from-silicon": "N/A",
+    "comprehensiveness-of-verification": "N/A",
+    "number-of-downloads": 362,
+    "user-rating": -1,
+    "number-of-chips-implemented": -1
+  },
+  "file-system": {
+    "design": {
+      "rtl-design": "YES",
+      "gate-level-netlist": "NO",
+      "physical-layout": "NO",
+      "readme": "YES"
+    },
+    "special-tools": "N/A",
+    "testing-and-verification": {
+      "testbenches": "YES",
+      "design-corners-and-results": "NO",
+      "scripts": "YES",
+      "fpga-synthesis-result": "YES",
+      "readme": "YES"
+    },
+    "manuals": {
+      "algorithms": "YES",
+      "timing-diagrams": "NO",
+      "diagrams-structure-architecture": "YES",
+      "description-design-architecture": "N/A",
+      "input-output-pins": "YES",
+      "verification-fpga": "YES",
+      "file-directory-structure": "YES",
+      "related-products-ips": "NO"
+    },
+    "applications": {
+      "source-code": "N/A",
+      "executable": "N/A",
+      "readme": "N/A"
+    },
+    "training-courses": "NO"
+  }
+}

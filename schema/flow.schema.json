@@ -258,6 +258,39 @@
                   ]
                 }
               },
+              "libraries": {
+                "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs/libraries",
+                "type": "array",
+                "items": {
+                  "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs/library",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs/library/id",
+                      "minLength": 1,
+                      "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
+                      "type": "string",
+                      "pattern": "^[0-9a-zA-Z -_]*$"
+                    },
+                    "name": {
+                      "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs/library/name",
+                      "type": "string"
+                    },
+                    "compatible_versions": {
+                      "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs/library/versions",
+                      "type": "array",
+                      "items": {
+                        "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs/library/version",
+                        "type": "string"
+                      }
+                    },
+                    "link": {
+                      "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs/library/link",
+                      "type": "string"
+                    }
+                  }
+                }
+              },
               "interaction": {
                 "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs/interactions",
                 "type": "array",

@@ -12,6 +12,18 @@
         "N/A"
       ]
     },
+    "file-property": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/yesno"
+        },
+        {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^(https?|ftp|file)://"
+        }
+      ]
+    },
     "categories": {
       "title": "Category",
       "description": "",
@@ -935,22 +947,22 @@
             "rtl-design": {
               "title": "RTL Design",
               "description": "File: Verilog/VHDL",
-              "$ref": "#/definitions/yesno"
+              "$ref": "#/definitions/file-property"
             },
             "gate-level-netlist": {
               "title": "Gate-level netlist",
               "description": "File: Verilog/VHDL",
-              "$ref": "#/definitions/yesno"
+              "$ref": "#/definitions/file-property"
             },
             "physical-layout": {
               "title": "Physical Layout",
               "description": "File: GDS",
-              "$ref": "#/definitions/yesno"
+              "$ref": "#/definitions/file-property"
             },
             "readme": {
               "title": "README",
               "description": "File: TXT",
-              "$ref": "#/definitions/yesno"
+              "$ref": "#/definitions/file-property"
             }
           }
         },
@@ -967,7 +979,7 @@
             "testbenches": {
               "title": "Comprehensive testbenches for RTL/gate-level simulation",
               "description": "File: Verilog/VHDL",
-              "$ref": "#/definitions/yesno"
+              "$ref": "#/definitions/file-property"
             },
             "design-corners-and-results": {
               "title": "Design Corners and Results",
@@ -977,17 +989,17 @@
             "scripts": {
               "title": "Scripts for RTL/gate-level simulation",
               "description": "File: Script",
-              "$ref": "#/definitions/yesno"
+              "$ref": "#/definitions/file-property"
             },
             "fpga-synthesis-result": {
               "title": "FPGA Synthesis Result",
               "description": "File: TXT",
-              "$ref": "#/definitions/yesno"
+              "$ref": "#/definitions/file-property"
             },
             "readme": {
               "title": "README",
               "description": "File: TXT",
-              "$ref": "#/definitions/yesno"
+              "$ref": "#/definitions/file-property"
             }
           }
         },
@@ -1051,12 +1063,12 @@
             "executable": {
               "title": "Executable",
               "description": "File: EXE, SH",
-              "$ref": "#/definitions/yesno"
+              "$ref": "#/definitions/file-property"
             },
             "readme": {
               "title": "README",
               "description": "File: TXT",
-              "$ref": "#/definitions/yesno"
+              "$ref": "#/definitions/file-property"
             }
           }
         },

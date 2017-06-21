@@ -797,6 +797,33 @@
         "description"
       ]
     },
+    "quality-verification": {
+      "title": "Quality Verification",
+      "description": "",
+      "type": "object",
+      "properties": {
+        "testbenches": {
+          "title": "Did the IP designer provide testbenches?",
+          "description": "",
+          "$ref": "#/definitions/file-property"
+        },
+        "testbenches-results": {
+          "title": "Did the IP designer provide expected results for the above testbenches?",
+          "description": "",
+          "$ref": "#/definitions/yesno"
+        },
+        "num-teams-simulation": {
+          "title": "Number of independent teams who were able simulate the testbenches provided by the IP designer and successfully obtain expected results",
+          "description": "",
+          "type": "integer"
+        },
+        "num-teams-use": {
+          "title": "Number of independent teams who were able to successfully use this IP in a design",
+          "description": "",
+          "type": "integer"
+        }
+      }
+    },
     "common-attributes": {
       "title": "Common Attributes",
       "description": "",

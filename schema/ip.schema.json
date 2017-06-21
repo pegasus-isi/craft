@@ -39,6 +39,7 @@
         "Multimedia",
         "Network-on-Chip (NoC)",
         "Memory Controller & PHY",
+        "Generator",
         "Other"
       ],
       "Analog & Mixed Signal": {
@@ -410,6 +411,34 @@
                 }
               },
               "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "Generator": {
+        "title": "Sub-Category",
+        "description": "",
+        "enum": [],
+        "Category Specific Attributes": {
+          "title": "Category Specific Attributes",
+          "description": "",
+          "type": "object",
+          "properties": {
+            "cpp-systemc-design": {
+              "title": "C++/SystemC design",
+              "description": "File: C++/SystemC",
+              "$ref": "#/definitions/file-property"
+            },
+            "testbenches": {
+              "title": "Comprehensive testbenches and test results",
+              "description": "File: C++/SystemC",
+              "$ref": "#/definitions/file-property"
+            },
+            "scripts": {
+              "title": "Scripts for C++/SystemC-level simulation",
+              "description": "File: Scripts",
+              "$ref": "#/definitions/file-property"
             }
           },
           "additionalProperties": false

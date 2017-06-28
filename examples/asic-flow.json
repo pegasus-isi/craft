@@ -439,7 +439,7 @@
             "format": "Library Exchange Format (LEF, ASCII data format)",
             "provided-by": "Vendor",
             "description": "Includes the design rules for routing and the abstract of the cells, no information about the internal netlist of the cells.",
-            "link": "gscl45nm.lef"
+            "link": "file://gscl45nm.lef"
           },
           {
             "id": "stage4-infile5",
@@ -447,7 +447,7 @@
             "format": "Text",
             "provided-by": "Vendor",
             "description": "Includes mapping information of GDS.",
-            "link": "gds2_encounter.map"
+            "link": "file://gds2_encounter.map"
           }
         ],
         "interaction": [

@@ -49,6 +49,7 @@
           "ADC",
           "DAC",
           "PLL",
+          "VCO",
           "Standard Cell",
           "Other"
         ],
@@ -60,7 +61,65 @@
             "8-Bit ADC",
             "10-Bit ADC",
             "Other"
-          ]
+          ],
+          "Category Specific Attributes": {
+            "title": "Category Specific Attributes",
+            "description": "",
+            "type": "object",
+            "properties": {
+              "bandwidth": {
+                "title": "Bandwidth",
+                "description": "",
+                "type": "string"
+              },
+              "pipeline-width": {
+                "title": "Pipeline Width",
+                "description": "",
+                "type": "string"
+              },
+              "vdd": {
+                "title": "VDD",
+                "description": "",
+                "type": "string"
+              },
+              "data-rate": {
+                "title": "Data Rate",
+                "description": "",
+                "type": "string"
+              },
+              "power-reduction": {
+                "title": "Power Reduction",
+                "description": "",
+                "$ref": "#/definitions/yesno"
+              },
+              "power-consumption": {
+                "title": "Power Consumption",
+                "description": "",
+                "$ref": "#/definitions/yesno"
+              },
+              "differential-input-MUX": {
+                "title": "Differential Input MUX",
+                "description": "",
+                "type": "string"
+              },
+              "differential-input-signal-range": {
+                "title": "Differential Input Signal RangeX",
+                "description": "",
+                "type": "string"
+              },
+              "integral-non-linearity": {
+                "title": "Integral Non-Linearity",
+                "description": "",
+                "type": "string"
+              },
+              "differential-non-linearity": {
+                "title": "Differential Non-Linearity",
+                "description": "",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
         },
         "DAC": {
           "title": "Sub-Sub-Category",
@@ -78,7 +137,100 @@
             "Clock Generator PLL",
             "Deskew PLL",
             "General Purpose PLL"
-          ]
+          ],
+          "Category Specific Attributes": {
+            "title": "Category Specific Attributes",
+            "description": "",
+            "type": "object",
+            "properties": {
+              "bandwidth": {
+                "title": "Bandwidth",
+                "description": "",
+                "type": "string"
+              },
+              "vdd": {
+                "title": "VDD",
+                "description": "",
+                "type": "string"
+              },
+              "max-frequency": {
+                "title": "Max Frequency",
+                "description": "",
+                "type": "string"
+              },
+              "input-frequency-range": {
+                "title": "Input Frequency Range",
+                "description": "",
+                "type": "string"
+              },
+              "output-frequency-range": {
+                "title": "Output Frequency Range",
+                "description": "",
+                "type": "string"
+              },
+              "power-supply-rejection-ratio": {
+                "title": "Power Supply Rejection Ratio",
+                "description": "",
+                "type": "string"
+              },
+              "intrinsic-noise": {
+                "title": "Intrinsic Noise",
+                "description": "",
+                "type": "string"
+              },
+              "builtin-isolated-pll-testing-circuit": {
+                "title": "Built-in Isolated PLL Testing Circuit",
+                "description": "",
+                "$ref": "#/definitions/yesno"
+              },
+              "compatible-tantalum-and-ceramic-capacitors": {
+                "title": "Compatible with both Tantalum and Ceramic Capacitors",
+                "description": "",
+                "$ref": "#/definitions/yesno"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "VCO": {
+          "title": "Sub-Sub-Category",
+          "description": "",
+          "enum": [
+            "General Purpose VCO"
+          ],
+          "Category Specific Attributes": {
+            "title": "Category Specific Attributes",
+            "description": "",
+            "type": "object",
+            "properties": {
+              "bandwidth": {
+                "title": "Bandwidth",
+                "description": "",
+                "type": "string"
+              },
+              "vdd": {
+                "title": "VDD",
+                "description": "",
+                "type": "string"
+              },
+              "phase-noise": {
+                "title": "Phase Noise",
+                "description": "",
+                "type": "string"
+              },
+              "adjustable-output-amplitude": {
+                "title": "Adjustable output amplitude",
+                "description": "",
+                "$ref": "#/definitions/yesno"
+              },
+              "current-consumption": {
+                "title": "Current Consumption",
+                "description": "",
+                "$ref": "#/definitions/yesno"
+              }
+            },
+            "additionalProperties": false
+          }
         },
         "Category Specific Attributes": {
           "title": "Category Specific Attributes",
@@ -88,48 +240,7 @@
             "bandwidth": {
               "title": "Bandwidth",
               "description": "",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "title": "Value",
-                  "description": "",
-                  "type": "string"
-                },
-                "pipeline-width": {
-                  "title": "Pipeline Width",
-                  "description": "",
-                  "type": "string"
-                },
-                "vdd": {
-                  "title": "VDD",
-                  "description": "",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "title": "Value",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "data-rate": {
-                      "title": "Data Rate",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "power-reduction": {
-                      "title": "Power Reduction",
-                      "description": "",
-                      "$ref": "#/definitions/yesno"
-                    },
-                    "differential-input-MUX": {
-                      "title": "Differential Input MUX",
-                      "description": "",
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              },
-              "additionalProperties": false
+              "type": "string"
             }
           },
           "additionalProperties": false
@@ -172,7 +283,75 @@
           "enum": [
             "8-Bit Microprocessor",
             "32-Bit Microprocessor"
-          ]
+          ],
+          "Category Specific Attributes": {
+            "title": "Category Specific Attributes",
+            "description": "",
+            "type": "object",
+            "properties": {
+              "processor-type": {
+                "title": "Processor Type",
+                "description": "",
+                "type": "string"
+              },
+              "ISA": {
+                "title": "ISA",
+                "description": "",
+                "type": "string"
+              },
+              "datapath-width": {
+                "title": "Datapath Width",
+                "description": "",
+                "type": "integer"
+              },
+              "number-of-cores": {
+                "title": "Number of Cores",
+                "description": "",
+                "type": "integer"
+              },
+              "levels-of-caches": {
+                "title": "Levels of Cache",
+                "description": "",
+                "type": "integer"
+              },
+              "program-memory": {
+                "title": "Program Memory",
+                "description": "",
+                "type": "string"
+              },
+              "data-memory": {
+                "title": "Data Memory",
+                "description": "",
+                "type": "string"
+              },
+              "pipeline-stages": {
+                "title": "Pipeline Stages",
+                "description": "",
+                "type": "string"
+              },
+              "endianness": {
+                "title": "Endianess",
+                "description": "",
+                "type": "string"
+              },
+              "datapath-widths": {
+                "title": "Datapath Widths",
+                "description": "",
+                "type": "string"
+              },
+              "RAS-features": {
+                "title": "RAS Features",
+                "description": "",
+                "type": "string"
+              },
+              "data-rate": {
+                "title": "Data Rate",
+                "description": "",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
         },
         "Category Specific Attributes": {
           "title": "Category Specific Attributes",
@@ -182,78 +361,7 @@
             "processor-type": {
               "title": "Processor Type",
               "description": "",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "title": "Value",
-                  "description": "",
-                  "type": "string"
-                },
-                "ISA": {
-                  "title": "ISA",
-                  "description": "",
-                  "type": "string"
-                },
-                "datapath-width": {
-                  "title": "Datapath Width",
-                  "description": "",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "title": "Value",
-                      "description": "",
-                      "type": "integer"
-                    },
-                    "number-of-cores": {
-                      "title": "Number of Cores",
-                      "description": "",
-                      "type": "integer"
-                    },
-                    "levels-of-caches": {
-                      "title": "Levels of Cache",
-                      "description": "",
-                      "type": "integer"
-                    },
-                    "program-memory": {
-                      "title": "Program Memory",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "data-memory": {
-                      "title": "Data Memory",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "pipeline-stages": {
-                      "title": "Pipeline Stages",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "endianness": {
-                      "title": "Endianess",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "datapath-width": {
-                      "title": "Datapath Widths",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "RAS-features": {
-                      "title": "RAS Features",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "data-rate": {
-                      "title": "Data Rate",
-                      "description": "",
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              },
-              "additionalProperties": false
+              "type": "string"
             }
           },
           "additionalProperties": false
@@ -291,50 +399,42 @@
             "wireless-protocol": {
               "title": "Wireless Protocol",
               "description": "",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "title": "Value",
-                  "description": "",
-                  "type": "string"
-                },
-                "frequency-band": {
-                  "title": "Frequency Band",
-                  "description": "",
-                  "type": "string"
-                },
-                "data-rate": {
-                  "title": "Data Rate",
-                  "description": "",
-                  "type": "string"
-                },
-                "WPS": {
-                  "title": "WPS",
-                  "description": "",
-                  "$ref": "#/definitions/yesno"
-                },
-                "WFA": {
-                  "title": "WFA",
-                  "description": "",
-                  "$ref": "#/definitions/yesno"
-                },
-                "wifi-direct": {
-                  "title": "Wi-fi Direct",
-                  "description": "",
-                  "$ref": "#/definitions/yesno"
-                },
-                "wifi-aware": {
-                  "title": "Wi-fi Aware",
-                  "description": "",
-                  "$ref": "#/definitions/yesno"
-                },
-                "modulation-modes": {
-                  "title": "Modulation Modes",
-                  "description": "",
-                  "type": "string"
-                }
-              },
-              "additionalProperties": false
+              "type": "string"
+            },
+            "frequency-band": {
+              "title": "Frequency Band",
+              "description": "",
+              "type": "string"
+            },
+            "data-rate": {
+              "title": "Data Rate",
+              "description": "",
+              "type": "string"
+            },
+            "WPS": {
+              "title": "WPS",
+              "description": "",
+              "$ref": "#/definitions/yesno"
+            },
+            "WFA": {
+              "title": "WFA",
+              "description": "",
+              "$ref": "#/definitions/yesno"
+            },
+            "wifi-direct": {
+              "title": "Wi-fi Direct",
+              "description": "",
+              "$ref": "#/definitions/yesno"
+            },
+            "wifi-aware": {
+              "title": "Wi-fi Aware",
+              "description": "",
+              "$ref": "#/definitions/yesno"
+            },
+            "modulation-modes": {
+              "title": "Modulation Modes",
+              "description": "",
+              "type": "string"
             }
           },
           "additionalProperties": false
@@ -351,7 +451,53 @@
           "description": "",
           "enum": [
             "DDR Controller"
-          ]
+          ],
+          "Category Specific Attributes": {
+            "title": "Category Specific Attributes",
+            "description": "",
+            "type": "object",
+            "properties": {
+              "memory-type": {
+                "title": "Memory Type",
+                "description": "",
+                "type": "string"
+              },
+              "memory-protocol": {
+                "title": "Memory Protocol",
+                "description": "",
+                "type": "string"
+              },
+              "interface-protocol": {
+                "title": "Interface Protocol",
+                "description": "",
+                "type": "string"
+              },
+              "type": {
+                "title": "Type",
+                "description": "",
+                "enum": [
+                  "PHY",
+                  "Controller"
+                ]
+              },
+              "data-rate": {
+                "title": "Data Rate",
+                "description": "",
+                "type": "string"
+              },
+              "datapath-width": {
+                "title": "Datapath Width",
+                "description": "",
+                "type": "string"
+              },
+              "RAS-features": {
+                "title": "RAS Features",
+                "description": "",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
         },
         "Category Specific Attributes": {
           "title": "Category Specific Attributes",
@@ -371,46 +517,7 @@
             "interface-protocol": {
               "title": "Interface Protocol",
               "description": "",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "title": "Value",
-                  "description": "",
-                  "type": "string"
-                },
-                "type": {
-                  "title": "Type",
-                  "description": "",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "title": "Value",
-                      "description": "",
-                      "enum": [
-                        "PHY",
-                        "Controller"
-                      ]
-                    },
-                    "data-rate": {
-                      "title": "Data Rate",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "datapath-width": {
-                      "title": "Datapath Width",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "RAS-features": {
-                      "title": "RAS Features",
-                      "description": "",
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              },
-              "additionalProperties": false
+              "type": "string"
             }
           },
           "additionalProperties": false
@@ -457,7 +564,48 @@
           "description": "",
           "enum": [
             "Datapath"
-          ]
+          ],
+          "Category Specific Attributes": {
+            "title": "Category Specific Attributes",
+            "description": "",
+            "type": "object",
+            "properties": {
+              "function": {
+                "title": "Function",
+                "description": "",
+                "type": "string"
+              },
+              "datapath-or-control": {
+                "title": "Datapath or Control",
+                "description": "",
+                "enum": [
+                  "Datapath",
+                  "Control"
+                ]
+              },
+              "data-rate": {
+                "title": "Data Rate",
+                "description": "",
+                "type": "string"
+              },
+              "latency": {
+                "title": "Latency",
+                "description": "",
+                "type": "string"
+              },
+              "endianness": {
+                "title": "Endianness",
+                "description": "",
+                "type": "string"
+              },
+              "datapath-width": {
+                "title": "Datapath Width",
+                "description": "",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
         },
         "Category Specific Attributes": {
           "title": "Category Specific Attributes",
@@ -467,51 +615,7 @@
             "function": {
               "title": "Function",
               "description": "",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "title": "Value",
-                  "description": "",
-                  "type": "string"
-                },
-                "datapath-or-control": {
-                  "title": "Datapath or Control",
-                  "description": "",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "title": "Value",
-                      "description": "",
-                      "enum": [
-                        "Datapath",
-                        "Control"
-                      ]
-                    },
-                    "data-rate": {
-                      "title": "Data Rate",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "latency": {
-                      "title": "Latency",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "endianness": {
-                      "title": "Endianness",
-                      "description": "",
-                      "type": "string"
-                    },
-                    "datapath-width": {
-                      "title": "Datapath Width",
-                      "description": "",
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              },
-              "additionalProperties": false
+              "type": "string"
             }
           },
           "additionalProperties": false
@@ -575,6 +679,9 @@
             },
             "subsubcategory": {
               "$ref": "#/definitions/categories/Analog & Mixed Signal/ADC"
+            },
+            "category-specific-data": {
+              "$ref": "#/definitions/categories/Analog & Mixed Signal/ADC/Category Specific Attributes"
             }
           }
         },

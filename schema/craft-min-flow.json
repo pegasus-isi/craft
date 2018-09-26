@@ -1,0 +1,147 @@
+{
+  "name": "CRAFT MINIMUM FLOW",
+  "tools": [
+    {
+      "id": "tool-a",
+      "name": "Example Tool A",
+      "version": "v1.0",
+      "functionality": {
+        "description": "Description of the tool functionality",
+        "notes": "Notes on the tool functionality"
+      },
+      "options": [
+        {
+          "id": "tool-a-option-1",
+          "description": "Example option knob for a tool",
+          "purpose": "Description of the purpose of this option",
+          "notes": "Some notes about the tool option"
+        }
+      ]
+    },
+    {
+      "id": "tool-b",
+      "name": "Example Tool B",
+      "version": "v1.2",
+      "functionality": {
+        "description": "Description of the tool functionality",
+        "notes": "Notes on the tool functionality"
+      },
+      "options": [
+        {
+          "id": "tool-b-option-1",
+          "description": "Example option knob for a tool",
+          "purpose": "Description of the purpose of this option",
+          "notes": "Some notes about the tool option"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "id": "stage1-infile1",
+      "content": "In File 1",
+      "format": "Text",
+      "description": "Description of the file contents.",
+      "notes": "Any relevant notes",
+      "link": "file:///link-to-file-in-the-system-or-url"
+    },
+    {
+      "id": "stage1-out1",
+      "content": "Out File 1",
+      "format": "Text",
+      "description": "Description of the file contents."
+    },
+    {
+      "id": "stage2-out1",
+      "content": "Out File 2",
+      "format": "Text",
+      "description": "Description of the file contents."
+    }
+  ],
+  "stages": [
+    {
+      "id": "stage-1-example",
+      "name": "Stage 1 Example",
+      "tool": {
+        "tool-id": "tool-a",
+        "option-control-module": [
+          {
+            "id": "stage-1-tool-a-option-control",
+            "description": "Example of option control",
+            "purpose": "Purpose of this option control",
+            "notes": "Any relevant notes"
+          }
+        ]
+      },
+      "inputs": {
+        "files": [
+          {
+            "id": "stage1-infile1",
+            "provided-by": "User"
+          }
+        ]
+      },
+      "outputs": {
+        "files": [
+          {
+            "id": "stage1-out1",
+            "report": false
+          }
+        ]
+      },
+      "flow-control": [
+        {
+          "id": "stage1-flow1",
+          "condition": "Error",
+          "route-to": "User",
+          "description": "Error, should go back to User"
+        },
+        {
+          "id": "stage1-flow2",
+          "condition": "Success",
+          "route-to": "stage2-example",
+          "description": "Proceed to the next stage"
+        }
+      ]
+    },
+    {
+      "id": "stage-2-example",
+      "name": "Stage 2 Example",
+      "tool": {
+        "tool-id": "tool-b",
+        "option-control-module": [
+          {
+            "id": "stage-2-tool-b-option-control",
+            "description": "Example of option control",
+            "purpose": "Purpose of this option control",
+            "notes": "Any relevant notes"
+          }
+        ]
+      },
+      "inputs": {
+        "files": [
+          {
+            "id": "stage1-out1",
+            "provided-by": "User"
+          }
+        ]
+      },
+      "outputs": {
+        "files": [
+          {
+            "id": "stage2-out1",
+            "report": false
+          }
+        ]
+      },
+      "flow-control": [
+        {
+          "id": "stage2-flow1",
+          "condition": "Error",
+          "route-to": "User",
+          "description": "Error, should go back to User"
+        }
+      ]
+    }
+  ]
+}

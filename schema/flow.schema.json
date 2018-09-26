@@ -25,6 +25,13 @@
             "type": "string",
             "pattern": "^[0-9a-zA-Z -_]*$"
           },
+          "sc-id": {
+            "id": "https://github.com/pegasus-isi/craft-schema/tool/sc-id",
+            "minLength": 1,
+            "description": "The id for the tool in the software catalog",
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z -_]*$"
+          },
           "name": {
             "id": "https://github.com/pegasus-isi/craft-schema/tool/name",
             "minLength": 1,
@@ -35,6 +42,12 @@
             "id": "https://github.com/pegasus-isi/craft-schema/tool/version",
             "minLength": 1,
             "description": "Tool version.",
+            "type": "string"
+          },
+          "script": {
+            "id": "https://github.com/pegasus-isi/craft-schema/tool/script",
+            "minLength": 1,
+            "description": "Installation and configuration script.",
             "type": "string"
           },
           "functionality": {
@@ -91,11 +104,62 @@
             }
           }
         },
-        "required": [
-          "name",
-          "version",
-          "functionality"
+        "oneOf": [
+          {
+            "required": [
+              "id",
+              "name",
+              "version",
+              "functionality"
+            ]
+          },
+          {
+            "required": [
+              "sc-id",
+              "options"
+            ]
+          }
         ]
+      }
+    },
+    "files": {
+      "id": "https://github.com/pegasus-isi/craft-schema/files",
+      "description": "List of files from the flow.",
+      "type": "array",
+      "items": {
+        "id": "https://github.com/pegasus-isi/craft-schema/file",
+        "type": "object",
+        "properties": {
+          "id": {
+            "id": "https://github.com/pegasus-isi/craft-schema/file/id",
+            "minLength": 1,
+            "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z -_]*$"
+          },
+          "content": {
+            "id": "https://github.com/pegasus-isi/craft-schema/file/content",
+            "type": "string"
+          },
+          "format": {
+            "id": "https://github.com/pegasus-isi/craft-schema/file/format",
+            "type": "string"
+          },
+          "description": {
+            "id": "https://github.com/pegasus-isi/craft-schema/file/description",
+            "type": "string"
+          },
+          "notes": {
+            "id": "https://github.com/pegasus-isi/craft-schema/file/notes",
+            "type": "string"
+          },
+          "link": {
+            "id": "https://github.com/pegasus-isi/craft-schema/file/link",
+            "type": "string",
+            "format": "uri",
+            "pattern": "^(https?|ftp|file)://"
+          }
+        }
       }
     },
     "stages": {
@@ -125,7 +189,12 @@
             "properties": {
               "tool-id": {
                 "id": "https://github.com/pegasus-isi/craft-schema/stage/tool/tool-id",
-                "description": "ID of a listed tool",
+                "description": "ID of a custom defined tool",
+                "type": "string"
+              },
+              "sc-tool-id": {
+                "id": "https://github.com/pegasus-isi/craft-schema/stage/tool/sc-tool-id",
+                "description": "ID of a tool from the software catalog",
                 "type": "string"
               },
               "option-control-module": {
@@ -167,8 +236,17 @@
                 }
               }
             },
-            "required": [
-              "tool-id"
+            "oneOf": [
+              {
+                "required": [
+                  "tool-id"
+                ]
+              },
+              {
+                "required": [
+                  "sc-tool-id"
+                ]
+              }
             ]
           },
           "inputs": {
@@ -183,9 +261,8 @@
                   "type": "object",
                   "properties": {
                     "id": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/input-file/id",
-                      "minLength": 1,
-                      "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores.",
+                      "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs/file/input-id",
+                      "description": "ID of an input file.",
                       "type": "string",
                       "pattern": "^[0-9a-zA-Z -_]*$"
                     },
@@ -195,68 +272,17 @@
                       "type": "boolean",
                       "default": false
                     },
-                    "content": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/input-file/content",
-                      "type": "string"
-                    },
-                    "format": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/input-file/format",
-                      "type": "string"
-                    },
                     "provided-by": {
                       "id": "https://github.com/pegasus-isi/craft-schema/input-file/provided-by",
                       "enum": [
                         "User",
                         "Vendor"
                       ]
-                    },
-                    "description": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/input-file/description",
-                      "type": "string"
-                    },
-                    "notes": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/input-file/notes",
-                      "type": "string"
-                    },
-                    "link": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/input-file/link",
-                      "type": "string",
-                      "format": "uri",
-                      "pattern": "^(https?|ftp|file)://"
-                    },
-                    "input-id": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs/file/input-id",
-                      "description": "ID of an input file.",
-                      "type": "string",
-                      "pattern": "^[0-9a-zA-Z -_]*$"
-                    },
-                    "output-id": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/stage/inputs/file/output-id",
-                      "description": "ID of an output file",
-                      "type": "string",
-                      "pattern": "^[0-9a-zA-Z -_]*$"
                     }
                   },
-                  "oneOf": [
-                    {
-                      "required": [
-                        "id",
-                        "content",
-                        "format",
-                        "provided-by",
-                        "description"
-                      ]
-                    },
-                    {
-                      "required": [
-                        "input-id"
-                      ]
-                    },
-                    {
-                      "required": [
-                        "output-id"
-                      ]
-                    }
+                  "required": [
+                    "id",
+                    "provided-by"
                   ]
                 }
               },
@@ -352,28 +378,6 @@
                       "type": "string",
                       "pattern": "^[0-9a-zA-Z -_]*$"
                     },
-                    "content": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/stage/outputs/file/content",
-                      "type": "string"
-                    },
-                    "format": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/stage/outputs/file/format",
-                      "type": "string"
-                    },
-                    "description": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/stage/outputs/file/description",
-                      "type": "string"
-                    },
-                    "notes": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/stage/outputs/file/notes",
-                      "type": "string"
-                    },
-                    "link": {
-                      "id": "https://github.com/pegasus-isi/craft-schema/stage/outputs/file/link",
-                      "type": "string",
-                      "format": "uri",
-                      "pattern": "^(https?|ftp|file)://"
-                    },
                     "report": {
                       "id": "https://github.com/pegasus-isi/craft-schema/stage/outputs/file/report",
                       "type": "boolean",
@@ -382,9 +386,6 @@
                   },
                   "required": [
                     "id",
-                    "content",
-                    "format",
-                    "description",
                     "report"
                   ]
                 }

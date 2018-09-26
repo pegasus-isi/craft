@@ -92,49 +92,49 @@ for s in data['stages']:
         has_error = True
         semantic_errors += 1
 
-    # add input files
-    for f in s['inputs']['files']:
-        if 'id' in f:
-            if f['id'] in file_ids:
-                print('[ERROR] Input file "%s (%s)" has already been declared. If this is a reference to a ' \
-                      'previous file, please use the "input-id" property.' % (f['id'], s['tool']['tool-id']))
-                has_error = True
-                semantic_errors += 1
-            else:
-                file_ids.append(f['id'])
-
-        elif 'output-id' in f:
-            if f['output-id'] not in file_ids:
-                print(
-                    '[ERROR] Referencing non-existent output file "%s (%s)".' % (f['output-id'], s['tool']['tool-id']))
-                has_error = True
-                semantic_errors += 1
-
-        if 'description' in f:
-            stages_ref.extend(_extract_references(f['description'], True))
-            files_ref.extend(_extract_references(f['description'], False))
-
-        if 'notes' in f:
-            stages_ref.extend(_extract_references(f['notes'], True))
-            files_ref.extend(_extract_references(f['notes'], False))
-
-    # add output files
-    for f in s['outputs']['files']:
-        if f['id'] in file_ids:
-            print(
-                '[ERROR] Output file "%s (%s)" has already been declared.' % (f['id'], s['tool']['tool-id']))
-            has_error = True
-            semantic_errors += 1
-        else:
-            file_ids.append(f['id'])
-
-        if 'description' in f:
-            stages_ref.extend(_extract_references(f['description'], True))
-            files_ref.extend(_extract_references(f['description'], False))
-
-        if 'notes' in f:
-            stages_ref.extend(_extract_references(f['notes'], True))
-            files_ref.extend(_extract_references(f['notes'], False))
+    # # add input files
+    # for f in s['inputs']['files']:
+    #     if 'id' in f:
+    #         if f['id'] in file_ids:
+    #             print('[ERROR] Input file "%s (%s)" has already been declared. If this is a reference to a ' \
+    #                   'previous file, please use the "input-id" property.' % (f['id'], s['tool']['tool-id']))
+    #             has_error = True
+    #             semantic_errors += 1
+    #         else:
+    #             file_ids.append(f['id'])
+    #
+    #     elif 'output-id' in f:
+    #         if f['output-id'] not in file_ids:
+    #             print(
+    #                 '[ERROR] Referencing non-existent output file "%s (%s)".' % (f['output-id'], s['tool']['tool-id']))
+    #             has_error = True
+    #             semantic_errors += 1
+    #
+    #     if 'description' in f:
+    #         stages_ref.extend(_extract_references(f['description'], True))
+    #         files_ref.extend(_extract_references(f['description'], False))
+    #
+    #     if 'notes' in f:
+    #         stages_ref.extend(_extract_references(f['notes'], True))
+    #         files_ref.extend(_extract_references(f['notes'], False))
+    #
+    # # add output files
+    # for f in s['outputs']['files']:
+    #     if f['id'] in file_ids:
+    #         print(
+    #             '[ERROR] Output file "%s (%s)" has already been declared.' % (f['id'], s['tool']['tool-id']))
+    #         has_error = True
+    #         semantic_errors += 1
+    #     else:
+    #         file_ids.append(f['id'])
+    #
+    #     if 'description' in f:
+    #         stages_ref.extend(_extract_references(f['description'], True))
+    #         files_ref.extend(_extract_references(f['description'], False))
+    #
+    #     if 'notes' in f:
+    #         stages_ref.extend(_extract_references(f['notes'], True))
+    #         files_ref.extend(_extract_references(f['notes'], False))
 
     # flow control
     for f in s['flow-control']:
@@ -153,11 +153,11 @@ for s in stages_ref:
         has_error = True
         semantic_errors += 1
 
-for f in files_ref:
-    if f not in file_ids:
-        print('[ERROR] There is no file named "%s" that can be referenced.' % f)
-        has_error = True
-        semantic_errors += 1
+# for f in files_ref:
+#     if f not in file_ids:
+#         print('[ERROR] There is no file named "%s" that can be referenced.' % f)
+#         has_error = True
+#         semantic_errors += 1
 
 if has_error:
     if semantic_errors > 0:

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright 2016 University of Southern California
+# Copyright 2016-2018 University of Southern California
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -82,6 +82,10 @@ files_ref = []
 for t in data['tools']:
     tool_ids.append(t['id'])
 
+# loading files
+for f in data['files']:
+    file_ids.append(f['id'])
+
 # loading stages
 for s in data['stages']:
     stage_ids.append(s['id'])
@@ -92,9 +96,20 @@ for s in data['stages']:
         has_error = True
         semantic_errors += 1
 
-    # # add input files
-    # for f in s['inputs']['files']:
-    #     if 'id' in f:
+    # check whether input files was declared
+    for f in s['inputs']['files']:
+        if f['id'] not in file_ids:
+            print('[ERROR] Input file "%s" is not declared in the list of files.' % f['id'])
+            has_error = True
+            semantic_errors += 1
+
+    # check whether output files was declared
+    for f in s['outputs']['files']:
+        if f['id'] not in file_ids:
+            print('[ERROR] Output file "%s" is not declared in the list of files.' % f['id'])
+            has_error = True
+            semantic_errors += 1
+
     #         if f['id'] in file_ids:
     #             print('[ERROR] Input file "%s (%s)" has already been declared. If this is a reference to a ' \
     #                   'previous file, please use the "input-id" property.' % (f['id'], s['tool']['tool-id']))
@@ -152,12 +167,6 @@ for s in stages_ref:
         print('[ERROR] There is no stage named "%s" that can be referenced.' % s)
         has_error = True
         semantic_errors += 1
-
-# for f in files_ref:
-#     if f not in file_ids:
-#         print('[ERROR] There is no file named "%s" that can be referenced.' % f)
-#         has_error = True
-#         semantic_errors += 1
 
 if has_error:
     if semantic_errors > 0:
